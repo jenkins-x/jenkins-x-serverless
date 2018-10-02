@@ -1,0 +1,7 @@
+ARG BASE_TAG
+FROM jenkinsxio/jenkins-base:$BASE_TAG
+
+RUN apt-get update && apt-get -y upgrade
+#RUN yum install -y python36u python36u-libs python36u-devel python36u-pip
+
+CMD ["python3", "--version"]

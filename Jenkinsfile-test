@@ -1,0 +1,8 @@
+
+stage('Read Evergreen YAML') {
+    node {
+        git "https://github.com/rawlingsj/prow-test2.git"
+        sh "git clone https://github.com/rawlingsj/prow-test2.git"
+        sh "cd prow-test2 && mvn clean install"
+    }
+}
