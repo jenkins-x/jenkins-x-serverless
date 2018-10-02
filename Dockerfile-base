@@ -1,6 +1,5 @@
 ARG JENKINS_BASE_TAG
-ARG ORG
-FROM $ORG/jenkins-filerunner:$JENKINS_BASE_TAG
+FROM $JENKINS_BASE_TAG
 
 RUN apt-get update && apt-get install -y \
   wget \
