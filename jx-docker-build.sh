@@ -29,8 +29,12 @@ echo "====================================="
 docker build -t $ORG/jenkins-filerunner:$TAG -f Dockerfile-filerunner .
 echo "Built $ORG/jenkins-filerunner:$TAG"
 
-docker build --build-arg JENKINS_BASE_TAG=$ORG/jenkins-filerunner:$TAG -t $ORG/jenkins-base:$TAG -f Dockerfile-base .
+sed -i -e "s/FROM .*/FROM ${ORG}\/jenkins-filerunner:${TAG}/" Dockerfile-base
+head -n 1 Dockerfile-base
+docker build -t $ORG/jenkins-base:$TAG -f Dockerfile-base .
 echo "Built $ORG/jenkins-base:$TAG"
+
+exit 1
 
 declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
 
