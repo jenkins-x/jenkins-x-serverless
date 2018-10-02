@@ -18,7 +18,7 @@ set -o nounset
 set -o pipefail
 
 TAG_NUM=$1
-ORG="jenkinsxio"
+ORG=$2
 TAG=dev_$TAG_NUM
 
 docker tag jenkins-experimental/cwp-jenkinsfile-runner-demo:latest jenkinsxio/cwp-jenkinsfile-runner-demo:$TAG
@@ -26,7 +26,6 @@ docker tag jenkins-experimental/cwp-jenkinsfile-runner-demo:latest jenkinsxio/cw
 docker build --build-arg JENKINS_BASE_TAG=$TAG -t $ORG/jenkins-base:$TAG -f Dockerfile-base .
 
 declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
-#declare -a arr=("cwp")
 
 ## now loop through the above array
 for i in "${arr[@]}"
