@@ -21,9 +21,8 @@ TAG_NUM=$1
 ORG=$2
 TAG=dev_$TAG_NUM
 
-docker tag jenkins-experimental/cwp-jenkinsfile-runner-demo:latest jenkinsxio/cwp-jenkinsfile-runner-demo:$TAG
-
-docker build --build-arg JENKINS_BASE_TAG=$TAG -t $ORG/jenkins-base:$TAG -f Dockerfile-base .
+docker build -t $ORG/jenkins-filerunner:$TAG -f Dockerfile-filerunner .
+docker build --build-arg ORG=$ORG --build-arg JENKINS_BASE_TAG=$TAG -t $ORG/jenkins-base:$TAG -f Dockerfile-base .
 
 declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
 
@@ -31,11 +30,11 @@ declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csha
 for i in "${arr[@]}"
 do
     echo "building builder-$i"
-    docker build --build-arg BASE_TAG=$TAG -t $ORG/jenkins-$i:$TAG -f Dockerfile-$i .
+    docker build --build-arg ORG=$ORG --build-arg BASE_TAG=$TAG -t $ORG/jenkins-$i:$TAG -f Dockerfile-$i .
 done
 
-for i in "${arr[@]}"
-do
-    echo "pushing builder-$i"
-    docker push $ORG/jenkins-$i:$TAG
-done
+#for i in "${arr[@]}"
+#do
+#    echo "pushing builder-$i"
+#    docker push $ORG/jenkins-$i:$TAG
+#done

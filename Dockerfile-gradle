@@ -1,5 +1,6 @@
 ARG BASE_TAG
-FROM jenkinsxio/jenkins-base:$BASE_TAG
+ARG ORG
+FROM $ORG/jenkins-base:$BASE_TAG
 
 CMD ["gradle"]
 

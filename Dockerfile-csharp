@@ -1,5 +1,6 @@
 ARG BASE_TAG
-FROM jenkinsxio/jenkins-base:$BASE_TAG
+ARG ORG
+FROM $ORG/jenkins-base:$BASE_TAG
 
 RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg && \
     mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/ && \
