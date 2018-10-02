@@ -9,4 +9,4 @@ clean:
 build:
 	java \
 		-jar /opt/cwp/custom-war-packager.jar \
-	    -configPath packager-config.yml
+	    -configPath packager-config.yml -version ${VERSION}
