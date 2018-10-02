@@ -1,6 +1,4 @@
-ARG BASE_TAG
-ARG ORG
-FROM $ORG/jenkins-base:$BASE_TAG
+FROM JENKINS_BASE_TAG
 
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
 	apt-get install -y nodejs build-essential make bzip2 chromedriver chromium

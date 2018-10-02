@@ -21,8 +21,19 @@ TAG_NUM=$1
 ORG=$2
 TAG=dev_$TAG_NUM
 
+echo "====================================="
+docker -v
+docker version
+echo "====================================="
+
 docker build -t $ORG/jenkins-filerunner:$TAG -f Dockerfile-filerunner .
-docker build --build-arg ORG=$ORG --build-arg JENKINS_BASE_TAG=$TAG -t $ORG/jenkins-base:$TAG -f Dockerfile-base .
+head -n 1 Dockerfile-base
+echo "Built $ORG/jenkins-filerunner:$TAG"
+
+sed -i -e "s/FROM .*/FROM ${ORG}\/jenkins-filerunner:${TAG}/" Dockerfile-base
+head -n 1 Dockerfile-base
+docker build -t $ORG/jenkins-base:$TAG -f Dockerfile-base .
+echo "Built $ORG/jenkins-base:$TAG"
 
 declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
 
@@ -30,11 +41,13 @@ declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csha
 for i in "${arr[@]}"
 do
     echo "building builder-$i"
-    docker build --build-arg ORG=$ORG --build-arg BASE_TAG=$TAG -t $ORG/jenkins-$i:$TAG -f Dockerfile-$i .
+	sed -i -e "s/FROM .*/FROM ${ORG}\/jenkins-base:${TAG}/" Dockerfile-$i
+	head -n 1 Dockerfile-$i
+    docker build -t $ORG/jenkins-$i:$TAG -f Dockerfile-$i .
 done
 
-#for i in "${arr[@]}"
-#do
-#    echo "pushing builder-$i"
+for i in "${arr[@]}"
+do
+    echo "pushing builder-$i"
 #    docker push $ORG/jenkins-$i:$TAG
-#done
+done
