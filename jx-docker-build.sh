@@ -19,6 +19,7 @@ set -o pipefail
 
 TAG_NUM=$1
 ORG=$2
+RELEASE=$3
 TAG=dev_$TAG_NUM
 
 docker build -t $ORG/jenkins-filerunner:$TAG -f Dockerfile-filerunner .
@@ -41,11 +42,12 @@ do
     docker build -t $ORG/jenkins-$i:$TAG -f Dockerfile-$i .
 done
 
-echo $DOCKER_REGISTRY
-env
+export DOCKER_REGISTRY=docker.io
 
 for i in "${arr[@]}"
 do
-    echo "pushing builder-$i"
-#    docker push $ORG/jenkins-$i:$TAG
+	if [ "release" == "${RELEASE}" ]; then
+    	echo "pushing builder-$i"
+    	docker push $ORG/jenkins-$i:$TAG
+	fi
 done
