@@ -21,11 +21,6 @@ TAG_NUM=$1
 ORG=$2
 TAG=dev_$TAG_NUM
 
-echo "====================================="
-docker -v
-docker version
-echo "====================================="
-
 docker build -t $ORG/jenkins-filerunner:$TAG -f Dockerfile-filerunner .
 head -n 1 Dockerfile-base
 echo "Built $ORG/jenkins-filerunner:$TAG"
@@ -45,6 +40,9 @@ do
 	head -n 1 Dockerfile-$i
     docker build -t $ORG/jenkins-$i:$TAG -f Dockerfile-$i .
 done
+
+echo $DOCKER_REGISTRY
+env
 
 for i in "${arr[@]}"
 do
