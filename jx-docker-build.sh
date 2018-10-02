@@ -21,6 +21,10 @@ TAG_NUM=$1
 ORG=$2
 TAG=dev_$TAG_NUM
 
+echo "====================================="
+docker -v
+echo "====================================="
+
 docker build -t $ORG/jenkins-filerunner:$TAG -f Dockerfile-filerunner .
 echo "Built $ORG/jenkins-filerunner:$TAG"
 
