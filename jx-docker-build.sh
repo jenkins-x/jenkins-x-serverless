@@ -23,6 +23,7 @@ TAG=dev_$TAG_NUM
 
 echo "====================================="
 docker -v
+docker version
 echo "====================================="
 
 docker build -t $ORG/jenkins-filerunner:$TAG -f Dockerfile-filerunner .
