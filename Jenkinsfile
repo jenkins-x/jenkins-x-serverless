@@ -36,7 +36,7 @@ pipeline {
           sh "make build"
           sh 'export VERSION=`cat VERSION`'
           sh "jx step validate --min-jx-version 1.2.36"
-          sh './jx-docker-build.sh $VERSION $ORG'
+          sh './jx-docker-build.sh `cat VERSION` $ORG'
         }
       }
     }
