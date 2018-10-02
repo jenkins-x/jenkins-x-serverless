@@ -4,10 +4,6 @@ plugins:
     url: "https://updates.jenkins.io/update-center.json"
 jenkins:
   agentProtocols:
-  - "CLI-connect"
-  - "CLI2-connect"
-  - "JNLP-connect"
-  - "JNLP2-connect"
   - "JNLP4-connect"
   - "Ping"
   authorizationStrategy:
