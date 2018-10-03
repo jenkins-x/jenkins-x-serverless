@@ -2,9 +2,9 @@ pipeline {
     agent any
     environment {
       ORG               = 'garethjevans'
+      DOCKER_ORG        = 'garethjevans'
       APP_NAME          = 'jenkins-x-oneshot-masters'
       GIT_PROVIDER      = 'github.com'
-      CHARTMUSEUM_CREDS = credentials('jenkins-x-chartmuseum')
     }
     stages {
       stage('CI Build and push snapshot') {
@@ -20,7 +20,7 @@ pipeline {
           checkout scm
           sh 'export VERSION=$PREVIEW_VERSION'
           sh "make build"
-          sh './jx-docker-build.sh $PREVIEW_VERSION $ORG pr'
+          sh './jx-docker-build.sh $PREVIEW_VERSION $DOCKER_ORG pr'
         }
       }
       stage('Build Release') {
@@ -36,7 +36,7 @@ pipeline {
           sh "make build"
           sh 'export VERSION=`cat VERSION`'
           sh "jx step validate --min-jx-version 1.2.36"
-          sh './jx-docker-build.sh `cat VERSION` $ORG release'
+          sh './jx-docker-build.sh `cat VERSION` $DOCKER_ORG release'
         }
       }
     }
