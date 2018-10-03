@@ -31,7 +31,8 @@ head -n 1 Dockerfile-base
 docker build -t $ORG/jenkins-base:$TAG -f Dockerfile-base .
 echo "Built $ORG/jenkins-base:$TAG"
 
-declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
+#declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
+declare -a arr=("maven")
 
 ## now loop through the above array
 for i in "${arr[@]}"
@@ -44,6 +45,11 @@ done
 
 if [ "release" == "${RELEASE}" ]; then
     jx step tag --version $TAG_NUM
+fi
+
+# run the tests against the maven release
+if [ "pr" == "${RELEASE}" ]; then
+	docker run --rm -v $PWD/Jenkinsfilei-test:/workspace/Jenkinsfile $ORG/jenkins-maven:$TAG
 fi
 
 export DOCKER_REGISTRY=docker.io
