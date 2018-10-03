@@ -49,14 +49,15 @@ fi
 
 # run the tests against the maven release
 if [ "pr" == "${RELEASE}" ]; then
+	echo "Running test pack..."
     #jx create post preview job --name owasp --image owasp/zap2docker-stable:latest -c "zap-baseline.py" -c "-t" -c "\$(JX_PREVIEW_URL)" 
 	#docker run --rm \
     #    -v $PWD/Jenkinsfile-test:/workspace/Jenkinsfile \
     #    -v /var/run:/var/run \
     #    -v /etc/resolv.conf:/etc/resolv.conf \
 	#	$ORG/jenkins-maven:$TAG
-		#-e DOCKER_CONFIG=$DOCKER_CONFIG \
-		#-e DOCKER_REGISTRY=$DOCKER_REGISTRY \
+	#-e DOCKER_CONFIG=$DOCKER_CONFIG \
+	#-e DOCKER_REGISTRY=$DOCKER_REGISTRY \
 fi
 
 
