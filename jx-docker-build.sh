@@ -35,8 +35,7 @@ head -n 1 Dockerfile-base
 docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG} -f Dockerfile-base .
 echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 
-#declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
-declare -a arr=("maven")
+declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
 
 ## now loop through the above array
 for i in "${arr[@]}"
@@ -63,8 +62,6 @@ if [ "pr" == "${RELEASE}" ]; then
 	#-e DOCKER_CONFIG=$DOCKER_CONFIG \
 	#-e DOCKER_REGISTRY=$DOCKER_REGISTRY \
 fi
-
-
 
 for i in "${arr[@]}"
 do
