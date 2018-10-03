@@ -20,7 +20,7 @@ set -o pipefail
 TAG_NUM=$1
 ORG=$2
 RELEASE=$3
-TAG=dev_$TAG_NUM
+TAG=$TAG_NUM
 
 docker build -t $ORG/jenkins-filerunner:$TAG -f Dockerfile-filerunner .
 head -n 1 Dockerfile-base
@@ -47,29 +47,25 @@ if [ "release" == "${RELEASE}" ]; then
     jx step tag --version $TAG_NUM
 fi
 
-echo "============================= debug ========================="
-ls -la /var/run/docker.sock
-ls -la /var/run/secrets/kubernetes.io/serviceaccount/token
-ls -al /etc/resolv.conf
-
 # run the tests against the maven release
 if [ "pr" == "${RELEASE}" ]; then
     #jx create post preview job --name owasp --image owasp/zap2docker-stable:latest -c "zap-baseline.py" -c "-t" -c "\$(JX_PREVIEW_URL)" 
-	docker run --rm \
-        -v $PWD/Jenkinsfile-test:/workspace/Jenkinsfile \
-        -v /var/run:/var/run \
-        -v /etc/resolv.conf:/etc/resolv.conf \
-		$ORG/jenkins-maven:$TAG
+	#docker run --rm \
+    #    -v $PWD/Jenkinsfile-test:/workspace/Jenkinsfile \
+    #    -v /var/run:/var/run \
+    #    -v /etc/resolv.conf:/etc/resolv.conf \
+	#	$ORG/jenkins-maven:$TAG
 		#-e DOCKER_CONFIG=$DOCKER_CONFIG \
 		#-e DOCKER_REGISTRY=$DOCKER_REGISTRY \
 fi
 
-export DOCKER_REGISTRY=docker.io
+
+if [ "release" == "${RELEASE}" ]; then
+	export DOCKER_REGISTRY=docker.io
+fi
 
 for i in "${arr[@]}"
 do
-	if [ "release" == "${RELEASE}" ]; then
-    	echo "pushing builder-$i"
-    	docker push $ORG/jenkins-$i:$TAG
-	fi
+   	echo "pushing builder-$i to ${DOCKER_REGISTRY}"
+   	docker push $ORG/jenkins-$i:$TAG
 done
