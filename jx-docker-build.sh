@@ -50,6 +50,7 @@ fi
 echo "============================= debug ========================="
 ls -la /var/run/docker.sock
 ls -la /var/run/secrets/kubernetes.io/serviceaccount/token
+ls -al /etc/resolv.conf
 
 # run the tests against the maven release
 if [ "pr" == "${RELEASE}" ]; then
@@ -57,7 +58,8 @@ if [ "pr" == "${RELEASE}" ]; then
 		-e DOCKER_CONFIG=$DOCKER_CONFIG \
 		-e DOCKER_REGISTRY=$DOCKER_REGISTRY \
         -v $PWD/Jenkinsfile-test:/workspace/Jenkinsfile \
-        -v /var/run/:/var/run/ \
+        -v /var/run:/var/run \
+        -v /etc/resolv.conf:/etc/resolv.conf \
 		$ORG/jenkins-maven:$TAG
 fi
 
