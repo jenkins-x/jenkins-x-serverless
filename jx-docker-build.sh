@@ -22,14 +22,18 @@ ORG=$2
 RELEASE=$3
 TAG=$TAG_NUM
 
-docker build -t $ORG/jenkins-filerunner:$TAG -f Dockerfile-filerunner .
+if [ "release" == "${RELEASE}" ]; then
+	export DOCKER_REGISTRY=docker.io
+fi
+
+docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG} -f Dockerfile-filerunner .
 head -n 1 Dockerfile-base
-echo "Built $ORG/jenkins-filerunner:$TAG"
+echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
 
 sed -i -e "s/FROM .*/FROM ${ORG}\/jenkins-filerunner:${TAG}/" Dockerfile-base
 head -n 1 Dockerfile-base
-docker build -t $ORG/jenkins-base:$TAG -f Dockerfile-base .
-echo "Built $ORG/jenkins-base:$TAG"
+docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG} -f Dockerfile-base .
+echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 
 #declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
 declare -a arr=("maven")
@@ -40,7 +44,7 @@ do
     echo "building builder-$i"
 	sed -i -e "s/FROM .*/FROM ${ORG}\/jenkins-base:${TAG}/" Dockerfile-$i
 	head -n 1 Dockerfile-$i
-    docker build -t $ORG/jenkins-$i:$TAG -f Dockerfile-$i .
+    docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-$i:${TAG} -f Dockerfile-$i .
 done
 
 if [ "release" == "${RELEASE}" ]; then
@@ -61,12 +65,9 @@ if [ "pr" == "${RELEASE}" ]; then
 fi
 
 
-if [ "release" == "${RELEASE}" ]; then
-	export DOCKER_REGISTRY=docker.io
-fi
 
 for i in "${arr[@]}"
 do
    	echo "pushing builder-$i to ${DOCKER_REGISTRY}"
-   	docker push $ORG/jenkins-$i:$TAG
+   	docker push ${DOCKER_REGISTRY}/$ORG/jenkins-$i:$TAG
 done
