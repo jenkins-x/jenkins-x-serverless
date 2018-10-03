@@ -49,7 +49,10 @@ fi
 
 # run the tests against the maven release
 if [ "pr" == "${RELEASE}" ]; then
-	docker run --rm -v $PWD/Jenkinsfilei-test:/workspace/Jenkinsfile $ORG/jenkins-maven:$TAG
+	docker run --rm \
+		-e DOCKER_CONFIG=$DOCKER_CONFIG \
+		-e DOCKER_REGISTRY=$DOCKER_REGISTRY \
+        -v $PWD/Jenkinsfile-test:/workspace/Jenkinsfile $ORG/jenkins-maven:$TAG
 fi
 
 export DOCKER_REGISTRY=docker.io
