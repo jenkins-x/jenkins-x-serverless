@@ -1,4 +1,4 @@
-FROM JENKINS_BASE_TAG
+FROM garethjevans/jenkins-base:dev_0.0.3
 
 RUN apt-get install -y build-essential
 
