@@ -42,6 +42,10 @@ do
     docker build -t $ORG/jenkins-$i:$TAG -f Dockerfile-$i .
 done
 
+if [ "release" == "${RELEASE}" ]; then
+    jx step tag --version $TAG_NUM
+fi
+
 export DOCKER_REGISTRY=docker.io
 
 for i in "${arr[@]}"
