@@ -47,6 +47,10 @@ if [ "release" == "${RELEASE}" ]; then
     jx step tag --version $TAG_NUM
 fi
 
+echo "============================= debug ========================="
+ls -la /var/run/docker.sock
+ls -la /var/run/secrets/kubernetes.io/serviceaccount/token
+
 # run the tests against the maven release
 if [ "pr" == "${RELEASE}" ]; then
 	docker run --rm \
