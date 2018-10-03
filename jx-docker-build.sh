@@ -52,7 +52,9 @@ if [ "pr" == "${RELEASE}" ]; then
 	docker run --rm \
 		-e DOCKER_CONFIG=$DOCKER_CONFIG \
 		-e DOCKER_REGISTRY=$DOCKER_REGISTRY \
-        -v $PWD/Jenkinsfile-test:/workspace/Jenkinsfile $ORG/jenkins-maven:$TAG
+        -v $PWD/Jenkinsfile-test:/workspace/Jenkinsfile \
+        -v /var/run/secrets/kubernetes.io/serviceaccount/token:/var/run/secrets/kubernetes.io/serviceaccount/token \
+		$ORG/jenkins-maven:$TAG
 fi
 
 export DOCKER_REGISTRY=docker.io
