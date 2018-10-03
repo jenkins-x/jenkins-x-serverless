@@ -57,7 +57,7 @@ if [ "pr" == "${RELEASE}" ]; then
 		-e DOCKER_CONFIG=$DOCKER_CONFIG \
 		-e DOCKER_REGISTRY=$DOCKER_REGISTRY \
         -v $PWD/Jenkinsfile-test:/workspace/Jenkinsfile \
-        -v /var/run/secrets/kubernetes.io/serviceaccount/token:/var/run/secrets/kubernetes.io/serviceaccount/token \
+        -v /var/run/:/var/run/ \
 		$ORG/jenkins-maven:$TAG
 fi
 
