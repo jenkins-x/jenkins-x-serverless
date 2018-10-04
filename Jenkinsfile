@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-      ORG               = 'garethjevans'
-      DOCKER_ORG        = 'garethjevans'
+      ORG               = 'jenkins-x'
+      DOCKER_ORG        = 'jenkinsxio'
       APP_NAME          = 'jenkins-x-serverless'
       GIT_PROVIDER      = 'github.com'
     }
@@ -28,7 +28,7 @@ pipeline {
           branch 'master'
         }
         steps {
-          git 'https://github.com/garethjevans/jenkins-x-serverless.git'
+          git 'https://github.com/jenkins-x/jenkins-x-serverless.git'
           sh "git config --global credential.helper store"
           sh "jx step validate --min-jx-version 1.1.73"
           sh "jx step git credentials"
