@@ -1,3 +1,3 @@
-# jenkins-x-oneshot-masters
+# jenkins-x-serverless
 
 

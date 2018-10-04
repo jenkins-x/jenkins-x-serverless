@@ -3,7 +3,7 @@ pipeline {
     environment {
       ORG               = 'garethjevans'
       DOCKER_ORG        = 'garethjevans'
-      APP_NAME          = 'jenkins-x-oneshot-masters'
+      APP_NAME          = 'jenkins-x-serverless'
       GIT_PROVIDER      = 'github.com'
     }
     stages {
@@ -28,7 +28,7 @@ pipeline {
           branch 'master'
         }
         steps {
-          git 'https://github.com/garethjevans/jenkins-x-oneshot-masters.git'
+          git 'https://github.com/garethjevans/jenkins-x-serverless.git'
           sh "git config --global credential.helper store"
           sh "jx step validate --min-jx-version 1.1.73"
           sh "jx step git credentials"
