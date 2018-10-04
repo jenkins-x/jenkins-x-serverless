@@ -1,4 +1,4 @@
-FROM JENKINS_BASE_TAG
+FROM garethjevans/jenkins-base:0.0.4
 
 RUN apt-get update && apt-get install -y \
   default-jdk
