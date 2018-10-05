@@ -1,3 +1,5 @@
+VERSION := 0.1.0-SNAPSHOT
+
 # Just a Makefile for manual testing
 .PHONY: all
 
