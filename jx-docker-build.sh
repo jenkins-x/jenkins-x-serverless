@@ -25,15 +25,15 @@ TAG=$TAG_NUM
 export DOCKER_REGISTRY=docker.io
 
 echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
-docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG} -f Dockerfile-filerunner . > /dev/null
-head -n 1 Dockerfile-base
+docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG} -f Dockerfile.filerunner . > /dev/null
+head -n 1 Dockerfile.base
 echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
 
-sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-filerunner:${TAG}/" Dockerfile-base
-rm Dockerfile-base.bak
-head -n 1 Dockerfile-base
+sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-filerunner:${TAG}/" Dockerfile.base
+rm Dockerfile.base.bak
+head -n 1 Dockerfile.base
 echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
-docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG} -f Dockerfile-base .
+docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG} -f Dockerfile.base .
 echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 
 declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
@@ -42,11 +42,11 @@ declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csha
 for i in "${arr[@]}"
 do
     echo "building builder-$i"
-	sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-base:${TAG}/" Dockerfile-$i
-	rm Dockerfile-$i.bak
-	head -n 1 Dockerfile-$i
+	sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-base:${TAG}/" Dockerfile.$i
+	rm Dockerfile.$i.bak
+	head -n 1 Dockerfile.$i
 	echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-$i:${TAG}"
-    docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-$i:${TAG} -f Dockerfile-$i .
+    docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-$i:${TAG} -f Dockerfile.$i .
 done
 
 if [ "release" == "${RELEASE}" ]; then
