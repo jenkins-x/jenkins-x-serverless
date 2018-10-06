@@ -22,16 +22,17 @@ ORG=$2
 RELEASE=$3
 TAG=$TAG_NUM
 
-if [ "release" == "${RELEASE}" ]; then
-	export DOCKER_REGISTRY=docker.io
-fi
+export DOCKER_REGISTRY=docker.io
 
-docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG} -f Dockerfile-filerunner .
+echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
+docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG} -f Dockerfile-filerunner . > /dev/null
 head -n 1 Dockerfile-base
 echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
 
-sed -i -e "s/FROM .*/FROM ${ORG}\/jenkins-filerunner:${TAG}/" Dockerfile-base
+sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-filerunner:${TAG}/" Dockerfile-base
+rm Dockerfile-base.bak
 head -n 1 Dockerfile-base
+echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG} -f Dockerfile-base .
 echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 
@@ -41,8 +42,10 @@ declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csha
 for i in "${arr[@]}"
 do
     echo "building builder-$i"
-	sed -i -e "s/FROM .*/FROM ${ORG}\/jenkins-base:${TAG}/" Dockerfile-$i
+	sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-base:${TAG}/" Dockerfile-$i
+	rm Dockerfile-$i.bak
 	head -n 1 Dockerfile-$i
+	echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-$i:${TAG}"
     docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-$i:${TAG} -f Dockerfile-$i .
 done
 
@@ -63,8 +66,10 @@ if [ "pr" == "${RELEASE}" ]; then
 	#-e DOCKER_REGISTRY=$DOCKER_REGISTRY \
 fi
 
-for i in "${arr[@]}"
-do
-   	echo "pushing builder-$i to ${DOCKER_REGISTRY}"
-   	docker push ${DOCKER_REGISTRY}/$ORG/jenkins-$i:$TAG
-done
+if [ "release" == "${RELEASE}" ]; then
+	for i in "${arr[@]}"
+	do
+   		echo "pushing builder-$i to ${DOCKER_REGISTRY}"
+   		docker push ${DOCKER_REGISTRY}/$ORG/jenkins-$i:$TAG
+	done
+fi
