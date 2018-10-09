@@ -63,10 +63,6 @@ plugins:
     artifactId: "credentials-binding"
     source:
       version: "1.16"
-  - groupId: "org.jenkins-ci.plugins.workflow"
-    artifactId: "workflow-aggregator"
-    source:
-      version: "2.5"
   - groupId: "io.jenkins"
     artifactId: "configuration-as-code"
     source:
