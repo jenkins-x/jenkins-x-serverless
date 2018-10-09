@@ -3,7 +3,7 @@ FROM JENKINS_BASE_TAG
 RUN apt-get install -y build-essential make bzip2 chromedriver chromium pkg-config zip g++ zlib1g-dev unzip python openjdk-8-jdk
 RUN echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
 RUN curl -f https://bazel.build/bazel-release.pub.gpg | apt-key add -
-RUN apt-get update && apt-get install -y bazel  
+RUN apt-get update && apt-get install -y bazel
 
 ENV GOLANG_VERSION 1.11
 RUN wget https://golang.org/dl/go$GOLANG_VERSION.linux-amd64.tar.gz && \
@@ -43,17 +43,20 @@ RUN go get github.com/DATA-DOG/godog/cmd/godog && \
   mv $GOPATH/bin/godog /usr/local/ && \
   rm -rf $GOPATH/src/github.com/DATA-DOG
 
-#RUN go get github.com/gohugoio/hugo && \
-#  mv $GOPATH/bin/hugo /usr/local/ && \
-#  rm -rf $GOPATH/src/github.com/gohugoio
-  
+ENV HUGO_VERSION 0.49
+RUN curl -Lf -o hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && \
+  tar xvfz hugo.tar.gz && \
+  mv hugo /usr/local && \
+  rm -fr hugo* && \
+  hugo version
+
 RUN go get github.com/derekparker/delve/cmd/dlv && \
   mv $GOPATH/bin/* /usr/local/ && \
   rm -rf $GOPATH/src/github.com/derekparker
 
-#RUN go get github.com/golang/protobuf/proto && \
-#  go get github.com/micro/protoc-gen-micro && \
-#  go get github.com/golang/protobuf/protoc-gen-go && \ 
-#  go get -u github.com/micro/micro && \
-#  mv $GOPATH/bin/* /usr/local/ && \ 
-#  cp -r $GOPATH/src/* /usr/local/go/src    
+RUN go get github.com/golang/protobuf/proto && \
+  go get github.com/micro/protoc-gen-micro && \
+  go get github.com/golang/protobuf/protoc-gen-go && \ 
+  go get -u github.com/micro/micro && \
+  mv $GOPATH/bin/* /usr/local/ && \ 
+  cp -r $GOPATH/src/* /usr/local/go/src    
