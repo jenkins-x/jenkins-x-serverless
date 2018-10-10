@@ -1,7 +1,7 @@
 FROM JENKINS_BASE_TAG
 
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
-	apt-get install -y nodejs build-essential make bzip2 chromedriver chromium
+	apt-get install -y nodejs build-essential make bzip2 chromedriver chromium xvfb
 
 RUN npm i -g watch-cli vsce typescript
 
