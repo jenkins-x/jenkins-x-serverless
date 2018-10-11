@@ -79,5 +79,5 @@ if [ "release" == "${RELEASE}" ]; then
 fi
 
 if [ "release" == "${RELEASE}" ]; then
-  updatebot push-regex -r "jenkinsTag: (.*)" -v ${TAG} values.yaml
+  updatebot push-regex -r "jenkinsTag: (.*)" -v ${TAG} jx-build-templates/values.yaml
 fi
