@@ -1,5 +1,5 @@
 github:
   organisations:
-  - name: jenkins-x
+  - name: jenkins-x-charts
     includes:
-    - prow-config
+    - knative
