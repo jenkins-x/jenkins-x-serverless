@@ -2,4 +2,4 @@ github:
   organisations:
   - name: jenkins-x-charts
     includes:
-    - knative
+    - jx-build-templates
