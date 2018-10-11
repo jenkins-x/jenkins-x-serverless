@@ -77,3 +77,7 @@ if [ "release" == "${RELEASE}" ]; then
    		docker push ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG}
 	done
 fi
+
+if [ "release" == "${RELEASE}" ]; then
+  updatebot push-regex -r "jenkinsTag: (.*)" -v ${VERSION} values.yaml
+fi
