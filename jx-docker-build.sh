@@ -56,15 +56,15 @@ if [ "release" == "${RELEASE}" ]; then
     jx step tag --version $TAG_NUM
 fi
 
-if [ "release" == "${RELEASE}" ]; then
-	for i in "${arr[@]}"
-	do
-		echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG}"
-    	docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG} -f Dockerfile.${i} .
+for i in "${arr[@]}"
+do
+	echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG}"
+   	docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG} -f Dockerfile.${i} .
+	if [ "release" == "${RELEASE}" ]; then
    		echo "pushing jenkins-${i} to ${DOCKER_REGISTRY}"
    		docker push ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG}
-	done
-fi
+	fi
+done
 
 if [ "release" == "${RELEASE}" ]; then
   updatebot push-regex -r "jenkinsTag: (.*)" -v ${TAG} jx-build-templates/values.yaml
