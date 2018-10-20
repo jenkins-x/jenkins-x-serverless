@@ -66,7 +66,7 @@ plugins:
   - groupId: "io.jenkins"
     artifactId: "configuration-as-code"
     source:
-      version: "1.0-rc2"
+      version: "1.2"
   - groupId: "org.jenkinsci.plugins"
     artifactId: "kubernetes-credentials"
     source:
