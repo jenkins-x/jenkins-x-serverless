@@ -44,7 +44,7 @@ RUN curl -Lf https://github.com/jstrachan/helm/releases/download/untagged-933757
   mv helm /usr/bin/helm3
 
 # gcloud
-ENV GCLOUD_VERSION 187.0.0
+ENV GCLOUD_VERSION 222.0.0
 RUN curl -Lf https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_VERSION}-linux-x86_64.tar.gz | tar xzv && \
   mv google-cloud-sdk /usr/bin/
 ENV PATH=$PATH:/usr/bin/google-cloud-sdk/bin
