@@ -24,10 +24,10 @@ TAG=$TAG_NUM
 
 export DOCKER_REGISTRY=docker.io
 
-echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
-docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG} -f Dockerfile.filerunner .
-head -n 1 Dockerfile.filerunner
-echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
+export JENKINSFILE_RUNNER_TAG="${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
+echo "Building ${JENKINSFILE_RUNNER_TAG}"
+make clean build
+echo "Built ${JENKINSFILE_RUNNER_TAG}"
 
 sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-filerunner:${TAG}/" Dockerfile.base
 rm Dockerfile.base.bak
