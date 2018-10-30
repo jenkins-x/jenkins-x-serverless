@@ -40,7 +40,7 @@ if [ "release" == "${RELEASE}" ]; then
    	docker push ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}
 fi
 
-declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
+declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins")
 
 ## now loop through the above array
 for i in "${arr[@]}"
