@@ -1,18 +1,28 @@
 VERSION := 0.1.0-SNAPSHOT
-#TODO: Actually needs 1.2, not compatible with 1.3 w/o https://github.com/jenkins-x/jenkins-x-serverless/pull/38
-CWP_VERSION = latest
+CWP_VERSION = 1.3
 JENKINSFILE_RUNNER_TAG ?= jx-jenkinsfile-runner/dev
 
 # Just a Makefile for manual testing
-.PHONY: all test test-k8s
+.PHONY: all buildInDocker test test-k8s
 
-all: clean build
+all: clean buildLocally
 
 clean:
 	rm -rf tmp
 
+.build/cwp-cli-${CWP_VERSION}.jar:
+	rm -rf .build
+	mkdir -p .build
+	wget -O .build/cwp-cli-${CWP_VERSION}.jar https://repo.jenkins-ci.org/releases/io/jenkins/tools/custom-war-packager/custom-war-packager-cli/${CWP_VERSION}/custom-war-packager-cli-${CWP_VERSION}-jar-with-dependencies.jar
+
+buildLocally: .build/cwp-cli-${CWP_VERSION}.jar
+	java -jar .build/cwp-cli-${CWP_VERSION}.jar \
+	     -tmpDir $(shell pwd)/out/tmp \
+	     -configPath packager-config.yml -version ${VERSION}
+	docker build -t ${JENKINSFILE_RUNNER_TAG} -f $(shell pwd)/out/tmp/output/Dockerfile $(shell pwd)/out/tmp/output/
+
 # TODO: -v maven-repo:/root/.m2
-build:
+buildInDocker:
 	docker run \
 	    -v $(shell pwd)/packager-config.yml:/app/packager-config.yml \
 	    -v $(shell pwd)/casc.yml:/app/casc.yml \

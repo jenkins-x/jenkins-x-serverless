@@ -26,7 +26,7 @@ export DOCKER_REGISTRY=docker.io
 
 export JENKINSFILE_RUNNER_TAG="${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
 echo "Building ${JENKINSFILE_RUNNER_TAG}"
-make clean build
+make clean buildLocally
 echo "Built ${JENKINSFILE_RUNNER_TAG}"
 
 sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-filerunner:${TAG}/" Dockerfile.base
