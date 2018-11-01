@@ -14,8 +14,9 @@ buildSettings:
         #TODO: replace once Jenkinsfile Runner archives runner & CWP is updated
         noCache: true
       source:
-        git: https://github.com/jenkinsci/jenkinsfile-runner.git
-        commit: 91cdf24849c4f7367322ac511574d294c5882c2f
+        #dir: "/Users/nenashev/Documents/jenkins/tools/jenkinsfile-runner"
+        git: https://github.com/kohsuke/jenkinsfile-runner.git
+        commit: 8ff9b1e9a097e629c5fbffca9a3d69750097ecc4
     docker:
       base: "jenkins/jenkins:2.121.3"
       tag: "jenkins-experimental/cwp-jenkinsfile-runner-demo"
@@ -65,7 +66,7 @@ plugins:
   - groupId: "io.jenkins"
     artifactId: "configuration-as-code"
     source:
-      version: "1.2"
+      version: "1.0-rc2"
   - groupId: "org.jenkinsci.plugins"
     artifactId: "kubernetes-credentials"
     source:
