@@ -19,6 +19,7 @@ pipeline {
         steps {
           checkout scm
           sh 'export VERSION=$PREVIEW_VERSION'
+          sh "make build"
           sh './jx-docker-build.sh $PREVIEW_VERSION $DOCKER_ORG pr'
         }
       }
@@ -32,6 +33,7 @@ pipeline {
           sh "jx step validate --min-jx-version 1.1.73"
           sh "jx step git credentials"
           sh "echo \$(jx-release-version) > VERSION"
+          sh "make build"
           sh 'export VERSION=`cat VERSION`'
           sh "jx step validate --min-jx-version 1.2.36"
           sh './jx-docker-build.sh `cat VERSION` $DOCKER_ORG release'
