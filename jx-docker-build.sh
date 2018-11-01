@@ -24,10 +24,10 @@ TAG=$TAG_NUM
 
 export DOCKER_REGISTRY=docker.io
 
-echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
-docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG} -f Dockerfile.filerunner .
-head -n 1 Dockerfile.filerunner
-echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
+export JENKINSFILE_RUNNER_TAG="${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
+echo "Building ${JENKINSFILE_RUNNER_TAG}"
+make clean buildLocally
+echo "Built ${JENKINSFILE_RUNNER_TAG}"
 
 sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-filerunner:${TAG}/" Dockerfile.base
 rm Dockerfile.base.bak
@@ -40,7 +40,7 @@ if [ "release" == "${RELEASE}" ]; then
    	docker push ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}
 fi
 
-declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
+declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins")
 
 ## now loop through the above array
 for i in "${arr[@]}"

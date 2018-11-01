@@ -19,7 +19,6 @@ pipeline {
         steps {
           checkout scm
           sh 'export VERSION=$PREVIEW_VERSION'
-          sh "make build"
           sh './jx-docker-build.sh $PREVIEW_VERSION $DOCKER_ORG pr'
         }
       }
