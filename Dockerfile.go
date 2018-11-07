@@ -58,5 +58,7 @@ RUN go get github.com/golang/protobuf/proto && \
   go get github.com/micro/protoc-gen-micro && \
   go get github.com/golang/protobuf/protoc-gen-go && \ 
   go get -u github.com/micro/micro && \
+  go get -u github.com/onsi/ginkgo/ginkgo && \
+  go get -u github.com/onsi/gomega/... && \
   mv $GOPATH/bin/* /usr/local/ && \ 
   cp -r $GOPATH/src/* /usr/local/go/src    
