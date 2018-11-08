@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.121.3
+FROM jenkins/jenkins:2.138.2
 USER root
 ENV CWP_VERSION 1.0-SNAPSHOT
 ADD tmp/output/target/jenkinsfile-runner-${CWP_VERSION}.war /usr/share/jenkins/jenkins.war

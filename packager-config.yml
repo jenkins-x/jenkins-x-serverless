@@ -25,7 +25,7 @@ war:
   groupId: "org.jenkins-ci.main"
   artifactId: "jenkins-war"
   source:
-    version: "2.121.3"
+    version: "2.138.2"
 plugins:
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-job"
