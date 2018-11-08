@@ -15,8 +15,8 @@ buildSettings:
         noCache: true
       source:
         #dir: "/Users/nenashev/Documents/jenkins/tools/jenkinsfile-runner"
-        git: https://github.com/kohsuke/jenkinsfile-runner.git
-        commit: 8ff9b1e9a097e629c5fbffca9a3d69750097ecc4
+        git: https://github.com/jenkinsci/jenkinsfile-runner.git
+        commit: c041d2c4e1c14bf93e1a219d9de4a661bd5fa8ae
     docker:
       base: "jenkins/jenkins:2.138.2"
       tag: "jenkins-experimental/cwp-jenkinsfile-runner-demo"
