@@ -11,4 +11,5 @@ clean:
 build:
 	java \
 		-jar /opt/cwp/custom-war-packager.jar \
+		--batch-mode \
 	    -configPath packager-config.yml
