@@ -35,10 +35,10 @@ head -n 1 Dockerfile.base
 echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG} -f Dockerfile.base .
 echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
-if [ "release" == "${RELEASE}" ]; then
-	echo "pushing jenkins-base to ${DOCKER_REGISTRY}"
-   	docker push ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}
-fi
+
+# always push
+echo "pushing jenkins-base to ${DOCKER_REGISTRY}"
+docker push ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}
 
 declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
 
@@ -51,7 +51,6 @@ do
 	head -n 1 Dockerfile.${i}
 done
 
-
 if [ "release" == "${RELEASE}" ]; then
     jx step tag --version $TAG_NUM
 fi
@@ -60,10 +59,9 @@ for i in "${arr[@]}"
 do
 	echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG}"
    	docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG} -f Dockerfile.${i} .
-	if [ "release" == "${RELEASE}" ]; then
-   		echo "pushing jenkins-${i} to ${DOCKER_REGISTRY}"
-   		docker push ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG}
-	fi
+    # always push
+	echo "pushing jenkins-${i} to ${DOCKER_REGISTRY}"
+   	docker push ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG}
 done
 
 if [ "release" == "${RELEASE}" ]; then
