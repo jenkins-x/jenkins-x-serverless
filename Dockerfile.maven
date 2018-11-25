@@ -1,4 +1,4 @@
-FROM JENKINS_BASE_TAG
+FROM jenkinsxio/jenkins-base:0.1.96
 
 RUN apt-get update && apt-get install -y \
   default-jdk
