@@ -102,7 +102,15 @@ RUN mkdir acr && \
     curl -Lf https://aadacr.blob.core.windows.net/acr-docker-credential-helper/docker-credential-acr-linux-amd64.tar.gz | tar -xzv -C ./acr/ && \
     mv acr/docker-credential-acr-linux /usr/bin/ && \
     rm -rf acr
-    
+
+# goreleaser
+ENV GORELEASER_VERSION 0.93.2
+# See https://goreleaser.com/
+RUN mkdir goreleaser && \
+    curl -Lf https://github.com/goreleaser/goreleaser/releases/download/v${GORELEASER_VERSION}/goreleaser_Linux_x86_64.tar.gz | tar -xzv -C ./goreleaser/ && \
+    mv goreleaser/goreleaser /usr/bin/ && \
+    rm -rf goreleaser
+
 ENV PATH ${PATH}:/opt/google/chrome
 
 # jx
