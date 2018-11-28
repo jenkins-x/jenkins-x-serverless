@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "serverless.name" . }}-cm
+data:
+  Jenkinsfile: |-
+    pipeline {
+        agent any
+        stages {
+            stage('Tests') {
+                steps {
+                    echo "Hello World"
+                }
+            }
+        }
+    }
