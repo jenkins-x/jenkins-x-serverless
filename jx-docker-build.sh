@@ -87,7 +87,10 @@ done
 
 if [ "pr" == "${RELEASE}" ]; then
     pushd jenkins-x-serverless
-   		make build 
+		sed -i.bak -e "s/tag: .*/tag: ${TAG}/" values.yaml
+		rm values.yaml.bak
+        cat values.yaml
+   		make build
 	popd
 fi
 
