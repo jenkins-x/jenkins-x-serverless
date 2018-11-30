@@ -34,6 +34,7 @@ pipeline {
 
             sh 'echo $PREVIEW_NAMESPACE'
             sh 'echo $HELM_RELEASE'
+            sh "helm3 --version"
           }
         }
       }
