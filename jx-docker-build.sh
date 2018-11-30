@@ -85,15 +85,6 @@ do
    	retry 10 docker push ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG}
 done
 
-if [ "pr" == "${RELEASE}" ]; then
-    pushd jenkins-x-serverless
-		sed -i.bak -e "s/tag: .*/tag: ${TAG}/" values.yaml
-		rm values.yaml.bak
-        cat values.yaml
-   		make build
-	popd
-fi
-
 if [ "release" == "${RELEASE}" ]; then
   updatebot push-regex -r "jenkinsTag: (.*)" -v ${TAG} jx-build-templates/values.yaml
 fi
