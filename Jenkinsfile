@@ -26,16 +26,15 @@ pipeline {
           sh "gcloud auth activate-service-account --key-file $GKE_SA"
           sh "gcloud container clusters get-credentials anthorse --zone europe-west1-b --project jenkinsx-dev"
 
-    	  dir('jenkins-x-serverless') {
-		    sh 'sed -i.bak -e "s/tag: .*/tag: ${TAG}/" values.yaml'
-		    sh 'rm values.yaml.bak'
+          dir('jenkins-x-serverless') {
+            sh 'sed -i.bak -e "s/tag: .*/tag: ${TAG}/" values.yaml'
+            sh 'rm values.yaml.bak'
             sh 'cat values.yaml'
-   		    sh 'make build'
+            sh 'make build'
 
-			sh 'echo $PREVIEW_NAMESPACE'
-			sh 'echo $HELM_RELEASE
+            sh 'echo $PREVIEW_NAMESPACE'
+            sh 'echo $HELM_RELEASE'
           }
-
         }
       }
       stage('Build Release') {
