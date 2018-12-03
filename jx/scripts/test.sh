@@ -20,7 +20,7 @@ pushd jenkins-x-serverless
     jx ns $PREVIEW_NAMESPACE
 
 	helm3 upgrade \
-		--set serverless.nameOverride=$HELM_RELEASE \ 
+		--set serverless.nameOverride=$HELM_RELEASE \
 		--install --namespace $PREVIEW_NAMESPACE \
 		$HELM_RELEASE .
 
