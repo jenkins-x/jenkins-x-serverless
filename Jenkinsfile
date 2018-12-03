@@ -30,17 +30,9 @@ pipeline {
             sh 'sed -i.bak -e "s/tag: .*/tag: ${PREVIEW_VERSION}/" values.yaml'
             sh 'rm values.yaml.bak'
             sh 'cat values.yaml'
-            sh 'make build'
-			
-            sh 'echo $PREVIEW_VERSION'
-            sh 'echo $PREVIEW_NAMESPACE'
-            sh 'echo $HELM_RELEASE'
-            sh "helm3 --version"
-            // kubectl create namespace $PREVIEW_NAMESPACE
-            // helm3 upgrade --install --namespace $PREVIEW_NAMESPACE
-        	// check that the Job has completed
-			// remove the namespace
           }
+
+          sh 'jx/scripts/test.sh'
         }
       }
       stage('Build Release') {
