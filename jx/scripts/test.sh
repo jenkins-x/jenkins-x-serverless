@@ -18,7 +18,12 @@ pushd jenkins-x-serverless
 	fi 
 
     jx ns $PREVIEW_NAMESPACE
-	helm3 upgrade jenkins-x-serverless . --install --namespace $PREVIEW_NAMESPACE
+
+	helm3 upgrade \
+		--set serverless.nameOverride=$HELM_RELEASE \ 
+		--install --namespace $PREVIEW_NAMESPACE \
+		$HELM_RELEASE .
+
 	# check that the Job has completed
 
 	SUCCESS=false
@@ -27,14 +32,16 @@ pushd jenkins-x-serverless
 
     while [  $COUNTER -lt 20 ]; do
         echo "Checking attempt $COUNTER..."
-    	POD_STATUS=`kubectl get pods | grep serverless | awk '{print $3}'`
+    	POD_STATUS=`kubectl get pods | grep $HELM_RELEASE | awk '{print $3}'`
         
     	if [ ${POD_STATUS} == "Completed" ]; then
 			SUCCESS=true
+			echo "Pod completed correctly"
 			break
 		fi
     	
 		if [ ${POD_STATUS} == "Error" ]; then
+			echo "Pod is in error status"
 			break
 		fi
 
@@ -42,12 +49,14 @@ pushd jenkins-x-serverless
 		sleep ${TIME_BETWEEN_CHECKS}
     done
 
+	# cleanup	
+	helm3 del $HELM_RELEASE --purge
+	kubectl delete namespace $PREVIEW_NAMESPACE
+	
 	if [ "${SUCCESS}" == "false" ]; then
 		echo "Pod never became ready"
 		exit 1
 	fi
-	
-	kubectl delete namespace $PREVIEW_NAMESPACE
 popd
 
 
