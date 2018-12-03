@@ -20,9 +20,33 @@ pushd jenkins-x-serverless
     jx ns $PREVIEW_NAMESPACE
 	helm3 upgrade jenkins-x-serverless . --install --namespace $PREVIEW_NAMESPACE
 	# check that the Job has completed
-    kubectl get pods
-	sleep 30
-    kubectl get pods
+
+	SUCCESS=false
+	TIME_BETWEEN_CHECKS=10
+	COUNTER=0
+
+    while [  $COUNTER -lt 20 ]; do
+        echo "Checking attempt $COUNTER..."
+    	POD_STATUS=`kubectl get pods | grep serverless | awk '{print $3}'`
+        
+    	if [ ${POD_STATUS} == "Completed" ]; then
+			SUCCESS=true
+			break
+		fi
+    	
+		if [ ${POD_STATUS} == "Error" ]; then
+			break
+		fi
+
+		let COUNTER=COUNTER+1 
+		sleep ${TIME_BETWEEN_CHECKS}
+    done
+
+	if [ "${SUCCESS}" == "false" ]; then
+		echo "Pod never became ready"
+		exit 1
+	fi
+	
 	kubectl delete namespace $PREVIEW_NAMESPACE
 popd
 
