@@ -11,7 +11,12 @@ echo "HELM_RELEASE=$HELM_RELEASE"
 pushd jenkins-x-serverless
 	make build  
 
-	kubectl create namespace $PREVIEW_NAMESPACE
+	if [[ $(kubectl get namespace ${PREVIEW_NAMESPACE} | grep -c "${PREVIEW_NAMESPACE}") -eq 1 ]]; then
+		echo "$PREVIEW_NAMESPACE already exists"	
+	else 
+		kubectl create namespace $PREVIEW_NAMESPACE
+	fi 
+
     jx ns $PREVIEW_NAMESPACE
 	helm3 upgrade --name jenkins-x-serverless . --install --namespace $PREVIEW_NAMESPACE
 	# check that the Job has completed
