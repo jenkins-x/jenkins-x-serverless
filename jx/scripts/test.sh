@@ -18,8 +18,10 @@ pushd jenkins-x-serverless
 	fi 
 
     jx ns $PREVIEW_NAMESPACE
-	helm3 upgrade --name jenkins-x-serverless . --install --namespace $PREVIEW_NAMESPACE
+	helm3 upgrade jenkins-x-serverless . --install --namespace $PREVIEW_NAMESPACE
 	# check that the Job has completed
+    kubectl get pods
+	sleep 30
     kubectl get pods
 	kubectl delete namespace $PREVIEW_NAMESPACE
 popd
