@@ -30,7 +30,7 @@ pushd jenkins-x-serverless
 	TIME_BETWEEN_CHECKS=10
 	COUNTER=0
 
-    while [  $COUNTER -lt 20 ]; do
+    while [  $COUNTER -lt 30 ]; do
         echo "Checking attempt $COUNTER..."
     	POD_STATUS=`kubectl get pods | grep $HELM_RELEASE | awk '{print $3}'`
         
@@ -49,14 +49,21 @@ pushd jenkins-x-serverless
 		sleep ${TIME_BETWEEN_CHECKS}
     done
 
+	if [ "${SUCCESS}" == "false" ]; then
+    	POD=`kubectl get pods | grep $HELM_RELEASE | awk '{print $1}'`
+		kubectl logs $POD
+		exit 1
+	fi
+
 	# cleanup	
 	helm3 del $HELM_RELEASE --purge
 	kubectl delete namespace $PREVIEW_NAMESPACE
-	
+
 	if [ "${SUCCESS}" == "false" ]; then
 		echo "Pod never became ready"
 		exit 1
 	fi
+
 popd
 
 
