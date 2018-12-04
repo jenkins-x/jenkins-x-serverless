@@ -30,7 +30,7 @@ pushd jenkins-x-serverless
 	TIME_BETWEEN_CHECKS=10
 	COUNTER=0
 
-    while [  $COUNTER -lt 30 ]; do
+    while [  $COUNTER -lt 20 ]; do
         echo "Checking attempt $COUNTER..."
     	POD_STATUS=`kubectl get pods | grep $HELM_RELEASE | awk '{print $3}'`
         
