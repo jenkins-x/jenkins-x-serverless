@@ -5,6 +5,7 @@ pipeline {
       DOCKER_ORG        = 'jenkinsxio'
       APP_NAME          = 'jenkins-x-serverless'
       GIT_PROVIDER      = 'github.com'
+      GKE_SA            = credentials('gke-sa')
     }
     stages {
       stage('CI Build and push snapshot') {
@@ -13,7 +14,7 @@ pipeline {
         }
         environment {
           PREVIEW_VERSION = "0.0.0-SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER"
-          PREVIEW_NAMESPACE = "$APP_NAME-$BRANCH_NAME".toLowerCase()
+          PREVIEW_NAMESPACE = "$APP_NAME-$BRANCH_NAME-$BUILD_NUMBER".toLowerCase()
           HELM_RELEASE = "$PREVIEW_NAMESPACE".toLowerCase()
         }
         steps {
@@ -21,6 +22,17 @@ pipeline {
           sh 'export VERSION=$PREVIEW_VERSION'
           sh "make build"
           sh './jx-docker-build.sh $PREVIEW_VERSION $DOCKER_ORG pr'
+
+          sh "gcloud auth activate-service-account --key-file $GKE_SA"
+          sh "gcloud container clusters get-credentials anthorse --zone europe-west1-b --project jenkinsx-dev"
+
+          dir('jenkins-x-serverless') {
+            sh 'sed -i.bak -e "s/tag: .*/tag: ${PREVIEW_VERSION}/" values.yaml'
+            sh 'rm values.yaml.bak'
+            sh 'cat values.yaml'
+          }
+
+          sh 'jx/scripts/test.sh'
         }
       }
       stage('Build Release') {

@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ template "serverless.name" . }}
+  labels:
+    app: {{ template "serverless.name" . }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "serverless.name" . }}
+    spec:
+      serviceAccountName: {{ template "serverless.name" . }}
+      terminationGracePeriodSeconds: {{ .Values.serverless.terminationGracePeriodSeconds }}
+      restartPolicy: Never
+      containers:
+      - name: {{ template "serverless.name" . }}
+        image: {{ .Values.serverless.image.repository }}:{{ .Values.serverless.image.tag }}
+        imagePullPolicy: {{ .Values.serverless.imagePullPolicy }}
+        volumeMounts:
+        - name: {{ template "serverless.name" . }}-volume
+          mountPath: /workspace/
+    {{- with .Values.serverless.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.serverless.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.serverless.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+      volumes:
+      - name: {{ template "serverless.name" . }}-volume
+        configMap:
+          name: {{ template "serverless.name" . }}-cm
