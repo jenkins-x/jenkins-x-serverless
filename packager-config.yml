@@ -183,9 +183,6 @@ plugins:
     artifactId: "jsch"
     source:
       version: "0.1.54.2"
-systemProperties: {
-    jenkins.model.Jenkins.slaveAgentPort: "50000",
-    jenkins.model.Jenkins.slaveAgentPortEnforce: "true"}
 casc:
   - id: "initScripts"
     source:
