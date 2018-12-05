@@ -30,11 +30,11 @@ plugins:
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-job"
     source:
-      version: "2.29"
+      version: "2.24"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-cps"
     source:
-      version: "2.61"
+      version: "2.54"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "jackson2-api"
     source:
@@ -42,11 +42,11 @@ plugins:
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "pipeline-utility-steps"
     source:
-      version: "2.2.0"
+      version: "2.1.0"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "cloudbees-folder"
     source:
-      version: "6.7"
+      version: "6.5.1"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "credentials"
     source:
@@ -54,7 +54,7 @@ plugins:
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "structs"
     source:
-      version: "1.17"
+      version: "1.16"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "scm-api"
     source:
@@ -70,15 +70,15 @@ plugins:
   - groupId: "org.jenkinsci.plugins"
     artifactId: "kubernetes-credentials"
     source:
-      version: "0.4.0"
+      version: "0.3.1"
   - groupId: "com.cloudbees.jenkins.plugins"
     artifactId: "kubernetes-credentials-provider"
     source:
-      version: "0.10"
+      version: "0.9"
   - groupId: "org.csanchez.jenkins.plugins"
     artifactId: "kubernetes"
     source:
-      version: "1.13.7"
+      version: "1.12.4"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "plain-credentials"
     source:
@@ -90,7 +90,7 @@ plugins:
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "pipeline-graph-analysis"
     source:
-      version: "1.9"
+      version: "1.7"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "pipeline-input-step"
     source:
@@ -126,7 +126,7 @@ plugins:
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-basic-steps"
     source:
-      version: "2.13"
+      version: "2.10"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "ssh-credentials"
     source:
@@ -142,7 +142,7 @@ plugins:
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-api"
     source:
-      version: "2.33"
+      version: "2.29"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-multibranch"
     source:
@@ -150,19 +150,19 @@ plugins:
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-durable-task-step"
     source:
-      version: "2.26"
+      version: "2.21"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-cps-global-lib"
     source:
-      version: "2.12"
+      version: "2.10"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "durable-task"
     source:
-      version: "1.28"
+      version: "1.24"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-scm-step"
     source:
-      version: "2.7"
+      version: "2.6"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "jx-resources"
     source:
