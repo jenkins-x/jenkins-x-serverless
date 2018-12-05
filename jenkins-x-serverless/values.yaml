@@ -5,7 +5,7 @@ serverless:
   image:
     repository: jenkinsxio/jenkins-maven
     tag: 0.1.92
-  imagePullPolicy: IfNotPresent
+  imagePullPolicy: Always
   terminationGracePeriodSeconds: 30
   resources:
     limits:
