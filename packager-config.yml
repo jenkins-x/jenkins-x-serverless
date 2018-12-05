@@ -54,7 +54,7 @@ plugins:
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "structs"
     source:
-      version: "1.16"
+      version: "1.14"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "scm-api"
     source:
@@ -62,11 +62,11 @@ plugins:
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "credentials-binding"
     source:
-      version: "1.17"
+      version: "1.16"
   - groupId: "io.jenkins"
     artifactId: "configuration-as-code"
     source:
-      version: "1.0"
+      version: "1.0-rc2"
   - groupId: "org.jenkinsci.plugins"
     artifactId: "kubernetes-credentials"
     source:
