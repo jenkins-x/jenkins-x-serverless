@@ -61,8 +61,7 @@ echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 echo "pushing jenkins-base to ${DOCKER_REGISTRY}"
 retry 10 docker push ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}
 
-#declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
-declare -a arr=("maven")
+declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp")
 
 ## now loop through the above array
 for i in "${arr[@]}"
