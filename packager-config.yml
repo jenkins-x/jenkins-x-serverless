@@ -70,15 +70,15 @@ plugins:
   - groupId: "org.jenkinsci.plugins"
     artifactId: "kubernetes-credentials"
     source:
-      version: "0.3.1"
+      version: "0.4.0"
   - groupId: "com.cloudbees.jenkins.plugins"
     artifactId: "kubernetes-credentials-provider"
     source:
-      version: "0.9"
+      version: "0.10"
   - groupId: "org.csanchez.jenkins.plugins"
     artifactId: "kubernetes"
     source:
-      version: "1.12.4"
+      version: "1.13.7"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "plain-credentials"
     source:
@@ -90,7 +90,7 @@ plugins:
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "pipeline-graph-analysis"
     source:
-      version: "1.7"
+      version: "1.9"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "pipeline-input-step"
     source:
@@ -102,7 +102,7 @@ plugins:
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-model-api"
     source:
-      version: "1.3.1"
+      version: "1.3.3"
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-model-declarative-agent"
     source:
@@ -110,11 +110,11 @@ plugins:
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-model-definition"
     source:
-      version: "1.3.1"
+      version: "1.3.3"
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-model-extensions"
     source:
-      version: "1.3.1"
+      version: "1.3.3"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "pipeline-stage-step"
     source:
@@ -122,11 +122,11 @@ plugins:
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-stage-tags-metadata"
     source:
-      version: "1.3.1"
+      version: "1.3.3"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-basic-steps"
     source:
-      version: "2.10"
+      version: "2.13"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "ssh-credentials"
     source:
@@ -142,7 +142,7 @@ plugins:
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-api"
     source:
-      version: "2.29"
+      version: "2.33"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-multibranch"
     source:
@@ -150,19 +150,19 @@ plugins:
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-durable-task-step"
     source:
-      version: "2.21"
+      version: "2.26"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-cps-global-lib"
     source:
-      version: "2.10"
+      version: "2.12"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "durable-task"
     source:
-      version: "1.24"
+      version: "1.28"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-scm-step"
     source:
-      version: "2.6"
+      version: "2.7"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "jx-resources"
     source:
