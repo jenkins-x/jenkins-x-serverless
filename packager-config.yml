@@ -70,7 +70,7 @@ plugins:
   - groupId: "org.jenkinsci.plugins"
     artifactId: "kubernetes-credentials"
     source:
-      version: "0.3.1"
+      version: "0.4.0"
   - groupId: "com.cloudbees.jenkins.plugins"
     artifactId: "kubernetes-credentials-provider"
     source:
@@ -102,7 +102,7 @@ plugins:
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-model-api"
     source:
-      version: "1.3.1"
+      version: "1.3.3"
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-model-declarative-agent"
     source:
@@ -110,11 +110,11 @@ plugins:
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-model-definition"
     source:
-      version: "1.3.1"
+      version: "1.3.3"
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-model-extensions"
     source:
-      version: "1.3.1"
+      version: "1.3.3"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "pipeline-stage-step"
     source:
@@ -122,7 +122,7 @@ plugins:
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-stage-tags-metadata"
     source:
-      version: "1.3.1"
+      version: "1.3.3"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-basic-steps"
     source:
@@ -162,7 +162,7 @@ plugins:
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-scm-step"
     source:
-      version: "2.6"
+      version: "2.7"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "jx-resources"
     source:
