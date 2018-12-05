@@ -30,23 +30,23 @@ plugins:
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-job"
     source:
-      version: "2.24"
+      version: "2.29"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-cps"
     source:
-      version: "2.54"
+      version: "2.61"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "jackson2-api"
     source:
-      version: "2.8.11.2"
+      version: "2.8.11.3"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "pipeline-utility-steps"
     source:
-      version: "2.1.0"
+      version: "2.2.0"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "cloudbees-folder"
     source:
-      version: "6.5.1"
+      version: "6.7"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "credentials"
     source:
@@ -54,7 +54,7 @@ plugins:
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "structs"
     source:
-      version: "1.14"
+      version: "1.17"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "scm-api"
     source:
@@ -62,7 +62,7 @@ plugins:
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "credentials-binding"
     source:
-      version: "1.16"
+      version: "1.17"
   - groupId: "io.jenkins"
     artifactId: "configuration-as-code"
     source:
