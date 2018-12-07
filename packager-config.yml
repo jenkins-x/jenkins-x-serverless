@@ -18,14 +18,14 @@ buildSettings:
         git: https://github.com/jenkinsci/jenkinsfile-runner.git
         commit: c041d2c4e1c14bf93e1a219d9de4a661bd5fa8ae
     docker:
-      base: "jenkins/jenkins:2.138.4"
+      base: "jenkins/jenkins:2.150.1"
       tag: "jenkins-experimental/cwp-jenkinsfile-runner-demo"
       build: false
 war:
   groupId: "org.jenkins-ci.main"
   artifactId: "jenkins-war"
   source:
-    version: "2.138.4"
+    version: "2.150.1"
 plugins:
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-job"
