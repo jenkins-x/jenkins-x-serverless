@@ -166,7 +166,7 @@ plugins:
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "jx-resources"
     source:
-      version: "1.0.15"
+      version: "1.0.24"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "authentication-tokens"
     source:
