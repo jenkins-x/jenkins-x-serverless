@@ -1,4 +1,4 @@
-FROM JENKINS_BASE_TAG
+FROM jenkinsxio/jenkins-base:0.1.159
 
 RUN apt-get install -y build-essential make bzip2 chromedriver chromium pkg-config zip g++ zlib1g-dev unzip python openjdk-8-jdk
 RUN echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
