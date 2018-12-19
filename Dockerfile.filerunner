@@ -1,6 +1,6 @@
 FROM jenkins/jenkins:2.150.1
 USER root
-ENV CWP_VERSION 1.0-SNAPSHOT
+ENV CWP_VERSION 256.0-test
 ADD tmp/output/target/jenkinsfile-runner-${CWP_VERSION}.war /usr/share/jenkins/jenkins.war
 RUN mkdir /app && unzip /usr/share/jenkins/jenkins.war -d /app/jenkins
 COPY tmp/output/jenkinsfileRunner /app
