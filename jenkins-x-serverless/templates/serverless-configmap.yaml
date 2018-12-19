@@ -10,7 +10,7 @@ data:
         stages {
             stage('Tests') {
                 steps {
-                    echo "Hello World"
+                    echo "Hello World $BUILD_NUMBER"
                 }
             }
         }
