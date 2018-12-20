@@ -18,6 +18,9 @@ spec:
       - name: {{ template "serverless.name" . }}
         image: {{ .Values.serverless.image.repository }}:{{ .Values.serverless.image.tag }}
         imagePullPolicy: {{ .Values.serverless.imagePullPolicy }}
+        env:
+        - name: BUILD_NUMBER
+          value: "1"
         volumeMounts:
         - name: {{ template "serverless.name" . }}-volume
           mountPath: /workspace/

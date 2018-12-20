@@ -20,7 +20,7 @@ jenkins:
       serverUrl: "https://kubernetes.default"
   disableRememberMe: false
   mode: NORMAL
-  numExecutors: 0
+  numExecutors: 1
   primaryView:
     all:
       name: "all"
