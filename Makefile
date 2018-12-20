@@ -1,5 +1,5 @@
 
-VERSION=256.0-test
+VERSION=0.1.0-SNAPSHOT
 CWP_MAVEN_REPO_PATH=io/jenkins/tools/custom-war-packager/custom-war-packager-cli
 CWP_VERSION=1.5
 CWP_MAVEN_REPO=https://repo.jenkins-ci.org/releases
@@ -22,4 +22,4 @@ clean:
 
 build: .build/cwp-cli-${CWP_VERSION}.jar
 	java -jar .build/cwp-cli-${CWP_VERSION}.jar \
-	     -configPath packager-config.yml -version ${VERSION}
+	     -configPath packager-config.yml
