@@ -1,4 +1,4 @@
-FROM JENKINS_BASE_TAG
+FROM jenkinsxio/jenkins-base:256.0.1
 
 RUN apt-get install -y build-essential
 
