@@ -29,6 +29,6 @@ war:
   source:
     version: "2.150.1"
 casc:
-  - id: "initScripts"
+  - id: "casc"
     source:
       dir: casc.yml
