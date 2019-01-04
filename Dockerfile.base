@@ -1,4 +1,4 @@
-FROM JENKINS_BASE_TAG
+FROM jenkinsxio/jenkins-filerunner:256.0.14
 
 RUN apt-get update && apt-get install -y \
   wget \
