@@ -1,9 +1,9 @@
 bundle:
-  groupId: "io.jenkins.tools.custom-war-packager.demo"
-  artifactId: "jenkinsfile-runner"
-  vendor: "Jenkins project"
-  title: "Jenkinsfile Runner demo"
-  description: "Jenkinsfile Runner Docker Image, produced by Custom WAR Packager"
+  groupId: "io.jenkins-x"
+  artifactId: "jenkins-x-serverless"
+  vendor: "Jenkins X project"
+  title: "Jenkins X Serverless images"
+  description: "Jenkins X Serverless build images, produced by Custom WAR Packager"
 buildSettings:
   pom: pom.xml
   pomIgnoreRoot: false
