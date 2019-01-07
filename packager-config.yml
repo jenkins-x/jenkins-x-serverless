@@ -12,10 +12,10 @@ buildSettings:
       groupId: "io.jenkins"
       artifactId: "jenkinsfile-runner"
       build:
-        noCache: false
+        noCache: true
       source:
         git: https://github.com/jenkinsci/jenkinsfile-runner.git
-        branch: parent-pom-1.5
+        commit: c041d2c4e1c14bf93e1a219d9de4a661bd5fa8ae
     docker:
       base: "jenkins/jenkins:2.150.1"
       tag: "jenkins-experimental/cwp-jenkinsfile-runner-demo"
