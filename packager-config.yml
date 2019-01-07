@@ -6,14 +6,12 @@ bundle:
   description: "Jenkinsfile Runner Docker Image, produced by Custom WAR Packager"
 buildSettings:
   pom: pom.xml
-  pomIgnoreRoot: true
+  pomIgnoreRoot: false
   jenkinsfileRunner:
     source:
       groupId: "io.jenkins"
       artifactId: "jenkinsfile-runner"
       build:
-        # Jenkinsfile Runner produces appassembler directory which is not a maven artifact
-        #TODO: replace once Jenkinsfile Runner archives runner & CWP is updated
         noCache: true
       source:
         git: https://github.com/jenkinsci/jenkinsfile-runner.git
