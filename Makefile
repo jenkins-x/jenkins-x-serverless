@@ -21,5 +21,7 @@ clean:
 	touch .build/cwp-cli-${CWP_VERSION}.jar
 
 build: .build/cwp-cli-${CWP_VERSION}.jar
+	mvn clean install
 	java -jar .build/cwp-cli-${CWP_VERSION}.jar \
-	     -configPath packager-config.yml
+	     -configPath packager-config.yml \
+		 --batch-mode --installArtifacts
