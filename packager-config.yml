@@ -12,7 +12,7 @@ buildSettings:
       groupId: "io.jenkins"
       artifactId: "jenkinsfile-runner"
       build:
-        noCache: true
+        noCache: false
       source:
         git: https://github.com/jenkinsci/jenkinsfile-runner.git
         branch: parent-pom-1.5
