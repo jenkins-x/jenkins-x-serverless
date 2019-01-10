@@ -75,3 +75,471 @@ Running on Jenkins in /tmp/jenkinsTests.tmp/jenkins3951824644806096765test/works
 [Pipeline] checkout
 [Pipeline] }
 [Pipeline] // stage
+[Pipeline] withCredentials
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (CI Build and deploy preview)
+Stage "CI Build and deploy preview" skipped due to when conditional
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build and Deploy Release)
+[Pipeline] withCredentials
+[Pipeline] {
+[Pipeline] sh
++ jx step git credentials
+Generated Git credentials file /home/jenkins/git/credentials
+[Pipeline] git
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/cloudbees/core-frontend # timeout=10
+Fetching upstream changes from https://github.com/cloudbees/core-frontend
+ > git --version # timeout=10
+ > git fetch --tags --progress https://github.com/cloudbees/core-frontend +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 8a4ebecd20b952c8f736dc67c5598f0a8a8e7a4c (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 8a4ebecd20b952c8f736dc67c5598f0a8a8e7a4c
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master 8a4ebecd20b952c8f736dc67c5598f0a8a8e7a4c
+Commit message: "Merge pull request #546 from scherler/PLAT-518_2"
+First time build. Skipping changelog.
+[Pipeline] sh
++ ./scripts/ci/release.sh
++ set -e
++ npm install -g yarn
+/usr/bin/yarn -> /usr/lib/node_modules/yarn/bin/yarn.js
+/usr/bin/yarnpkg -> /usr/lib/node_modules/yarn/bin/yarn.js
++ yarn@1.13.0
+added 1 package in 0.85s
++ git checkout master
+Already on 'master'
++ git config credential.helper store
+++ jx-release-version
++ echo 0.0.472
+++ cat VERSION
++ export VERSION=0.0.472
++ VERSION=0.0.472
++ echo 'Releasing version to 0.0.472'
+Releasing version to 0.0.472
++ git tag -fa v0.0.472 -m 'Release version 0.0.472'
++ git push origin v0.0.472
+To https://github.com/cloudbees/core-frontend
+ * [new tag]         v0.0.472 -> v0.0.472
++ yarn install --ignore-engines
+yarn install v1.3.2
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+info fsevents@1.2.4: The platform "linux" is incompatible with this module.
+info "fsevents@1.2.4" is an optional dependency and failed compatibility check. Excluding it from installation.
+[3/4] Linking dependencies...
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-data@1.0.0" has unmet peer dependency "mobx@^5.5.2".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-data@1.0.0" has unmet peer dependency "mobx-react@^5.3.6".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-data@1.0.0" has unmet peer dependency "mobx-state-tree@^3.7.1".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-data@1.0.0" has unmet peer dependency "react@^16.6.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard@1.0.0" has unmet peer dependency "react@^16.6.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard@1.0.0" has unmet peer dependency "react-dom@^16.6.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-api > ts-jest@23.10.5" has unmet peer dependency "jest@>=22 <24".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > formik@1.4.1" has unmet peer dependency "react@>=15".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > react-gravatar@2.6.3" has unmet peer dependency "react@*".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > react-modal@3.8.1" has unmet peer dependency "react@^0.14.0 || ^15.0.0 || ^16".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > react-outside-click-handler@1.2.2" has unmet peer dependency "react@^0.14 || >=15".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > react-select@2.2.0" has unmet peer dependency "react@^15.3.0 || ^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > react-transition-group@2.5.2" has unmet peer dependency "react@>=15.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > react-virtualized@9.21.0" has unmet peer dependency "react@^15.3.0 || ^16.0.0-alpha".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-actions@4.1.4" has unmet peer dependency "react@*".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-info@3.4.11" has unmet peer dependency "react@*".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-jest@3.4.11" has unmet peer dependency "@storybook/addons@^3.3.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-jest@3.4.11" has unmet peer dependency "react@*".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-options@3.4.11" has unmet peer dependency "@storybook/addons@^3.3.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-options@3.4.11" has unmet peer dependency "react@*".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/react@4.1.4" has unmet peer dependency "react@^16.6.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > env-var-helpers@4.1.0" has unmet peer dependency "lodash@^4.x".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > enzyme-adapter-react-16@1.7.1" has unmet peer dependency "react@^16.0.0-0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > react-dom@16.7.0" has unmet peer dependency "react@^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > react-test-renderer@16.7.0" has unmet peer dependency "react@^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-ui > @expantra/pipeline-widget-proto@0.0.2-JW" has unmet peer dependency "react@^16.4.1".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-ui > @expantra/pipeline-widget-proto@0.0.2-JW" has unmet peer dependency "react-dom@^16.4.1".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-ui > mst-middlewares@3.6.0" has unmet peer dependency "mobx-state-tree@^3.4.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-ui > react-copy-to-clipboard@5.0.1" has unmet peer dependency "react@^15.3.0 || ^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-ui > react-hotkeys@1.1.4" has unmet peer dependency "react@>= 0.14.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-ui > react-hotkeys@1.1.4" has unmet peer dependency "react-dom@>= 0.14.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-ui > react-lazylog@3.2.0" has unmet peer dependency "react@>=16.3.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-ui > react-router@4.2.0" has unmet peer dependency "react@>=15".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-ui > react-router-dom@4.2.2" has unmet peer dependency "react@>=15".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > formik > create-react-context@0.2.3" has unmet peer dependency "react@^0.14.0 || ^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > react-outside-click-handler > airbnb-prop-types@2.11.0" has unmet peer dependency "react@^0.14 || ^15.0.0 || ^16.0.0-alpha".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > react-select > react-input-autosize@2.2.1" has unmet peer dependency "react@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-actions > @emotion/core@0.13.1" has unmet peer dependency "react@>=16.3.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-actions > @emotion/provider@0.11.2" has unmet peer dependency "react@>=16.3.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-actions > @storybook/components@4.1.4" has unmet peer dependency "react@*".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-actions > react-inspector@2.3.1" has unmet peer dependency "react@^0.14.0 || ^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-info > @storybook/components@3.4.11" has unmet peer dependency "react@*".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-storyshots > jest-specific-snapshot@1.0.0" has unmet peer dependency "jest@*".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/react > @storybook/core@4.1.4" has unmet peer dependency "react@>=16.3.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > env-var-helpers > mad-logs@10.3.6" has unmet peer dependency "lodash@^4.x".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > enzyme-adapter-react-16 > enzyme-adapter-utils@1.9.0" has unmet peer dependency "react@0.13.x || 0.14.x || ^15.0.0-0 || ^16.0.0-0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-ui > react-document-title > react-side-effect@1.1.5" has unmet peer dependency "react@^0.13.0 || ^0.14.0 || ^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-ui > react-router-dom > react-router@4.3.1" has unmet peer dependency "react@>=15".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-actions > @emotion/styled > @emotion/styled-base@0.10.6" has unmet peer dependency "react@>=16.3.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-actions > @storybook/components > react-textarea-autosize@7.1.0" has unmet peer dependency "react@>=0.14.0 <17.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-actions > @storybook/components > render-fragment@0.1.1" has unmet peer dependency "react@^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/addon-actions > @storybook/components > render-fragment@0.1.1" has unmet peer dependency "prop-types@^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/react > @storybook/core > @storybook/ui@4.1.4" has unmet peer dependency "react@*".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > env-var-helpers > mad-logs > env-var-helpers@5.2.0" has unmet peer dependency "lodash@^4.x".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/react > @storybook/core > @storybook/ui > @storybook/react-komposer@2.0.5" has unmet peer dependency "react@^0.14.7 || ^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/react > @storybook/core > @storybook/ui > react-fuzzy@0.5.2" has unmet peer dependency "react@^0.14.7 || ^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/react > @storybook/core > @storybook/ui > react-treebeard@3.1.0" has unmet peer dependency "@emotion/styled@^0.10.6".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/react > @storybook/core > @storybook/ui > react-treebeard@3.1.0" has unmet peer dependency "react@^15.5.4 || ^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/react > @storybook/core > @storybook/ui > @storybook/mantra-core > @storybook/react-simple-di@1.3.0" has unmet peer dependency "react@^0.14.0 || ^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/react > @storybook/core > @storybook/ui > @storybook/react-komposer > @storybook/react-stubber@1.0.1" has unmet peer dependency "react@^0.14.7 || ^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-134f5259-9860-4dd4-93f1-589e5d4584eb > @cloudbees/core-shipyard > @storybook/react > @storybook/core > @storybook/ui > react-treebeard > velocity-react@1.4.1" has unmet peer dependency "react@^15.3.0 || ^16.0.0".
+[4/4] Building fresh packages...
+Done in 116.84s.
++ yarn build-packages
+yarn run v1.3.2
+$ lerna run build --ignore '@cloudbees/*-ui'
+lerna notice cli v3.8.4
+lerna info versioning independent
+lerna info ci enabled
+lerna info filter [ '!@cloudbees/*-ui' ]
+lerna info Executing command in 4 packages: "yarn run build"
+lerna info run Ran npm script 'build' in '@cloudbees/core-flags' in 6.1s:
+$ rimraf ./dist && tsc -p ./tsconfig.build.json
+lerna info run Ran npm script 'build' in '@cloudbees/core-api' in 6.6s:
+$ rimraf ./dist && tsc -p ./tsconfig.build.json
+lerna info run Ran npm script 'build' in '@cloudbees/core-shipyard' in 12.8s:
+$ rimraf ./dist && tsc -p ./tsconfig.build.json && yarn run build-css && yarn run copy-assets
+$ node-sass --importer ../../node_modules/node-sass-package-importer/dist/cli.js src/styles/shipyard.scss dist/index.css
+Rendering Complete, saving .css file...
+Wrote CSS to /tmp/jenkinsTests.tmp/jenkins3951824644806096765test/workspace/job/packages/core-shipyard/dist/index.css
+$ cd src/ && cpx "./**/*.{scss, css}" ../dist
+lerna info run Ran npm script 'build' in '@cloudbees/core-data' in 4.9s:
+$ rimraf ./dist && tsc -p ./tsconfig.build.json
+lerna success run Ran npm script 'build' in 4 packages in 17.7s:
+lerna success - @cloudbees/core-api
+lerna success - @cloudbees/core-data
+lerna success - @cloudbees/core-flags
+lerna success - @cloudbees/core-shipyard
+Done in 18.32s.
++ yarn test
+yarn run v1.3.2
+$ cross-env NODE_ENV='ci' lerna run test --stream
+lerna notice cli v3.8.4
+lerna info versioning independent
+lerna info ci enabled
+lerna info Executing command in 5 packages: "yarn run test"
+@cloudbees/core-api: warning package.json: No license field
+@cloudbees/core-flags: warning package.json: No license field
+@cloudbees/core-api: $ jest
+@cloudbees/core-shipyard: warning package.json: No license field
+@cloudbees/core-flags: $ jest || true
+@cloudbees/core-shipyard: $ jest
+@cloudbees/core-flags: No tests found
+@cloudbees/core-flags: In /tmp/jenkinsTests.tmp/jenkins3951824644806096765test/workspace/job/packages/core-flags
+@cloudbees/core-flags:   7 files checked.
+@cloudbees/core-flags:   testMatch: **/__tests__/**/*.js?(x),**/?(*.)+(spec|test).js?(x) - 0 matches
+@cloudbees/core-flags:   testPathIgnorePatterns: /node_modules/ - 7 matches
+@cloudbees/core-flags: Pattern:  - 0 matches
+@cloudbees/core-api: PASS src/auth.spec.ts (9.163s)
+@cloudbees/core-api:   auth
+@cloudbees/core-api:     ✓ should be able to call signOut (8ms)
+@cloudbees/core-api: Test Suites: 1 passed, 1 total
+@cloudbees/core-api: Tests:       1 passed, 1 total
+@cloudbees/core-api: Snapshots:   0 total
+@cloudbees/core-api: Time:        9.233s
+@cloudbees/core-api: Ran all test suites.
+@cloudbees/core-shipyard: PASS src/components/icon/Icon.spec.tsx
+@cloudbees/core-shipyard: PASS src/components/modal/Modal.spec.tsx
+@cloudbees/core-shipyard: PASS src/components/menu/Menu.spec.tsx
+@cloudbees/core-shipyard: PASS src/components/button/Button.spec.tsx
+@cloudbees/core-shipyard: PASS src/components/card/Card.spec.tsx
+@cloudbees/core-shipyard: PASS tests/shots.js (12.69s)
+@cloudbees/core-shipyard:   ● Console
+@cloudbees/core-shipyard:     console.warn src/utils/stories/withComponentTests.ts:8
+@cloudbees/core-shipyard:       No tests results available
+@cloudbees/core-shipyard: Test Suites: 6 passed, 6 total
+@cloudbees/core-shipyard: Tests:       80 passed, 80 total
+@cloudbees/core-shipyard: Snapshots:   67 passed, 67 total
+@cloudbees/core-shipyard: Time:        27.635s
+@cloudbees/core-shipyard: Ran all test suites.
+@cloudbees/core-data: warning package.json: No license field
+@cloudbees/core-data: $ jest
+@cloudbees/core-data: PASS src/utils/connect.spec.tsx
+@cloudbees/core-data: PASS src/models/Users.spec.ts
+@cloudbees/core-data: PASS src/utils/ifEmptyThen.spec.ts
+@cloudbees/core-data: PASS src/models/Teams.spec.ts (5.159s)
+@cloudbees/core-data: Test Suites: 4 passed, 4 total
+@cloudbees/core-data: Tests:       19 passed, 19 total
+@cloudbees/core-data: Snapshots:   0 total
+@cloudbees/core-data: Time:        16.057s
+@cloudbees/core-data: Ran all test suites.
+@cloudbees/core-ui: $ jest
+@cloudbees/core-ui: PASS tests/shots.js (50.694s)
+@cloudbees/core-ui:   Storyshots
+@cloudbees/core-ui:     Members
+@cloudbees/core-ui:       ✓ MemberList 📷 (45ms)
+@cloudbees/core-ui:     Teams
+@cloudbees/core-ui:       ✓ TeamList 📷 (23ms)
+@cloudbees/core-ui: Test Suites: 1 passed, 1 total
+@cloudbees/core-ui: Tests:       2 passed, 2 total
+@cloudbees/core-ui: Snapshots:   2 passed, 2 total
+@cloudbees/core-ui: Time:        56.235s
+@cloudbees/core-ui: Ran all test suites.
+lerna success run Ran npm script 'test' in 5 packages in 103.7s:
+lerna success - @cloudbees/core-api
+lerna success - @cloudbees/core-data
+lerna success - @cloudbees/core-flags
+lerna success - @cloudbees/core-shipyard
+lerna success - @cloudbees/core-ui
+Done in 104.54s.
++ yarn build
+yarn run v1.3.2
+$ lerna run build --scope '@cloudbees/*-ui'
+lerna notice cli v3.8.4
+lerna info versioning independent
+lerna info ci enabled
+lerna info filter [ '@cloudbees/*-ui' ]
+lerna info Executing command in 1 package: "yarn run build"
+lerna info run Ran npm script 'build' in '@cloudbees/core-ui' in 61.5s:
+$ rimraf ../../build && cross-env NODE_ENV='production' webpack --config=./webpack/web.js --progress -p
+Starting type checking service...
+Using 1 worker with 2048MB memory limit
+Hash: 000d8d61ddd502b8c6e6
+Version: webpack 4.28.3
+Time: 59087ms
+Built at: 2019-01-10 18:47:31
+                             Asset       Size  Chunks                    Chunk Names
+                       favicon.ico    7.7 KiB          [emitted]         
+    index.000d8d61ddd502b8c6e6.css    188 KiB       0  [emitted]         index
+index.000d8d61ddd502b8c6e6.css.map  107 bytes       0  [emitted]         index
+     index.000d8d61ddd502b8c6e6.js   1.45 MiB       0  [emitted]  [big]  index
+ index.000d8d61ddd502b8c6e6.js.map   5.22 MiB       0  [emitted]         index
+                        index.html  663 bytes          [emitted]         
+Entrypoint index [big] = index.000d8d61ddd502b8c6e6.js index.000d8d61ddd502b8c6e6.css index.000d8d61ddd502b8c6e6.js.map index.000d8d61ddd502b8c6e6.css.map
+ [20] (webpack)/buildin/global.js 472 bytes {0} [built]
+ [42] (webpack)/buildin/module.js 497 bytes {0} [built]
+ [50] /tmp/jenkinsTests.tmp/jenkins3951824644806096765test/workspace/job/node_modules/react-virtualized/dist/es/index.js + 65 modules 319 KiB {0} [built]
+      |    66 modules
+[122] (webpack)/buildin/harmony-module.js 573 bytes {0} [built]
+[360] multi ./src/index.tsx 28 bytes {0} [built]
+[607] /tmp/jenkinsTests.tmp/jenkins3951824644806096765test/workspace/job/node_modules/moment/locale sync ^\.\/.*$ 2.93 KiB {0} [optional] [built]
+[619] ./src/index.tsx + 372 modules 1.19 MiB {0} [built]
+      | ./src/index.tsx 243 bytes [built]
+      | ../core-flags/src/context.tsx 891 bytes [built]
+      | ./src/flags.ts 203 bytes [built]
+      | ./src/pages/index.tsx 2.24 KiB [built]
+      | ./src/store.ts 909 bytes [built]
+      | ../core-shipyard/src/styles/index.ts 251 KiB [built]
+      | ../core-flags/src/storage.ts 344 bytes [built]
+      | ../core-shipyard/src/icons/CloudbeesCoreLogo.tsx 2.96 KiB [built]
+      | ../core-api/src/fetch.ts 270 bytes [built]
+      | ./src/pages/projects.tsx 5.56 KiB [built]
+      | ./src/pages/teams.tsx 1.41 KiB [built]
+      | ../core-data/src/models/Teams.ts 7.62 KiB [built]
+      | ../core-data/src/models/Users.ts 3.44 KiB [built]
+      | ../core-data/src/utils/connect.tsx 6.99 KiB [built]
+      | ../core-shipyard/src/icons/Activity.tsx 2.06 KiB [built]
+      |     + 358 hidden modules
+[627] ../core-shipyard/src/styles/shipyard.scss 41 bytes [built]
+[628] /tmp/jenkinsTests.tmp/jenkins3951824644806096765test/workspace/job/node_modules/css-loader??ref--5-2!/tmp/jenkinsTests.tmp/jenkins3951824644806096765test/workspace/job/node_modules/sass-loader/lib/loader.js!../core-shipyard/src/styles/shipyard.scss 190 KiB [built]
+    + 620 hidden modules
+
+WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  index.000d8d61ddd502b8c6e6.js (1.45 MiB)
+
+WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  index (1.63 MiB)
+      index.000d8d61ddd502b8c6e6.js
+      index.000d8d61ddd502b8c6e6.css
+
+
+WARNING in webpack performance recommendations: 
+You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+For more info visit https://webpack.js.org/guides/code-splitting/
+Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!../../node_modules/@expantra/pipeline-widget-proto/styles/css/main.css:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+       2 modules
+Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!../../node_modules/react-virtualized/styles.css:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+       2 modules
+Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!../core-shipyard/src/styles/shipyard.scss:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+    [0] /tmp/jenkinsTests.tmp/jenkins3951824644806096765test/workspace/job/node_modules/css-loader??ref--5-2!/tmp/jenkinsTests.tmp/jenkins3951824644806096765test/workspace/job/node_modules/sass-loader/lib/loader.js!../core-shipyard/src/styles/shipyard.scss 190 KiB {0} [built]
+        + 1 hidden module
+Child html-webpack-plugin for "index.html":
+     1 asset
+    Entrypoint undefined = index.html
+    [0] /tmp/jenkinsTests.tmp/jenkins3951824644806096765test/workspace/job/node_modules/html-webpack-plugin/lib/loader.js!./src/index.html 811 bytes {0} [built]
+    [2] (webpack)/buildin/global.js 472 bytes {0} [built]
+    [3] (webpack)/buildin/module.js 497 bytes {0} [built]
+        + 1 hidden module
+lerna success run Ran npm script 'build' in 1 package in 61.5s:
+lerna success - @cloudbees/core-ui
+Done in 62.20s.
++ docker build -t docker.io/jenkinsxio/core-frontend:0.0.472 .
+Sending build context to Docker daemon  442.1MB
+Step 1/2 : FROM jenkinsxio/core-backend:0.0.150
+ ---> 094e87d15672
+Step 2/2 : COPY ./build /
+ ---> 56eb4d54a0ba
+Removing intermediate container fe282f199a53
+Successfully built 56eb4d54a0ba
++ docker push docker.io/jenkinsxio/core-frontend:0.0.472
+The push refers to a repository [docker.io/jenkinsxio/core-frontend]
+dc272dd429a1: Preparing
+651c057ad2ea: Preparing
+2d87e732410c: Preparing
+6204936654cf: Preparing
+de102d32815a: Preparing
+e5020f37e27e: Preparing
+a1554a6e1896: Preparing
+7bff100f35cb: Preparing
+e5020f37e27e: Waiting
+a1554a6e1896: Waiting
+7bff100f35cb: Waiting
+de102d32815a: Layer already exists
+651c057ad2ea: Layer already exists
+2d87e732410c: Layer already exists
+6204936654cf: Layer already exists
+e5020f37e27e: Layer already exists
+a1554a6e1896: Layer already exists
+7bff100f35cb: Layer already exists
+dc272dd429a1: Pushed
+0.0.472: digest: sha256:89db22d225e8cbd3ad7ac6ee0eeda5c5e11435aadc1439783755ece6b8019636 size: 2007
+[Pipeline] dir
+Running in /tmp/jenkinsTests.tmp/jenkins3951824644806096765test/workspace/job/charts/core
+[Pipeline] {
+[Pipeline] sh
++ helm init --upgrade --force-upgrade --wait
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+
+Tiller (the Helm server-side component) has been upgraded to the current version.
+Happy Helming!
+[Pipeline] sh
++ helm repo add chartmuseum http://chartmuseum.jenkins-x.io
+"chartmuseum" has been added to your repositories
+[Pipeline] sh
++ helm repo add core https://****@chartmuseum.jx.charts-****.cloudbees.com
+"core" has been added to your repositories
+[Pipeline] sh
++ make release
+rm -rf charts
+rm -rf core*.tgz
+rm -rf requirements.lock
+helm dependency build
+Hang tight while we grab the latest from your chart repositories...
+...Unable to get an update from the "local" chart repository (http://127.0.0.1:8879/charts):
+	Get http://127.0.0.1:8879/charts/index.yaml: dial tcp 127.0.0.1:8879: connect: connection refused
+...Successfully got an update from the "chartmuseum" chart repository
+...Successfully got an update from the "stable" chart repository
+...Successfully got an update from the "core" chart repository
+Update Complete. ⎈Happy Helming!⎈
+Saving 1 charts
+Downloading exposecontroller from repo http://chartmuseum.jenkins-x.io
+Deleting outdated charts
+helm lint
+==> Linting .
+Lint OK
+
+1 chart(s) linted, no failures
+sed -i -e "s/version:.*/version: 0.0.472/" Chart.yaml
+sed -i -e "s/tag:.*/tag: 0.0.472/" values.yaml
+helm package .
+Successfully packaged chart and saved it to: /tmp/jenkinsTests.tmp/jenkins3951824644806096765test/workspace/job/charts/core/core-0.0.472.tgz
+curl --fail -u **** --data-binary "@core-0.0.472.tgz" https://chartmuseum.jx.charts-****.cloudbees.com/api/charts
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  4843  100    14  100  4829     26   9161 --:--:-- --:--:-- --:--:--  9145
+{"saved":true}rm -rf core*.tgz
+[Pipeline] sh
++ gcloud auth activate-service-account --key-file ****
+Activated service account credentials for: [jx-212@jenkinsx-dev.iam.gserviceaccount.com]
+[Pipeline] sh
++ gcloud container clusters get-credentials anthorse --zone europe-west1-b --project jenkinsx-dev
+Fetching cluster endpoint and auth data.
+kubeconfig entry generated for anthorse.
+[Pipeline] sh
++ helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Skip local chart repository
+...Successfully got an update from the "chartmuseum" chart repository
+...Successfully got an update from the "stable" chart repository
+...Successfully got an update from the "core" chart repository
+Update Complete. ⎈ Happy Helming!⎈ 
+[Pipeline] sh
++ cat ../../VERSION
++ helm upgrade core core/core --version 0.0.472 --install --force --wait --namespace core --set sso.disable=true
+Release "core" has been upgraded. Happy Helming!
+LAST DEPLOYED: Thu Jan 10 18:48:24 2019
+NAMESPACE: core
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/Role
+NAME          AGE
+core-cleanup  85d
+
+==> v1/RoleBinding
+NAME          AGE
+core-cleanup  85d
+
+==> v1/Service
+NAME       TYPE       CLUSTER-IP    EXTERNAL-IP  PORT(S)  AGE
+core-core  ClusterIP  10.39.244.46  <none>       80/TCP   85d
+
+==> v1beta1/Deployment
+NAME       DESIRED  CURRENT  UP-TO-DATE  AVAILABLE  AGE
+core-core  1        1        1           1          85d
+
+==> v1/Pod(related)
+NAME                        READY  STATUS   RESTARTS  AGE
+core-core-5447f58f6f-xbzlp  1/1    Running  0         47s
+
+==> v1/ServiceAccount
+NAME          SECRETS  AGE
+core-cleanup  1        85d
+core          1        85d
+
+==> v1/ClusterRoleBinding
+NAME       AGE
+core-core  70d
+
+
+NOTES:
+1. Get the application URL by running these commands:
+  export POD_NAME=$(kubectl get pods --namespace core -l "app=core,release=core" -o jsonpath="{.items[0].metadata.name}")
+  echo "Visit http://127.0.0.1:8080 to use your application"
+  kubectl port-forward $POD_NAME 8080:8080
+
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
