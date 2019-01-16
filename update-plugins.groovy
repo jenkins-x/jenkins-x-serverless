@@ -34,7 +34,7 @@ assert !'4.1'.isLaterVersionThan('5')
 assert !'02.2.02.01'.isLaterVersionThan('02.2.02.03')
 assert !'1.625.3'.isLaterVersionThan('2.60.2')
 
-def jenkinsVersion = "2.150.1"
+def jenkinsVersion = "2.150.2"
 
 Yaml parser = new Yaml()
 def config = parser.load(("packager-config.yml" as File).text)
