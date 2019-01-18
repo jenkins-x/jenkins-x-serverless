@@ -1,0 +1,66 @@
+---
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  artifacts:
+  - image: "docker.io/jenkinsxio/jenkins-maven"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.maven
+  - image: "docker.io/jenkinsxio/jenkins-javascript"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.javascript
+  - image: "docker.io/jenkinsxio/jenkins-go"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.go
+  - image: "docker.io/jenkinsxio/jenkins-gradle"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.gradle
+  - image: "docker.io/jenkinsxio/jenkins-python"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.python
+  - image: "docker.io/jenkinsxio/jenkins-scala"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.scala
+  - image: "docker.io/jenkinsxio/jenkins-rust"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.rust
+  - image: "docker.io/jenkinsxio/jenkins-csharp"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.csharp
+  - image: "docker.io/jenkinsxio/jenkins-jenkins"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.jenkins
+  - image: "docker.io/jenkinsxio/jenkins-cwp"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.cwp
+  - image: "docker.io/jenkinsxio/jenkins-elixir"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.elixir
+  - image: "docker.io/jenkinsxio/jenkins-maven-java11"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.maven-java11
+  tagPolicy:
+    envTemplate:
+      template: '{{.IMAGE_NAME}}:{{.VERSION}}'
+  kaniko:
+    buildContext:
+      localDir: {}
+    pullSecretName: kaniko-secret
+    namespace: jx
+    dockerConfig:
+      path: /home/jenkins/.docker/config.json
+deploy:
+  kubectl: {}
+

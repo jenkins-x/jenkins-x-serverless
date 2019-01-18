@@ -1,0 +1,22 @@
+---
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  artifacts:
+  - image: "docker.io/jenkinsxio/jenkins-filerunner"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.filerunner
+  tagPolicy:
+    envTemplate:
+      template: '{{.IMAGE_NAME}}:{{.VERSION}}'
+  kaniko:
+    buildContext:
+      localDir: {}
+    pullSecretName: kaniko-secret
+    namespace: jx
+    dockerConfig:
+      path: /home/jenkins/.docker/config.json
+deploy:
+  kubectl: {}
+

@@ -1,0 +1,19 @@
+---
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  artifacts:
+  - image: "docker.io/jenkinsxio/jenkins-base"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.base
+  kaniko:
+    buildContext:
+      localDir: {}
+    pullSecretName: kaniko-secret
+    namespace: jx
+    dockerConfig:
+      path: /home/jenkins/.docker/config.json
+deploy:
+  kubectl: {}
+
