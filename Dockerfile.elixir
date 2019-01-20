@@ -1,4 +1,4 @@
-FROM JENKINS_BASE_TAG
+FROM jenkinsxio/jenkins-base:256.0.65
 
 RUN \
   echo "deb http://packages.erlang-solutions.com/debian stretch contrib" >> /etc/apt/sources.list
