@@ -45,20 +45,13 @@ TAG=$TAG_NUM
 
 export DOCKER_REGISTRY=docker.io
 
-echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
-head -n 1 Dockerfile.filerunner
-skaffold build -v debug -f skaffold_filerunner.yaml
-echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
-
-sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-filerunner:${TAG}/" Dockerfile.base
-rm Dockerfile.base.bak
 echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 head -n 1 Dockerfile.base
 skaffold build -v debug -f skaffold_base.yaml
 echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 
 # always push
-echo "pushing jenkins-base to ${DOCKER_REGISTRY}"
+echo "Pushing jenkins-base to ${DOCKER_REGISTRY}"
 retry 10 docker push ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}
 
 declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp" "elixir" "maven-java11")
@@ -66,7 +59,7 @@ declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csha
 ## now loop through the above array
 for i in "${arr[@]}"
 do
-    echo "building jenkins-${i}"
+    echo "Building jenkins-${i}"
 	sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-base:${TAG}/" Dockerfile.${i}
 	rm Dockerfile.$i.bak
 	head -n 1 Dockerfile.${i}
