@@ -61,6 +61,8 @@ build:
     namespace: jx
     dockerConfig:
       path: /home/jenkins/.docker/config.json
+    flags:
+    - --single-snapshot
 deploy:
   kubectl: {}
 

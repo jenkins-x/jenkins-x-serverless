@@ -18,6 +18,8 @@ build:
     timeout: 30m
     dockerConfig:
       path: /home/jenkins/.docker/config.json
+    flags:
+    - --single-snapshot
 deploy:
   kubectl: {}
 
