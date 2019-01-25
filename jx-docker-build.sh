@@ -45,6 +45,10 @@ TAG=$TAG_NUM
 
 export DOCKER_REGISTRY=docker.io
 
+echo "DEBUG"
+cat /home/jenkins/.docker/config.json
+echo "DEBUG"
+
 echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 head -n 1 Dockerfile.base
 skaffold build -f skaffold_base.yaml
