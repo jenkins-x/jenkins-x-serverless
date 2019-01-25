@@ -7,6 +7,9 @@ build:
     context: .
     docker: 
       dockerfile: Dockerfile.base
+  tagPolicy:
+    envTemplate:
+      template: '{{.IMAGE_NAME}}:{{.VERSION}}'
   kaniko:
     buildContext:
       gcsBucket: jenkinsx-dev-skaffold-kaniko
