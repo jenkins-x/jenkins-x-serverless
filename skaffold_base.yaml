@@ -9,9 +9,10 @@ build:
       dockerfile: Dockerfile.base
   kaniko:
     buildContext:
-      localDir: {}
+      gcsBucket: jenkinsx-dev-skaffold-kaniko
     pullSecretName: kaniko-secret
     namespace: jx
+    timeout: 30m
     dockerConfig:
       path: /home/jenkins/.docker/config.json
 deploy:
