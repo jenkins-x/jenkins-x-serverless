@@ -51,7 +51,7 @@ head -n 1 Dockerfile.base
 skaffold build -f skaffold.base.yaml
 echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 
-declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp" "elixir" "maven-java11")
+declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "ruby" "rust" "csharp" "jenkins" "cwp" "elixir" "maven-java11")
 
 ## now loop through the above array
 for i in "${arr[@]}"
