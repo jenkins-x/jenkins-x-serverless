@@ -48,7 +48,7 @@ export TAG
 
 echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 head -n 1 Dockerfile.base
-skaffold build -f skaffold_base.yaml
+skaffold build -f skaffold.base.yaml
 echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 
 declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp" "elixir" "maven-java11")
@@ -60,13 +60,12 @@ do
 	sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-base:${TAG}/" Dockerfile.${i}
 	rm Dockerfile.$i.bak
 	head -n 1 Dockerfile.${i}
+    skaffold build -f skaffold.${i}.yaml
 done
 
 if [ "release" == "${RELEASE}" ]; then
     jx step tag --version $TAG_NUM
 fi
-
-skaffold build -f skaffold.yaml
 
 if [ "release" == "${RELEASE}" ]; then
   updatebot push-regex -r "jenkinsTag: (.*)" -v ${TAG} jx-build-templates/values.yaml
