@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --upgrade pip anchorecli
 
 # java required for updatebot
-RUN apt-get update && apt-get install -y openjdk-8-jre
+RUN apt-get install -y openjdk-8-jre
 
 # postgresql-client
 RUN apt-get install -y postgresql-client

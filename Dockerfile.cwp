@@ -1,6 +1,6 @@
 FROM JENKINS_BASE_TAG
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
   default-jdk
 
 # Maven

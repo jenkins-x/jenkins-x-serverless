@@ -8,5 +8,4 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
     chown root:root /etc/apt/sources.list.d/microsoft-prod.list
 
 RUN apt-get install -y apt-transport-https
-RUN apt-get update
 RUN apt-get install -y dotnet-sdk-2.1
