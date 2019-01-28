@@ -56,7 +56,7 @@ build:
       template: '{{.IMAGE_NAME}}:{{.TAG}}'
   kaniko:
     buildContext:
-      localDir: {}
+      gcsBucket: jenkinsx-dev-skaffold-kaniko
     pullSecretName: kaniko-secret
     namespace: jx
     dockerConfig:
