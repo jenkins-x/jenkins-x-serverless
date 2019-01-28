@@ -51,7 +51,7 @@ echo "DEBUG"
 
 echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 head -n 1 Dockerfile.base
-skaffold build -f skaffold_base.yaml
+skaffold build -f skaffold_base.yaml -v debug
 echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 
 declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp" "elixir" "maven-java11")
@@ -69,7 +69,7 @@ if [ "release" == "${RELEASE}" ]; then
     jx step tag --version $TAG_NUM
 fi
 
-skaffold build -f skaffold.yaml
+skaffold build -f skaffold.yaml -v debug
 
 if [ "release" == "${RELEASE}" ]; then
   updatebot push-regex -r "jenkinsTag: (.*)" -v ${TAG} jx-build-templates/values.yaml
