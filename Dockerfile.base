@@ -29,7 +29,12 @@ RUN apt-get update && apt-get install -y \
   wget \
   bzip2 \
   python-pip \
-  postgresql-client
+  postgresql-client \
+  build-essential \
+  make \
+  bzip2 \
+  zip \
+  unzip
 
 RUN pip install --upgrade pip anchorecli
 
