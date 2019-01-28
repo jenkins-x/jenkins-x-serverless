@@ -53,7 +53,7 @@ build:
       dockerfile: Dockerfile.maven-java11
   tagPolicy:
     envTemplate:
-      template: '{{.IMAGE_NAME}}:{{.VERSION}}'
+      template: '{{.IMAGE_NAME}}:{{.TAG}}'
   kaniko:
     buildContext:
       localDir: {}
