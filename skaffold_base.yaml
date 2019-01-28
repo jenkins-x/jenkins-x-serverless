@@ -3,13 +3,13 @@ apiVersion: skaffold/v1beta3
 kind: Config
 build:
   artifacts:
-  - image: jenkinsxio/jenkins-base
+  - image: docker.io/jenkinsxio/jenkins-base
     context: .
     docker: 
       dockerfile: Dockerfile.base
   tagPolicy:
     envTemplate:
-      template: '{{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.VERSION}}'
+      template: '{{.DOCKER_REGISTRY}}/jenkinsxio/jenkins-base:{{.VERSION}}'
   kaniko:
     buildContext:
       gcsBucket: jenkinsx-dev-skaffold-kaniko
