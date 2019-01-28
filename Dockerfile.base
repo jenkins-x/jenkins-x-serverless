@@ -1,11 +1,24 @@
-FROM jenkins/jenkins:2.150.2
+FROM jenkins/jenkins:2.150.2 as jenkins
 USER root
 ENV CWP_VERSION 1.0-SNAPSHOT
 ADD tmp/output/target/jenkins-x-serverless-${CWP_VERSION}.war /usr/share/jenkins/jenkins.war
 RUN mkdir /app && unzip /usr/share/jenkins/jenkins.war -d /app/jenkins
 COPY tmp/output/jenkinsfileRunner /app
-RUN chmod +x /app/bin/jenkinsfile-runner && mkdir -p /usr/share/jenkins/ref/plugins
+RUN chmod +x /app/bin/jenkinsfile-runner && mkdir -p /usr/share/jenkins/ref/plugins  && \
+  rm -rf /app/jenkins/scripts /app/jenkins/jsbundles /app/jenkins/css && \
+  /app/jenkins/images /app/jenkins/help /app/jenkins/WEB-INF/detached-plugins && \
+  /app/jenkins/winstone.jar /app/jenkins/WEB-INF/jenkins-cli.jar && \
+  /app/jenkins/WEB-INF/lib/jna-4.5.2.jar
 COPY tmp/output/plugins /usr/share/jenkins/ref/plugins
+
+FROM openjdk:8-jdk
+RUN mkdir -p /app /usr/share/jenkins/ref/plugins
+
+ # we don't need all the repo
+COPY --from=jenkins /app/jenkins /app/jenkins
+COPY --from=jenkins /app/bin /app/bin
+COPY --from=jenkins /app/repo /app/repo
+COPY --from=jenkins /usr/share/jenkins/ref/plugins /usr/share/jenkins/ref/plugins
 
 ENTRYPOINT ["/app/bin/jenkinsfile-runner", \
             "-w", "/app/jenkins",\
@@ -15,15 +28,11 @@ ENTRYPOINT ["/app/bin/jenkinsfile-runner", \
 RUN apt-get update && apt-get install -y \
   wget \
   bzip2 \
-  python-pip
+  python-pip \
+  openjdk-8-jre \
+  postgresql-client
 
 RUN pip install --upgrade pip anchorecli
-
-# java required for updatebot
-RUN apt-get install -y openjdk-8-jre
-
-# postgresql-client
-RUN apt-get install -y postgresql-client
 
 # chrome
 RUN apt-get install -y libappindicator1 fonts-liberation libasound2 libnspr4 libnss3 libxss1 lsb-release xdg-utils libappindicator3-1 && \
@@ -92,7 +101,6 @@ RUN curl -o ./updatebot -Lf https://oss.sonatype.org/content/groups/public/io/je
   chmod +x updatebot && \
   cp updatebot /usr/bin/ && \
   rm -rf updatebot
-
 
 # draft
 RUN curl -f https://azuredraft.blob.core.windows.net/draft/draft-canary-linux-amd64.tar.gz  | tar xzv && \
