@@ -1,8 +1,5 @@
 FROM JENKINS_BASE_TAG
 
-RUN apt-get update && apt-get install -y \
-  default-jdk
-
 # Maven
 ENV MAVEN_VERSION 3.5.3
 RUN curl -Lf http://central.maven.org/maven2/org/apache/maven/apache-maven/$MAVEN_VERSION/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar -C /opt -xzv

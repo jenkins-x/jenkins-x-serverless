@@ -1,6 +1,6 @@
 FROM JENKINS_BASE_TAG
 
-RUN apt-get install -y build-essential make bzip2 chromedriver chromium pkg-config zip g++ zlib1g-dev unzip python openjdk-8-jdk
+RUN apt-get install -y chromedriver chromium pkg-config g++ zlib1g-dev python
 RUN echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
 RUN curl -f https://bazel.build/bazel-release.pub.gpg | apt-key add -
 RUN apt-get update && apt-get install -y bazel  
@@ -30,7 +30,6 @@ ENV PROTOBUF 3.5.1
 RUN wget https://github.com/google/protobuf/releases/download/v${PROTOBUF}/protoc-${PROTOBUF}-linux-x86_64.zip && \
   unzip protoc-${PROTOBUF}-linux-x86_64.zip -d protoc && \
   chmod +x protoc && cp protoc/bin/protoc /usr/bin/protoc && rm -rf protoc
-
 
 ENV PATH $PATH:/usr/local/go/bin
 ENV PATH $PATH:/usr/local/glide

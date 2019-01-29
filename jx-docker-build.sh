@@ -44,18 +44,14 @@ RELEASE=$3
 TAG=$TAG_NUM
 
 export DOCKER_REGISTRY=docker.io
+export TAG
 
 echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 head -n 1 Dockerfile.base
-retry 10 docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG} -f Dockerfile.base .
+skaffold build -f skaffold.base.yaml
 echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 
-# always push
-echo "Pushing jenkins-base to ${DOCKER_REGISTRY}"
-retry 10 docker push ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}
-
 declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "rust" "csharp" "jenkins" "cwp" "elixir" "maven-java11")
-#declare -a arr=("maven")
 
 ## now loop through the above array
 for i in "${arr[@]}"
@@ -64,20 +60,12 @@ do
 	sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-base:${TAG}/" Dockerfile.${i}
 	rm Dockerfile.$i.bak
 	head -n 1 Dockerfile.${i}
+    skaffold build -f skaffold.${i}.yaml
 done
 
 if [ "release" == "${RELEASE}" ]; then
     jx step tag --version $TAG_NUM
 fi
-
-for i in "${arr[@]}"
-do
-	echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG}"
-   	retry 10 docker build -t ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG} -f Dockerfile.${i} .
-    # always push
-	echo "Pushing jenkins-${i} to ${DOCKER_REGISTRY}"
-   	retry 10 docker push ${DOCKER_REGISTRY}/${ORG}/jenkins-${i}:${TAG}
-done
 
 if [ "release" == "${RELEASE}" ]; then
   updatebot push-regex -r "jenkinsTag: (.*)" -v ${TAG} jx-build-templates/values.yaml

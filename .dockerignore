@@ -11,3 +11,6 @@ charts/
 NOTICE
 LICENSE
 README.md
+tmp/build/
+tmp/prebuild/
+tmp/output/target/jenkinsfile-runner-*/*

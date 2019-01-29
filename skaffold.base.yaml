@@ -1,0 +1,25 @@
+---
+apiVersion: skaffold/v1beta3
+kind: Config
+build:
+  artifacts:
+  - image: "docker.io/jenkinsxio/jenkins-base"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.base
+  tagPolicy:
+    envTemplate:
+      template: '{{.IMAGE_NAME}}:{{.TAG}}'
+  kaniko:
+    buildContext:
+      gcsBucket: jenkinsx-dev-skaffold-kaniko
+    pullSecretName: kaniko-secret
+    namespace: jx
+    timeout: 30m
+    dockerConfig:
+      path: /home/jenkins/.docker/config.json
+    flags:
+    - --single-snapshot
+deploy:
+  kubectl: {}
+

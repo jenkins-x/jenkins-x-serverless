@@ -1,0 +1,24 @@
+---
+apiVersion: skaffold/v1beta3
+kind: Config
+build:
+  artifacts:
+  - image: "docker.io/jenkinsxio/jenkins-gradle"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.gradle
+  tagPolicy:
+    envTemplate:
+      template: '{{.IMAGE_NAME}}:{{.TAG}}'
+  kaniko:
+    buildContext:
+      gcsBucket: jenkinsx-dev-skaffold-kaniko
+    pullSecretName: kaniko-secret
+    namespace: jx
+    dockerConfig:
+      path: /home/jenkins/.docker/config.json
+    flags:
+    - --single-snapshot
+deploy:
+  kubectl: {}
+
