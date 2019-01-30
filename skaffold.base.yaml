@@ -17,7 +17,7 @@ build:
     namespace: jx
     timeout: 30m
     dockerConfig:
-      path: /home/jenkins/.docker/config.json
+      secretName: jenkins-docker-cfg 
     flags:
     - --single-snapshot
 deploy:
