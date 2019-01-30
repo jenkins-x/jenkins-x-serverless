@@ -16,7 +16,7 @@ build:
     pullSecretName: kaniko-secret
     namespace: jx
     dockerConfig:
-      path: /home/jenkins/.docker/config.json
+      secretName: jenkins-docker-cfg
     flags:
     - --single-snapshot
 deploy:
