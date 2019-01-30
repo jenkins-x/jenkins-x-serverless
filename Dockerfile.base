@@ -1,4 +1,4 @@
-FROM jenkinsxio/jenkins-filerunner:0.1.0
+FROM jenkinsxio/jenkins-filerunner:0.1.1
 
 RUN apt-get update && apt-get install -y \
   wget \
