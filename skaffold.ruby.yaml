@@ -1,0 +1,24 @@
+---
+apiVersion: skaffold/v1beta3
+kind: Config
+build:
+  artifacts:
+  - image: "docker.io/jenkinsxio/jenkins-ruby"
+    context: .
+    docker: 
+      dockerfile: Dockerfile.ruby
+  tagPolicy:
+    envTemplate:
+      template: '{{.IMAGE_NAME}}:{{.TAG}}'
+  kaniko:
+    buildContext:
+      gcsBucket: jenkinsx-dev-skaffold-kaniko
+    pullSecretName: kaniko-secret
+    namespace: jx
+    dockerConfig:
+      secretName: jenkins-docker-cfg
+    flags:
+    - --single-snapshot
+deploy:
+  kubectl: {}
+
