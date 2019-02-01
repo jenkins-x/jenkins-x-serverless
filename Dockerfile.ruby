@@ -1,4 +1,4 @@
-FROM JENKINS_BASE_TAG
+FROM jenkinsxio/jenkins-base:256.0.85
 
 RUN apt-get update && apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev libxml2-dev libxslt-dev
 RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv
