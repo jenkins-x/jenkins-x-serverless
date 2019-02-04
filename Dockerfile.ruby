@@ -1,6 +1,6 @@
 FROM JENKINS_BASE_TAG
 
-RUN apt-get update && apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev libxml2-dev libxslt-dev
+RUN apt-get install -y bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev libxml2-dev libxslt-dev
 RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 RUN echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc 
 RUN echo 'eval "$(rbenv init -)"' >> ~/.bashrc
