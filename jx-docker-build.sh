@@ -48,7 +48,7 @@ export TAG
 
 echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 head -n 1 Dockerfile.base
-skaffold build -f skaffold.base.yaml
+retry 3 skaffold build -f skaffold.base.yaml
 echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"
 
 declare -a arr=("maven" "javascript" "go" "gradle" "python" "scala" "ruby" "rust" "csharp" "jenkins" "cwp" "elixir" "maven-java11")
@@ -60,7 +60,7 @@ do
 	sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-base:${TAG}/" Dockerfile.${i}
 	rm Dockerfile.$i.bak
 	head -n 1 Dockerfile.${i}
-    skaffold build -f skaffold.${i}.yaml
+    retry 3 skaffold build -f skaffold.${i}.yaml
 done
 
 if [ "release" == "${RELEASE}" ]; then
