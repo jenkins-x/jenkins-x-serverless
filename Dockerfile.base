@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
   make \
   bzip2 \
   zip \
-  unzip
+  unzip \
+  autoconf
 
 RUN pip install --upgrade pip anchorecli
 
