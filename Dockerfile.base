@@ -69,6 +69,11 @@ RUN curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v${SKAFFO
   chmod +x skaffold && \
   mv skaffold /usr/bin
 
+# container structure test
+RUN curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && \
+  chmod +x container-structure-test-linux-amd64 && \
+  mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
+
 # updatebot
 ENV UPDATEBOT_VERSION 1.1.31
 RUN curl -o ./updatebot -Lf https://oss.sonatype.org/content/groups/public/io/jenkins/updatebot/updatebot/${UPDATEBOT_VERSION}/updatebot-${UPDATEBOT_VERSION}.jar && \
