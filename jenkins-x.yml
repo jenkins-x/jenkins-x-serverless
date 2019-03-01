@@ -13,7 +13,7 @@ pipelineConfig:
                 command: /kaniko/executor
                 args:
                   - --dockerfile=Dockerfile.base
-                  - --destination=docker.io/warrenbailey/jenkins-base:${inputs.params.version}
+                  - --destination=docker.io/jenkinsxio/jenkins-base:${inputs.params.version}
                   - --context=/workspace/workspace
                   - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                   - --cache=true
@@ -25,7 +25,7 @@ pipelineConfig:
                   image: centos:7
                 command: ./replace-versions.sh
                 args:
-                  - warrenbailey
+                  - jenkinsxio
                   - ${inputs.params.version}
           - name: build-all
             parallel:
@@ -36,7 +36,7 @@ pipelineConfig:
                     command: /kaniko/executor
                     args:
                       - --dockerfile=Dockerfile.csharp
-                      - --destination=docker.io/warrenbailey/jenkins-csharp:${inputs.params.version}
+                      - --destination=docker.io/jenkinsxio/jenkins-csharp:${inputs.params.version}
                       - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
@@ -49,7 +49,7 @@ pipelineConfig:
                     command: /kaniko/executor
                     args:
                       - --dockerfile=Dockerfile.cwp
-                      - --destination=docker.io/warrenbailey/jenkins-cwp:${inputs.params.version}
+                      - --destination=docker.io/jenkinsxio/jenkins-cwp:${inputs.params.version}
                       - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
@@ -62,7 +62,7 @@ pipelineConfig:
                     command: /kaniko/executor
                     args:
                       - --dockerfile=Dockerfile.elixir
-                      - --destination=docker.io/warrenbailey/jenkins-elixir:${inputs.params.version}
+                      - --destination=docker.io/jenkinsxio/jenkins-elixir:${inputs.params.version}
                       - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
@@ -75,7 +75,7 @@ pipelineConfig:
                     command: /kaniko/executor
                     args:
                       - --dockerfile=Dockerfile.go
-                      - --destination=docker.io/warrenbailey/jenkins-go:${inputs.params.version}
+                      - --destination=docker.io/jenkinsxio/jenkins-go:${inputs.params.version}
                       - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
@@ -88,7 +88,7 @@ pipelineConfig:
                     command: /kaniko/executor
                     args:
                       - --dockerfile=Dockerfile.gradle
-                      - --destination=docker.io/warrenbailey/jenkins-gradle:${inputs.params.version}
+                      - --destination=docker.io/jenkinsxio/jenkins-gradle:${inputs.params.version}
                       - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
@@ -101,7 +101,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.javascript
-                        - --destination=docker.io/warrenbailey/jenkins-javascript:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-javascript:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
@@ -114,7 +114,7 @@ pipelineConfig:
                     command: /kaniko/executor
                     args:
                       - --dockerfile=Dockerfile.jenkins
-                      - --destination=docker.io/warrenbailey/jenkins-jenkins:${inputs.params.version}
+                      - --destination=docker.io/jenkinsxio/jenkins-jenkins:${inputs.params.version}
                       - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
@@ -127,7 +127,7 @@ pipelineConfig:
                     command: /kaniko/executor
                     args:
                       - --dockerfile=Dockerfile.maven
-                      - --destination=docker.io/warrenbailey/jenkins-maven:${inputs.params.version}
+                      - --destination=docker.io/jenkinsxio/jenkins-maven:${inputs.params.version}
                       - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
@@ -140,7 +140,7 @@ pipelineConfig:
                     command: /kaniko/executor
                     args:
                       - --dockerfile=Dockerfile.maven-java11
-                      - --destination=docker.io/warrenbailey/jenkins-maven-java11:${inputs.params.version}
+                      - --destination=docker.io/jenkinsxio/jenkins-maven-java11:${inputs.params.version}
                       - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
@@ -153,7 +153,7 @@ pipelineConfig:
                     command: /kaniko/executor
                     args:
                       - --dockerfile=Dockerfile.python
-                      - --destination=docker.io/warrenbailey/jenkins-python:${inputs.params.version}
+                      - --destination=docker.io/jenkinsxio/jenkins-python:${inputs.params.version}
                       - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
@@ -166,7 +166,7 @@ pipelineConfig:
                     command: /kaniko/executor
                     args:
                       - --dockerfile=Dockerfile.ruby
-                      - --destination=docker.io/warrenbailey/jenkins-ruby:${inputs.params.version}
+                      - --destination=docker.io/jenkinsxio/jenkins-ruby:${inputs.params.version}
                       - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
@@ -179,7 +179,7 @@ pipelineConfig:
                     command: /kaniko/executor
                     args:
                       - --dockerfile=Dockerfile.rust
-                      - --destination=docker.io/warrenbailey/jenkins-rust:${inputs.params.version}
+                      - --destination=docker.io/jenkinsxio/jenkins-rust:${inputs.params.version}
                       - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
@@ -192,7 +192,7 @@ pipelineConfig:
                     command: /kaniko/executor
                     args:
                       - --dockerfile=Dockerfile.scala
-                      - --destination=docker.io/warrenbailey/jenkins-scala:${inputs.params.version}
+                      - --destination=docker.io/jenkinsxio/jenkins-scala:${inputs.params.version}
                       - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
@@ -210,7 +210,7 @@ pipelineConfig:
                 command: /kaniko/executor
                 args:
                   - --dockerfile=Dockerfile.base
-                  - --destination=docker.io/warrenbailey/jenkins-base:${inputs.params.version}
+                  - --destination=docker.io/jenkinsxio/jenkins-base:${inputs.params.version}
                   - --context=/workspace/workspace
                   - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                   - --cache=true
@@ -222,7 +222,7 @@ pipelineConfig:
                   image: centos:7
                 command: ./replace-versions.sh
                 args:
-                  - warrenbailey
+                  - jenkinsxio
                   - ${inputs.params.version}
           - name: build-all
             parallel:
@@ -233,7 +233,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.csharp
-                        - --destination=docker.io/warrenbailey/jenkins-csharp:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-csharp:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
@@ -246,7 +246,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.cwp
-                        - --destination=docker.io/warrenbailey/jenkins-cwp:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-cwp:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
@@ -259,7 +259,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.elixir
-                        - --destination=docker.io/warrenbailey/jenkins-elixir:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-elixir:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
@@ -272,7 +272,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.go
-                        - --destination=docker.io/warrenbailey/jenkins-go:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-go:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
@@ -285,7 +285,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.gradle
-                        - --destination=docker.io/warrenbailey/jenkins-gradle:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-gradle:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
@@ -298,7 +298,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.javascript
-                        - --destination=docker.io/warrenbailey/jenkins-javascript:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-javascript:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
@@ -311,7 +311,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.jenkins
-                        - --destination=docker.io/warrenbailey/jenkins-jenkins:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-jenkins:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
@@ -324,7 +324,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.maven
-                        - --destination=docker.io/warrenbailey/jenkins-maven:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-maven:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
@@ -337,7 +337,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.maven-java11
-                        - --destination=docker.io/warrenbailey/jenkins-maven-java11:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-maven-java11:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
@@ -350,7 +350,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.python
-                        - --destination=docker.io/warrenbailey/jenkins-python:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-python:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
@@ -363,7 +363,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.ruby
-                        - --destination=docker.io/warrenbailey/jenkins-ruby:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-ruby:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
@@ -376,7 +376,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.rust
-                        - --destination=docker.io/warrenbailey/jenkins-rust:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-rust:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
@@ -389,7 +389,7 @@ pipelineConfig:
                       command: /kaniko/executor
                       args:
                         - --dockerfile=Dockerfile.scala
-                        - --destination=docker.io/warrenbailey/jenkins-scala:${inputs.params.version}
+                        - --destination=docker.io/jenkinsxio/jenkins-scala:${inputs.params.version}
                         - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
