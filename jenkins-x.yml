@@ -7,6 +7,15 @@ pipelineConfig:
           image: rawlingsj/executor:dev40
         stages:
         - name: release
+          environment:
+          - name: GIT_COMMITTER_EMAIL
+            value: jenkins-x@googlegroups.com
+          - name: GIT_COMMITTER_NAME
+            value: jenkins-x-bot
+          - name: GIT_AUTHOR_EMAIL
+            value: jenkins-x@googlegroups.com
+          - name: GIT_AUTHOR_NAME
+            value: jenkins-x-bot
           steps:
           - name: warm-cache
             image: gcr.io/kaniko-project/warmer
@@ -145,8 +154,7 @@ pipelineConfig:
               - --cache-dir=/workspace
               - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
 
-          
-          - image: jenkinsxio/builder-maven
+          - image: jenkinsxio/builder-base:0.1.274
             command: updatebot
             args:
               - push-regex
