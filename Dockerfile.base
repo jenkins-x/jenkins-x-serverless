@@ -114,7 +114,3 @@ RUN mkdir goreleaser && \
     mv goreleaser/goreleaser /usr/bin/ && \
     rm -rf goreleaser
 
-# jx
-ENV JX_VERSION 1.3.944
-RUN curl -Lf https://github.com/jenkins-x/jx/releases/download/v${JX_VERSION}/jx-linux-amd64.tar.gz | tar xzv && \
-  mv jx /usr/bin/

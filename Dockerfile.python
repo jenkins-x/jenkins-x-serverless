@@ -1,6 +1,11 @@
-FROM JENKINS_BASE_TAG
+FROM jenkinsxio/jenkins-base:v256.0.121
 
 RUN apt-get update && apt-get -y upgrade
 #RUN yum install -y python36u python36u-libs python36u-devel python36u-pip
 
 CMD ["python3", "--version"]
+
+# jx
+ENV JX_VERSION 1.3.944
+RUN curl -Lf https://github.com/jenkins-x/jx/releases/download/v${JX_VERSION}/jx-linux-amd64.tar.gz | tar xzv && \
+  mv jx /usr/bin/

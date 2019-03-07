@@ -1,4 +1,4 @@
-FROM JENKINS_BASE_TAG
+FROM jenkinsxio/jenkins-base:v256.0.121
 
 RUN wget https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustup-init && \
   chmod +x rustup-init &&\
@@ -7,3 +7,8 @@ RUN wget https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustu
 
 ENV PATH=$PATH:/root/.cargo/bin
 RUN rustup override set nightly
+
+# jx
+ENV JX_VERSION 1.3.944
+RUN curl -Lf https://github.com/jenkins-x/jx/releases/download/v${JX_VERSION}/jx-linux-amd64.tar.gz | tar xzv && \
+  mv jx /usr/bin/

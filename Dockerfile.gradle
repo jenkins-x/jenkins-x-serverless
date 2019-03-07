@@ -1,4 +1,4 @@
-FROM JENKINS_BASE_TAG
+FROM jenkinsxio/jenkins-base:v256.0.121
 
 CMD ["gradle"]
 
@@ -48,3 +48,8 @@ RUN yes | sdkmanager \
 #RUN set -o errexit -o nounset \
 #	&& echo "Testing Gradle installation" \
 #	&& gradle --version
+
+# jx
+ENV JX_VERSION 1.3.944
+RUN curl -Lf https://github.com/jenkins-x/jx/releases/download/v${JX_VERSION}/jx-linux-amd64.tar.gz | tar xzv && \
+  mv jx /usr/bin/

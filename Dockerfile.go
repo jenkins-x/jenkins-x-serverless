@@ -1,4 +1,4 @@
-FROM JENKINS_BASE_TAG
+FROM jenkinsxio/jenkins-base:v256.0.121
 
 RUN apt-get install -y chromedriver chromium pkg-config g++ zlib1g-dev python
 RUN echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
@@ -60,3 +60,8 @@ RUN go get github.com/golang/protobuf/proto && \
   go get -u github.com/micro/micro && \
   mv $GOPATH/bin/* /usr/local/ && \ 
   cp -r $GOPATH/src/* /usr/local/go/src    
+
+# jx
+ENV JX_VERSION 1.3.944
+RUN curl -Lf https://github.com/jenkins-x/jx/releases/download/v${JX_VERSION}/jx-linux-amd64.tar.gz | tar xzv && \
+  mv jx /usr/bin/
