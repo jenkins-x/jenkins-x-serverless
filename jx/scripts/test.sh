@@ -3,12 +3,24 @@
 set -e
 set -u
 set -o pipefail
-    
-echo "PREVIEW_VERSION=$PREVIEW_VERSION"
+
+PREVIEW_NAMESPACE_UPPER="jenkins-x-serverless-$BRANCH_NAME-$BUILD_ID"
+PREVIEW_NAMESPACE=${PREVIEW_NAMESPACE_UPPER,,}
+HELM_RELEASE=$PREVIEW_NAMESPACE
+
+echo "VERSION=$VERSION"
 echo "PREVIEW_NAMESPACE=$PREVIEW_NAMESPACE"
 echo "HELM_RELEASE=$HELM_RELEASE"
 
 pushd jenkins-x-serverless
+
+    gcloud auth activate-service-account --key-file $GKE_SA
+    gcloud container clusters get-credentials anthorse --zone europe-west1-b --project jenkinsx-dev
+
+    sed -i.bak -e "s/tag: .*/tag: ${VERSION}/" values.yaml
+    rm values.yaml.bak
+    cat values.yaml
+
     make build  
 
     if [[ $(kubectl get namespace ${PREVIEW_NAMESPACE} | grep -c "${PREVIEW_NAMESPACE}") -eq 1 ]]; then
