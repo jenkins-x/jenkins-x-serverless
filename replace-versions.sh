@@ -30,6 +30,6 @@ do
 	rm Dockerfile.$i.bak
 done
 
-# if [ "release" == "${RELEASE}" ]; then
-#   updatebot push-regex -r "jenkinsTag: (.*)" -v ${TAG} jx-build-templates/values.yaml
-# fi
+if [ "release" == "${RELEASE}" ]; then
+  updatebot push-regex -r "jenkinsTag: (.*)" -v ${TAG} jx-build-templates/values.yaml
+fi
