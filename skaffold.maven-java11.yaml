@@ -3,7 +3,7 @@ apiVersion: skaffold/v1beta3
 kind: Config
 build:
   artifacts:
-  - image: "docker.io/jenkinsxio/jenkins-maven-java11"
+  - image: "gcr.io/jenkinsxio/jenkins-maven-java11"
     context: .
     docker: 
       dockerfile: Dockerfile.maven-java11

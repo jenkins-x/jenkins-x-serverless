@@ -3,7 +3,7 @@ apiVersion: skaffold/v1beta3
 kind: Config
 build:
   artifacts:
-  - image: "docker.io/jenkinsxio/jenkins-scala"
+  - image: "gcr.io/jenkinsxio/jenkins-scala"
     context: .
     docker: 
       dockerfile: Dockerfile.scala
