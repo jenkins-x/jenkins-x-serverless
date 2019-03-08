@@ -3,7 +3,7 @@ apiVersion: skaffold/v1beta3
 kind: Config
 build:
   artifacts:
-  - image: "docker.io/jenkinsxio/jenkins-go"
+  - image: "gcr.io/jenkinsxio/jenkins-go"
     context: .
     docker: 
       dockerfile: Dockerfile.go

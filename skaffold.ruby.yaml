@@ -3,7 +3,7 @@ apiVersion: skaffold/v1beta3
 kind: Config
 build:
   artifacts:
-  - image: "docker.io/jenkinsxio/jenkins-ruby"
+  - image: "gcr.io/jenkinsxio/jenkins-ruby"
     context: .
     docker: 
       dockerfile: Dockerfile.ruby

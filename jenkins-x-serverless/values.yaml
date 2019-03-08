@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 serverless:
   image:
-    repository: jenkinsxio/jenkins-maven
+    repository: gcr.io/jenkinsxio/jenkins-maven
     tag: 0.1.92
   imagePullPolicy: Always
   terminationGracePeriodSeconds: 30

@@ -3,7 +3,7 @@ apiVersion: skaffold/v1beta3
 kind: Config
 build:
   artifacts:
-  - image: "docker.io/jenkinsxio/jenkins-csharp"
+  - image: "gcr.io/jenkinsxio/jenkins-csharp"
     context: .
     docker: 
       dockerfile: Dockerfile.csharp
