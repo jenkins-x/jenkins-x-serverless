@@ -3,7 +3,7 @@ apiVersion: skaffold/v1beta3
 kind: Config
 build:
   artifacts:
-  - image: "docker.io/jenkinsxio/jenkins-elixir"
+  - image: "gcr.io/jenkinsxio/jenkins-elixir"
     context: .
     docker: 
       dockerfile: Dockerfile.elixir

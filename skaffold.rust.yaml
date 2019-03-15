@@ -3,7 +3,7 @@ apiVersion: skaffold/v1beta3
 kind: Config
 build:
   artifacts:
-  - image: "docker.io/jenkinsxio/jenkins-rust"
+  - image: "gcr.io/jenkinsxio/jenkins-rust"
     context: .
     docker: 
       dockerfile: Dockerfile.rust

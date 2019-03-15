@@ -3,7 +3,7 @@ apiVersion: skaffold/v1beta3
 kind: Config
 build:
   artifacts:
-  - image: "docker.io/jenkinsxio/jenkins-cwp"
+  - image: "gcr.io/jenkinsxio/jenkins-cwp"
     context: .
     docker: 
       dockerfile: Dockerfile.cwp

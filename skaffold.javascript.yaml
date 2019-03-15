@@ -3,7 +3,7 @@ apiVersion: skaffold/v1beta3
 kind: Config
 build:
   artifacts:
-  - image: "docker.io/jenkinsxio/jenkins-javascript"
+  - image: "gcr.io/jenkinsxio/jenkins-javascript"
     context: .
     docker: 
       dockerfile: Dockerfile.javascript

@@ -43,7 +43,7 @@ ORG=$2
 RELEASE=$3
 TAG=$TAG_NUM
 
-export DOCKER_REGISTRY=docker.io
+export DOCKER_REGISTRY=gcr.io
 export TAG
 
 echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-base:${TAG}"

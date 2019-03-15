@@ -1,2 +1,2 @@
-FROM jenkinsxio/jenkins-filerunner:0.1.13
+FROM jenkinsxio/jenkins-filerunner:0.1.14
 
