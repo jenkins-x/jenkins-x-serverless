@@ -75,7 +75,7 @@ RUN curl -LO https://storage.googleapis.com/container-structure-test/latest/cont
   mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
 
 # updatebot
-ENV UPDATEBOT_VERSION 1.1.34
+ENV UPDATEBOT_VERSION 1.1.38
 RUN curl -o ./updatebot -Lf https://oss.sonatype.org/content/groups/public/io/jenkins/updatebot/updatebot/${UPDATEBOT_VERSION}/updatebot-${UPDATEBOT_VERSION}.jar && \
   chmod +x updatebot && \
   cp updatebot /usr/bin/ && \
