@@ -1,2 +1,116 @@
-FROM jenkinsxio/jenkins-filerunner:0.1.14
+FROM jenkinsxio/jenkins-filerunner:0.1.17
+
+RUN apt-get update && apt-get install -y \
+  wget \
+  bzip2 \
+  python-pip \
+  postgresql-client \
+  build-essential \
+  make \
+  bzip2 \
+  zip \
+  unzip \
+  autoconf
+
+RUN pip install --upgrade pip anchorecli
+
+# USER jenkins
+WORKDIR /home/jenkins
+
+# Docker
+ENV DOCKER_VERSION 17.12.0
+RUN curl -f https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_VERSION-ce.tgz | tar xvz && \
+  mv docker/docker /usr/bin/ && \
+  rm -rf docker
+
+# helm
+ENV HELM_VERSION 2.12.2
+RUN curl -f https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz  | tar xzv && \
+  mv linux-amd64/helm /usr/bin/ && \
+  rm -rf linux-amd64
+
+# helm3
+# RUN curl -Lf https://storage.googleapis.com/kubernetes-helm/helm-dev-v3-linux-amd64.tar.gz | tar xzv && \
+#  mv linux-amd64/helm /usr/bin/helm3 && \
+#  rm -rf linux-amd64
+
+# lets use a patched release until this PR is merged or helm3 works again ;)
+# https://github.com/kubernetes/helm/pull/4257#issuecomment-399491118
+
+RUN curl -Lf https://github.com/jstrachan/helm/releases/download/untagged-93375777c6644a452a64/helm-linux-amd64.tar.gz -o helm3.tgz && \
+  tar xf helm3.tgz && \
+  mv helm /usr/bin/helm3 && \
+  rm helm3.tgz
+
+# gcloud
+ENV GCLOUD_VERSION 222.0.0
+RUN curl -Lf https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_VERSION}-linux-x86_64.tar.gz | tar xzv && \
+  mv google-cloud-sdk /usr/bin/
+ENV PATH=$PATH:/usr/bin/google-cloud-sdk/bin
+
+# install the docker credential plugin
+RUN gcloud components install docker-credential-gcr
+
+# jx-release-version
+ENV JX_RELEASE_VERSION 1.0.10
+RUN curl -o ./jx-release-version -Lf https://github.com/jenkins-x/jx-release-version/releases/download/v${JX_RELEASE_VERSION}/jx-release-version-linux && \
+  mv jx-release-version /usr/bin/ && \
+  chmod +x /usr/bin/jx-release-version
+
+# exposecontroller
+ENV EXPOSECONTROLLER_VERSION 2.3.34
+RUN curl -Lf https://github.com/fabric8io/exposecontroller/releases/download/v$EXPOSECONTROLLER_VERSION/exposecontroller-linux-amd64 > exposecontroller && \
+  chmod +x exposecontroller && \
+  mv exposecontroller /usr/bin/
+
+# skaffold
+ENV SKAFFOLD_VERSION 0.24.0
+RUN curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v${SKAFFOLD_VERSION}/skaffold-linux-amd64 && \
+  chmod +x skaffold && \
+  mv skaffold /usr/bin
+
+# container structure test
+RUN curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && \
+  chmod +x container-structure-test-linux-amd64 && \
+  mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
+
+# updatebot
+ENV UPDATEBOT_VERSION 1.1.34
+RUN curl -o ./updatebot -Lf https://oss.sonatype.org/content/groups/public/io/jenkins/updatebot/updatebot/${UPDATEBOT_VERSION}/updatebot-${UPDATEBOT_VERSION}.jar && \
+  chmod +x updatebot && \
+  cp updatebot /usr/bin/ && \
+  rm -rf updatebot
+
+# draft
+RUN curl -f https://azuredraft.blob.core.windows.net/draft/draft-canary-linux-amd64.tar.gz  | tar xzv && \
+  mv linux-amd64/draft /usr/bin/ && \
+  rm -rf linux-amd64
+
+# kubectl
+RUN curl -LOf https://storage.googleapis.com/kubernetes-release/release/$(curl -sf https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
+  chmod +x kubectl && \
+  mv kubectl /usr/bin/
+
+# aws ecr docker credential helper.
+# Currently using https://github.com/estahn/amazon-ecr-credential-helper as there are no releases yet in the main repo
+# Main repo issues tracking at https://github.com/awslabs/amazon-ecr-credential-helper/issues/80
+RUN mkdir ecr && \
+    curl -Lf https://github.com/estahn/amazon-ecr-credential-helper/releases/download/v0.1.1/amazon-ecr-credential-helper_0.1.1_linux_amd64.tar.gz | tar -xzv -C ./ecr/ && \
+    mv ecr/docker-credential-ecr-login /usr/bin/ && \
+    rm -rf ecr
+
+# ACR docker credential helper
+#??https://github.com/Azure/acr-docker-credential-helper
+RUN mkdir acr && \
+    curl -Lf https://aadacr.blob.core.windows.net/acr-docker-credential-helper/docker-credential-acr-linux-amd64.tar.gz | tar -xzv -C ./acr/ && \
+    mv acr/docker-credential-acr-linux /usr/bin/ && \
+    rm -rf acr
+
+# goreleaser
+ENV GORELEASER_VERSION 0.93.2
+# See https://goreleaser.com/
+RUN mkdir goreleaser && \
+    curl -Lf https://github.com/goreleaser/goreleaser/releases/download/v${GORELEASER_VERSION}/goreleaser_Linux_x86_64.tar.gz | tar -xzv -C ./goreleaser/ && \
+    mv goreleaser/goreleaser /usr/bin/ && \
+    rm -rf goreleaser
 
