@@ -34,8 +34,17 @@ pipelineConfig:
             image: gcr.io/kaniko-project/warmer
             args:
               - --cache-dir=/workspace
-              - --image=jenkinsxio/jenkins-base:256.0.121
+              - --image=jenkinsxio/jenkins-filerunner:0.1.18
             command: /kaniko/warmer
+          - image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
+            command: /kaniko/executor
+            args:
+              - --dockerfile=Dockerfile.jx
+              - --destination=gcr.io/jenkinsxio/jenkins-jx:${inputs.params.version}
+              - --context=/workspace/workspace
+              - --cache-repo=gcr.io/jenkinsxio/cache
+              - --cache=true
+              - --cache-dir=/workspace
           - image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
             command: /kaniko/executor
             args:
@@ -192,9 +201,17 @@ pipelineConfig:
             image: gcr.io/kaniko-project/warmer
             args:
               - --cache-dir=/workspace
-              - --image=jenkinsxio/jenkins-base:256.0.121
+              - --image=jenkinsxio/jenkins-filerunner:0.1.18
             command: /kaniko/warmer
-
+          - image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
+            command: /kaniko/executor
+            args:
+              - --dockerfile=Dockerfile.jx
+              - --destination=gcr.io/jenkinsxio/jenkins-jx:${inputs.params.version}
+              - --context=/workspace/workspace
+              - --cache-repo=gcr.io/jenkinsxio/cache
+              - --cache=true
+              - --cache-dir=/workspace
           - image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
             command: /kaniko/executor
             args:

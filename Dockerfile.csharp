@@ -1,4 +1,4 @@
-FROM jenkinsxio/jenkins-base:256.0.121
+FROM jenkinsxio/jenkins-filerunner:0.1.18
 
 RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg && \
     mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/ && \

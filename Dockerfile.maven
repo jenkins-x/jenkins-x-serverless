@@ -1,4 +1,4 @@
-FROM jenkinsxio/jenkins-base:256.0.121
+FROM jenkinsxio/jenkins-filerunner:0.1.18
 
 # Maven
 ENV MAVEN_VERSION 3.5.3
