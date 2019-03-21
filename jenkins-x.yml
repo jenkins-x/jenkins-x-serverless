@@ -30,17 +30,17 @@ pipelineConfig:
               - jenkins-x-infra-bf55d322c9bb.json
               - -f
               - /builder/home/kaniko-secret.json
-#          - name: warm-cache
-#            image: gcr.io/kaniko-project/warmer
-#            args:
-#              - --cache-dir=/workspace
-#              - --image=jenkinsxio/jenkins-base:256.0.121
-#            command: /kaniko/warmer
+          - name: warm-cache
+            image: gcr.io/kaniko-project/warmer
+            args:
+              - --cache-dir=/workspace
+              - --image=jenkinsxio/jenkins-filerunner:0.1.18
+            command: /kaniko/warmer
           - image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
             command: /kaniko/executor
             args:
-              - --dockerfile=Dockerfile.base
-              - --destination=gcr.io/jenkinsxio/jenkins-base:${inputs.params.version}
+              - --dockerfile=Dockerfile.jx
+              - --destination=gcr.io/jenkinsxio/jenkins-jx:${inputs.params.version}
               - --context=/workspace/workspace
               - --cache-repo=gcr.io/jenkinsxio/cache
               - --cache=true
@@ -197,17 +197,17 @@ pipelineConfig:
               - -f
               - /builder/home/kaniko-secret.json
 
-#          - name: warm-cache
-#            image: gcr.io/kaniko-project/warmer
-#            args:
-#              - --cache-dir=/workspace
-#              - --image=jenkinsxio/jenkins-base:256.0.121
-#            command: /kaniko/warmer
+          - name: warm-cache
+            image: gcr.io/kaniko-project/warmer
+            args:
+              - --cache-dir=/workspace
+              - --image=jenkinsxio/jenkins-filerunner:0.1.18
+            command: /kaniko/warmer
           - image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
             command: /kaniko/executor
             args:
-              - --dockerfile=Dockerfile.base
-              - --destination=gcr.io/jenkinsxio/jenkins-base:${inputs.params.version}
+              - --dockerfile=Dockerfile.jx
+              - --destination=gcr.io/jenkinsxio/jenkins-jx:${inputs.params.version}
               - --context=/workspace/workspace
               - --cache-repo=gcr.io/jenkinsxio/cache
               - --cache=true
