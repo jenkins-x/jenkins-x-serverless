@@ -1,4 +1,4 @@
-FROM jenkinsxio/jenkins-filerunner:0.1.20
+FROM jenkinsxio/jenkins-filerunner:0.1.21
 
 ENV SCALA_VERSION 2.12.5
 ENV SBT_VERSION 1.1.2
