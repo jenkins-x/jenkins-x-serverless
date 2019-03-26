@@ -1,4 +1,4 @@
-FROM jenkinsxio/jenkins-filerunner:0.1.24
+FROM jenkinsxio/jenkins-filerunner:0.1.26
 
 RUN apt-get install -y chromedriver chromium pkg-config g++ zlib1g-dev python
 RUN echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
