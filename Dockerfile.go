@@ -59,6 +59,6 @@ RUN go get github.com/golang/protobuf/proto && \
   cp -r $GOPATH/src/* /usr/local/go/src    
 
 # jx
-ENV JX_VERSION 1.3.1014
+ENV JX_VERSION 1.3.1015
 RUN curl -Lf https://github.com/jenkins-x/jx/releases/download/v${JX_VERSION}/jx-linux-amd64.tar.gz | tar xzv && \
   mv jx /usr/bin/
