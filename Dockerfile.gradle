@@ -1,7 +1,5 @@
 FROM jenkinsxio/jenkins-filerunner:0.1.24
 
-CMD ["gradle"]
-
 ENV GRADLE_HOME /opt/gradle
 ENV GRADLE_VERSION 4.6
 
