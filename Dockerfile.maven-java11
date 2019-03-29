@@ -1,4 +1,4 @@
-FROM jenkinsxio/jenkins-filerunner:0.1.26
+FROM jenkinsxio/jenkins-filerunner:0.1.27
 
 RUN curl https://download.java.net/java/ga/jdk11/openjdk-11_linux-x64_bin.tar.gz | tar -xz
 RUN mv /home/jenkins/jdk-11 /usr/java
