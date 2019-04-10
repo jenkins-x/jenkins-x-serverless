@@ -15,7 +15,7 @@ echo "HELM_RELEASE=$HELM_RELEASE"
 pushd jenkins-x-serverless
 
     gcloud auth activate-service-account --key-file $GKE_SA
-    gcloud container clusters get-credentials anthorse --zone europe-west1-b --project jenkinsx-dev
+    gcloud container clusters get-credentials jx-bdd-tests --zone europe-west1-c --project jenkins-x-infra
 
     sed -i.bak -e "s/tag: .*/tag: ${VERSION}/" values.yaml
     rm values.yaml.bak
