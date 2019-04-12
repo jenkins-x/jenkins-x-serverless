@@ -1,4 +1,4 @@
-FROM jenkinsxio/jenkins-filerunner:0.1.33
+FROM jenkinsxio/jenkins-filerunner:0.1.35
 
 # jx
 ENV JX_VERSION 1.3.1108
