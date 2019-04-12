@@ -1,6 +1,6 @@
 FROM jenkinsxio/jenkins-filerunner:0.1.35
 
 # jx
-ENV JX_VERSION 1.3.1110
+ENV JX_VERSION 1.3.1111
 RUN curl -Lf https://github.com/jenkins-x/jx/releases/download/v${JX_VERSION}/jx-linux-amd64.tar.gz | tar xzv && \
   mv jx /usr/bin/
