@@ -1,4 +1,4 @@
-FROM jenkinsxio/jenkins-filerunner:0.1.35
+FROM jenkinsxio/jenkins-filerunner:0.1.39
 
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
 	apt-get install -y nodejs chromedriver chromium xvfb
