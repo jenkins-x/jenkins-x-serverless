@@ -1,4 +1,4 @@
-FROM jenkinsxio/jenkins-filerunner:0.1.35
+FROM jenkinsxio/jenkins-filerunner:0.1.39
 
 RUN apt-get install -y bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev libxml2-dev libxslt-dev
 RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv
