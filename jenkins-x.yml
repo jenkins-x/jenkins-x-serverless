@@ -164,14 +164,7 @@ pipelineConfig:
               - --cache-dir=/workspace
 
           - image: jenkinsxio/builder-base:0.1.274
-            command: updatebot
-            args:
-              - push-regex
-              - -r
-              - "jenkinsTag: (.*)"
-              - -v
-              - ${inputs.params.version}
-              - jx-build-templates/values.yaml
+            command: ./jx/scripts/updatebot.sh
 
     pullRequest:
       pipeline:
