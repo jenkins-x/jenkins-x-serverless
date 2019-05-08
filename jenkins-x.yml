@@ -168,7 +168,7 @@ pipelineConfig:
             args:
               - push-regex
               - -r
-              - "jenkinsTag: (.*)"
+              - "jenkinsTag:\s(.*)"
               - -v
               - ${inputs.params.version}
               - jx-build-templates/values.yaml
