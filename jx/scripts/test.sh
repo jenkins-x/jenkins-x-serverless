@@ -4,7 +4,15 @@ set -e
 set -u
 set -o pipefail
 
-PREVIEW_NAMESPACE_UPPER="jenkins-x-serverless-$BRANCH_NAME-$BUILD_ID"
+BUILD_NO=""
+if [ -z "$BUILD_ID" ]
+then
+      BUILD_NO=$BUILD_NUMBER
+else
+      BUILD_NO=$BUILD_ID
+fi
+
+PREVIEW_NAMESPACE_UPPER="jenkins-x-serverless-$BRANCH_NAME-$BUILD_NO"
 PREVIEW_NAMESPACE=${PREVIEW_NAMESPACE_UPPER,,}
 HELM_RELEASE=$PREVIEW_NAMESPACE
 
