@@ -1,0 +1,78 @@
+Step: build-step-credential-initializer-755tq:
+
+{"level":"warn","ts":1557585844.8700802,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/backport-container-name-fix\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1557585844.8706017,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Step: build-step-git-source-jenkins-x-charts-**-build-templ-zlt9x:
+
+{"level":"warn","ts":1557585845.311152,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/backport-container-name-fix\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1557585846.7224576,"logger":"fallback-logger","caller":"git-init/main.go:99","msg":"Successfully cloned \"https://github.com/jenkins-x-charts/**-build-templates\" @ \"8e4abd738be62a143df99890bf23ed0e1cf0a8d7\" in path \"/workspace/source\""}
+Step: build-step-place-tools:
+
+Step: build-step-git-merge:
+
+Warning failed to load version: failed to parse version -dev+548a93a-dev+981c48321: No Major.Minor.Patch elements found
+Using SHAs from PULL_REFS=master:bd9909a20ff7174cff1024882999774f1c47cbcf,617:8e4abd738be62a143df99890bf23ed0e1cf0a8d7
+ran git fetch --unshallow origin 8e4abd738be62a143df99890bf23ed0e1cf0a8d7: bd9909a20ff7174cff1024882999774f1c47cbcf: in 
+ran git checkout master in 
+ran git reset --hard bd9909a20ff7174cff1024882999774f1c47cbcf in 
+ran clean --force -d . in 
+ran git merge 8e4abd738be62a143df99890bf23ed0e1cf0a8d7 in 
+Step: build-step-build-build:
+
+cat: /builder/home/basic-auth-user.json: No such file or directory
+cat: /builder/home/basic-auth-pass.json: No such file or directory
+rm -rf **-build-templates/charts
+rm -rf **-build-templates/**-build-templates*.tgz
+rm -rf **-build-templates/requirements.lock
+helm init --client-only
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+Happy Helming!
+helm repo add jenkinsxio https://storage.googleapis.com/chartmuseum.jenkins-x.io
+"jenkinsxio" has been added to your repositories
+helm dependency build **-build-templates
+No requirements found in **-build-templates/charts.
+helm lint **-build-templates
+==> Linting **-build-templates
+Lint OK
+
+1 chart(s) linted, no failures
+./**/scripts/test.sh
+gcr.io/jenkinsxio/builder-**:0.1.448
+gcr.io/jenkinsxio/builder-**:0.1.448
+gcr.io/jenkinsxio/jenkins-**:256.0.261
+gcr.io/jenkinsxio/jenkins-csharp:256.0.261
+gcr.io/jenkinsxio/jenkins-cwp:256.0.261
+gcr.io/jenkinsxio/jenkins-elixir:256.0.261
+gcr.io/jenkinsxio/jenkins-go:256.0.261
+gcr.io/jenkinsxio/jenkins-go:256.0.261
+gcr.io/jenkinsxio/jenkins-go:256.0.261
+gcr.io/jenkinsxio/jenkins-go:256.0.261
+gcr.io/jenkinsxio/jenkins-go:256.0.261
+gcr.io/jenkinsxio/jenkins-gradle:256.0.261
+gcr.io/jenkinsxio/jenkins-javascript:256.0.261
+gcr.io/jenkinsxio/jenkins-jenkins:256.0.261
+gcr.io/jenkinsxio/jenkins-maven:256.0.261
+gcr.io/jenkinsxio/jenkins-python:256.0.261
+gcr.io/jenkinsxio/jenkins-ruby:256.0.261
+gcr.io/jenkinsxio/jenkins-rust:256.0.261
+gcr.io/jenkinsxio/jenkins-scala:256.0.261
+gcr.io/jenkinsxio/jenkins-**:256.0.261
+gcr.io/jenkinsxio/builder-**:0.1.448
+gcr.io/jenkinsxio/builder-**:0.1.448
+gcr.io/jenkinsxio/builder-**:0.1.448
+gcr.io/jenkinsxio/builder-**:0.1.448
+gcr.io/jenkinsxio/builder-**:0.1.448
+gcr.io/jenkinsxio/builder-**:0.1.448
+gcr.io/jenkinsxio/jenkins-maven:256.0.261
+gcr.io/jenkinsxio/jenkins-maven:256.0.261
