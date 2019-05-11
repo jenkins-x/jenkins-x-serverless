@@ -1,4 +1,4 @@
-FROM jenkinsxio/jenkins-filerunner:0.1.44
+FROM jenkinsxio/jenkins-filerunner:0.1.46
 
 ENV GRADLE_HOME /opt/gradle
 ENV GRADLE_VERSION 4.6
