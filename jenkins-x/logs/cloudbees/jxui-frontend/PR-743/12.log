@@ -1,0 +1,1694 @@
+Step: build-step-git-source-cloudbees-**ui-frontend-pr-743-4tktq:
+
+{"level":"warn","ts":1557932446.8298087,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1557932452.36095,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/cloudbees/**ui-frontend @ bb7944b6d451380ef597728c5aa2a24ccd4c0ab3 in path /workspace/source"}
+Step: build-step-git-merge:
+
+Warning failed to load version: failed to parse version -dev+9e73adc0b: No Major.Minor.Patch elements found
+time="2019-05-15T15:00:53Z" level=info msg="got "
+Using SHAs from PULL_REFS=master:edb09058b709cfab07340491e34eddac26913e24,743:bb7944b6d451380ef597728c5aa2a24ccd4c0ab3
+ran git fetch --unshallow origin bb7944b6d451380ef597728c5aa2a24ccd4c0ab3: edb09058b709cfab07340491e34eddac26913e24: in 
+ran git checkout master in 
+ran git reset --hard edb09058b709cfab07340491e34eddac26913e24 in 
+ran clean --force -d . in 
+ran git merge bb7944b6d451380ef597728c5aa2a24ccd4c0ab3 in 
+Step: build-step-init-helm:
+
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+Happy Helming!
+Step: build-step-kaniko-secrets:
+
+/builder/home/kaniko-secret.json
+Step: build-step-get-credentials:
+
+/builder/home/core-dev-gke-sa.key.json
+Step: build-step-warm-cache:
+
+Step: build-step-build-project:
+
++ set -e
++ npm install -g yarn
+/usr/bin/yarn -> /usr/lib/node_modules/yarn/bin/yarn.js
+/usr/bin/yarnpkg -> /usr/lib/node_modules/yarn/bin/yarn.js
++ yarn@1.16.0
+added 1 package in 0.572s
++ npm -v
+5.6.0
++ node -v
+v9.11.2
++ yarn -v
+1.3.2
++ yarn install --ignore-engines
+yarn install v1.3.2
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+info fsevents@1.2.4: The platform "linux" is incompatible with this module.
+info "fsevents@1.2.4" is an optional dependency and failed compatibility check. Excluding it from installation.
+info fsevents@1.2.7: The platform "linux" is incompatible with this module.
+info "fsevents@1.2.7" is an optional dependency and failed compatibility check. Excluding it from installation.
+[3/4] Linking dependencies...
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard@1.0.0" has unmet peer dependency "react@^16.6.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard@1.0.0" has unmet peer dependency "react-dom@^16.6.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > formik@1.4.3" has unmet peer dependency "react@>=15".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > react-gravatar@2.6.3" has unmet peer dependency "react@*".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > react-modal@3.8.1" has unmet peer dependency "react@^0.14.0 || ^15.0.0 || ^16".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > react-outside-click-handler@1.2.2" has unmet peer dependency "react@^0.14 || >=15".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > react-router-dom@4.3.1" has unmet peer dependency "react@>=15".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > react-select@2.3.0" has unmet peer dependency "react@^15.3.0 || ^16.0.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > react-transition-group@2.5.3" has unmet peer dependency "react@>=15.0.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > react-virtualized@9.21.0" has unmet peer dependency "react@^15.3.0 || ^16.0.0-alpha".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-actions@4.1.11" has unmet peer dependency "react@*".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-info@3.4.11" has unmet peer dependency "react@*".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-jest@3.4.11" has unmet peer dependency "@storybook/addons@^3.3.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-jest@3.4.11" has unmet peer dependency "react@*".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-options@3.4.11" has unmet peer dependency "@storybook/addons@^3.3.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-options@3.4.11" has unmet peer dependency "react@*".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/react@4.1.11" has unmet peer dependency "react@*".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > env-var-helpers@4.1.0" has unmet peer dependency "lodash@^4.x".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > enzyme-adapter-react-16@1.9.1" has unmet peer dependency "react@^16.0.0-0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > react-dom@16.8.1" has unmet peer dependency "react@^16.0.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > react-test-renderer@16.8.1" has unmet peer dependency "react@^16.0.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-ui > @expantra/pipeline-widget-proto@0.0.2-JW" has unmet peer dependency "react@^16.4.1".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-ui > @expantra/pipeline-widget-proto@0.0.2-JW" has unmet peer dependency "react-dom@^16.4.1".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-ui > mobx-react@5.4.3" has unmet peer dependency "react@^0.13.0 || ^0.14.0 || ^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-ui > react-hotkeys@1.1.4" has unmet peer dependency "react@>= 0.14.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-ui > react-hotkeys@1.1.4" has unmet peer dependency "react-dom@>= 0.14.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-ui > react-router@4.2.0" has unmet peer dependency "react@>=15".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > formik > create-react-context@0.2.3" has unmet peer dependency "prop-types@^15.0.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > formik > create-react-context@0.2.3" has unmet peer dependency "react@^0.14.0 || ^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > react-outside-click-handler > airbnb-prop-types@2.11.0" has unmet peer dependency "react@^0.14 || ^15.0.0 || ^16.0.0-alpha".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > react-select > react-input-autosize@2.2.1" has unmet peer dependency "react@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-actions > @emotion/core@0.13.1" has unmet peer dependency "react@>=16.3.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-actions > @emotion/provider@0.11.2" has unmet peer dependency "react@>=16.3.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-actions > @storybook/components@4.1.11" has unmet peer dependency "react@*".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-actions > react-inspector@2.3.1" has unmet peer dependency "react@^0.14.0 || ^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-info > @storybook/components@3.4.11" has unmet peer dependency "react@*".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-storyshots > jest-specific-snapshot@1.0.0" has unmet peer dependency "jest@*".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/react > @storybook/core@4.1.11" has unmet peer dependency "react@*".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > env-var-helpers > mad-logs@10.3.6" has unmet peer dependency "lodash@^4.x".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > enzyme-adapter-react-16 > enzyme-adapter-utils@1.10.0" has unmet peer dependency "react@0.13.x || 0.14.x || ^15.0.0-0 || ^16.0.0-0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > jsdom > request-promise-native@1.0.5" has unmet peer dependency "request@^2.34".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-ui > react-document-title > react-side-effect@1.1.5" has unmet peer dependency "react@^0.13.0 || ^0.14.0 || ^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-actions > @emotion/styled > @emotion/styled-base@0.10.6" has unmet peer dependency "react@>=16.3.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-actions > @storybook/components > react-textarea-autosize@7.1.0" has unmet peer dependency "react@>=0.14.0 <17.0.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-actions > @storybook/components > render-fragment@0.1.1" has unmet peer dependency "react@^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/addon-actions > @storybook/components > render-fragment@0.1.1" has unmet peer dependency "prop-types@^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > env-var-helpers > mad-logs > env-var-helpers@5.2.0" has unmet peer dependency "lodash@^4.x".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > jsdom > request-promise-native > request-promise-core@1.1.1" has unmet peer dependency "request@^2.34".
+warning "workspace-aggregator-06cbc384-d3d7-4e8f-a64d-0c7029e0aacf > @cloudbees/core-shipyard > @storybook/react > @storybook/core > @storybook/ui > react-treebeard@3.1.0" has unmet peer dependency "@emotion/styled@^0.10.6".
+[4/4] Building fresh packages...
+success Saved lockfile.
+Done in 143.06s.
++ yarn bootstrap
+yarn run v1.3.2
+$ lerna bootstrap && yarn build-packages
+lerna notice cli v3.10.8
+lerna info versioning independent
+lerna info ci enabled
+lerna info bootstrap root only
+[1/5] Validating package.json...
+[2/5] Resolving packages...
+success Already up-to-date.
+$ lerna run build --ignore '@cloudbees/*-ui'
+lerna notice cli v3.10.8
+lerna info versioning independent
+lerna info ci enabled
+lerna info filter [ '!@cloudbees/*-ui' ]
+lerna info Executing command in 4 packages: "yarn run build"
+lerna info run Ran npm script 'build' in '@cloudbees/core-flags' in 4.7s:
+$ rimraf ./dist && tsc -p ./tsconfig.build.json
+lerna info run Ran npm script 'build' in '@cloudbees/core-api' in 5.3s:
+$ rimraf ./dist && tsc -p ./tsconfig.build.json
+lerna info run Ran npm script 'build' in '@cloudbees/core-shipyard' in 13.1s:
+$ rimraf ./dist && tsc -p ./tsconfig.build.json && yarn run build-css && yarn run copy-assets
+$ node-sass --importer ../../node_modules/node-sass-package-importer/dist/cli.js src/styles/shipyard.scss dist/index.css
+Rendering Complete, saving .css file...
+Wrote CSS to /workspace/source/packages/core-shipyard/dist/index.css
+$ cd src/ && cpx "./**/*.{scss, css}" ../dist
+lerna info run Ran npm script 'build' in '@cloudbees/core-common' in 4.7s:
+$ rimraf ./dist && tsc -p ./tsconfig.build.json
+lerna success run Ran npm script 'build' in 4 packages in 17.8s:
+lerna success - @cloudbees/core-api
+lerna success - @cloudbees/core-common
+lerna success - @cloudbees/core-flags
+lerna success - @cloudbees/core-shipyard
+Done in 22.37s.
++ yarn lint-ci
+yarn run v1.3.2
+$ yarn lint -q -c ../../tslint.ci.json
+$ lerna run lint --stream --parallel -- -q -c ../../tslint.ci.json
+lerna notice cli v3.10.8
+lerna info versioning independent
+lerna info ci enabled
+lerna info Executing command in 5 packages: "yarn run lint -q -c ../../tslint.ci.json"
+@cloudbees/core-common: warning package.json: No license field
+@cloudbees/core-flags: warning package.json: No license field
+@cloudbees/core-api: warning package.json: No license field
+@cloudbees/core-common: $ tslint -c ../../tslint.json -p . "./src/**/*.ts?(x)" -q -c ../../tslint.ci.json
+@cloudbees/core-shipyard: warning package.json: No license field
+@cloudbees/core-flags: $ tslint -c ../../tslint.json -p . "./src/**/*.ts?(x)" -q -c ../../tslint.ci.json
+@cloudbees/core-api: $ tslint -c ../../tslint.json -p . "./src/**/*.ts?(x)" -q -c ../../tslint.ci.json
+@cloudbees/core-shipyard: $ tslint -c ../../tslint.json -p . "./src/**/*.ts?(x)" -q -c ../../tslint.ci.json
+@cloudbees/core-ui: $ tslint -c ../../tslint.json -p . "./src/**/*.ts?(x)" "./cypress/**/*.ts" -q -c ../../tslint.ci.json
+lerna success run Ran npm script 'lint' in 5 packages in 10.8s:
+lerna success - @cloudbees/core-api
+lerna success - @cloudbees/core-common
+lerna success - @cloudbees/core-flags
+lerna success - @cloudbees/core-shipyard
+lerna success - @cloudbees/core-ui
+Done in 12.35s.
++ yarn build
+yarn run v1.3.2
+$ lerna run build --scope '@cloudbees/*-ui'
+lerna notice cli v3.10.8
+lerna info versioning independent
+lerna info ci enabled
+lerna info filter [ '@cloudbees/*-ui' ]
+lerna info Executing command in 1 package: "yarn run build"
+lerna info run Ran npm script 'build' in '@cloudbees/core-ui' in 50.8s:
+$ rimraf ../../build && cross-env NODE_ENV='production' webpack --config=./webpack/web.js --progress -p
+Starting type checking service...
+Using 1 worker with 2048MB memory limit
+Hash: e268cb92a032f9d2a385
+Version: webpack 4.29.3
+Time: 47672ms
+Built at: 2019-05-15 15:04:59
+                             Asset       Size  Chunks                    Chunk Names
+                       favicon.ico    7.7 KiB          [emitted]         
+    index.e268cb92a032f9d2a385.css    193 KiB       0  [emitted]         index
+index.e268cb92a032f9d2a385.css.map  107 bytes       0  [emitted]         index
+     index.e268cb92a032f9d2a385.js   1.05 MiB       0  [emitted]  [big]  index
+ index.e268cb92a032f9d2a385.js.map   3.48 MiB       0  [emitted]         index
+                        index.html  933 bytes          [emitted]         
+Entrypoint index [big] = index.e268cb92a032f9d2a385.js index.e268cb92a032f9d2a385.css index.e268cb92a032f9d2a385.js.map index.e268cb92a032f9d2a385.css.map
+ [25] (webpack)/buildin/global.js 472 bytes {0} [built]
+ [34] /workspace/source/node_modules/react-virtualized/dist/es/index.js + 65 modules 319 KiB {0} [built]
+      |    66 modules
+ [84] (webpack)/buildin/module.js 497 bytes {0} [built]
+[246] multi ./src/index.tsx 28 bytes {0} [built]
+[344] /workspace/source/node_modules/moment/locale sync ^\.\/.*$ 3 KiB {0} [optional] [built]
+[345] ./src/index.tsx + 132 modules 636 KiB {0} [built]
+      | ./src/index.tsx 265 bytes [built]
+      | ../core-flags/src/context.tsx 891 bytes [built]
+      | ./src/routes/index.tsx 2.17 KiB [built]
+      | ./src/flags.ts 97 bytes [built]
+      | ./src/stores/BuildStore.ts 8.16 KiB [built]
+      | ./src/stores/ProjectStore.ts 6.61 KiB [built]
+      | ./src/kubeql/KubeQLClient.ts 3.3 KiB [built]
+      | ./src/stores/CurrentUserStore.ts 3.34 KiB [built]
+      | ../core-flags/src/storage.ts 344 bytes [built]
+      | ./src/routes/projects.tsx 4.22 KiB [built]
+      | ./src/routes/builds.tsx 601 bytes [built]
+      | ./src/kubeql/KubeQLQuery.ts 496 bytes [built]
+      | ../core-api/src/fetch/index.ts 549 bytes [built]
+      | ../core-api/src/fetch/util/requests.ts 517 bytes [built]
+      | ../core-shipyard/src/styles/index.ts 256 KiB [built]
+      |     + 118 hidden modules
+[362] ./src/index.css 41 bytes [built]
+[363] /workspace/source/node_modules/css-loader??ref--5-2!/workspace/source/node_modules/sass-loader/lib/loader.js!./src/index.css 205 bytes [built]
+[379] ../core-shipyard/src/styles/shipyard.scss 41 bytes [built]
+[380] /workspace/source/node_modules/css-loader??ref--5-2!/workspace/source/node_modules/sass-loader/lib/loader.js!../core-shipyard/src/styles/shipyard.scss 192 KiB [built]
+    + 371 hidden modules
+
+WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  index.e268cb92a032f9d2a385.js (1.05 MiB)
+
+WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  index (1.24 MiB)
+      index.e268cb92a032f9d2a385.js
+      index.e268cb92a032f9d2a385.css
+
+
+WARNING in webpack performance recommendations: 
+You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+For more info visit https://webpack.js.org/guides/code-splitting/
+Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!../../node_modules/@expantra/pipeline-widget-proto/styles/css/main.css:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+       2 modules
+Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!../../node_modules/react-virtualized/styles.css:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+       2 modules
+Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!../core-shipyard/src/styles/shipyard.scss:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+    [0] /workspace/source/node_modules/css-loader??ref--5-2!/workspace/source/node_modules/sass-loader/lib/loader.js!../core-shipyard/src/styles/shipyard.scss 192 KiB {0} [built]
+        + 1 hidden module
+Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!src/components/layout/LayoutNavigation.module.scss:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+       2 modules
+Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!src/components/layout/LayoutPage.scss:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+       2 modules
+Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!src/components/layout/heading/Heading.scss:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+       2 modules
+Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!src/components/project/ProjectList.scss:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+       2 modules
+Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!src/index.css:
+    Entrypoint undefined = extract-text-webpack-plugin-output-filename
+    [0] /workspace/source/node_modules/css-loader??ref--5-2!/workspace/source/node_modules/sass-loader/lib/loader.js!./src/index.css 205 bytes {0} [built]
+        + 1 hidden module
+Child html-webpack-plugin for "index.html":
+     1 asset
+    Entrypoint undefined = index.html
+lerna success run Ran npm script 'build' in 1 package in 50.8s:
+    [0] /workspace/source/node_modules/html-webpack-plugin/lib/loader.js!./src/index.html 1.12 KiB {0} [built]
+    [2] (webpack)/buildin/global.js 472 bytes {0} [built]
+    [3] (webpack)/buildin/module.js 497 bytes {0} [built]
+        + 1 hidden module
+lerna success - @cloudbees/core-ui
+Done in 51.72s.
++ yarn build-storybooks
+yarn run v1.3.2
+$ lerna run storybook-build
+lerna notice cli v3.10.8
+lerna info versioning independent
+lerna info ci enabled
+lerna info Executing command in 2 packages: "yarn run storybook-build"
+lerna info run Ran npm script 'storybook-build' in '@cloudbees/core-shipyard' in 40.3s:
+$ rimraf ../../build/shipyard && build-storybook -c .storybook -o ../../build/shipyard
+lerna info run Ran npm script 'storybook-build' in '@cloudbees/core-ui' in 35.3s:
+$ rimraf ../../build/stories && build-storybook -c .storybook -o ../../build/stories
+lerna success run Ran npm script 'storybook-build' in 2 packages in 75.7s:
+lerna success - @cloudbees/core-shipyard
+lerna success - @cloudbees/core-ui
+Done in 76.51s.
+Step: build-step-run-cypress-tests:
+
++ set -e
++ testURL=http://0.0.0.0:9000
++ echo 'Running e2e tests against '
++ CYPRESS_CORE_UI=http://0.0.0.0:9000
++ yarn cypress
+Running e2e tests against 
+yarn run v1.3.2
+$ start-server-and-test start http://0.0.0.0:9000 cypress-run
+starting server using command "npm run start"
+and when url "http://0.0.0.0:9000" is responding
+running tests using command "npm run cypress-run"
+
+> parent@1.0.0 start /workspace/source
+> lerna run start --stream --scope @cloudbees/core-ui
+
+lerna notice cli v3.10.8
+lerna info versioning independent
+lerna info ci enabled
+lerna info filter [ '@cloudbees/core-ui' ]
+lerna info Executing command in 1 package: "yarn run start"
+@cloudbees/core-ui: $ cross-env NODE_ENV='development' webpack-dev-server --config=./webpack/web.js --port 9000 --hot --inline --open
+@cloudbees/core-ui: Starting type checking service...
+@cloudbees/core-ui: Using 2 workers with 2048MB memory limit
+@cloudbees/core-ui: [34mℹ[39m [90m｢wds｣[39m: Project is running at http://localhost:9000/
+@cloudbees/core-ui: [34mℹ[39m [90m｢wds｣[39m: webpack output is served from /
+@cloudbees/core-ui: [34mℹ[39m [90m｢wds｣[39m: 404s will fallback to /index.html
+@cloudbees/core-ui: [33m⚠[39m [90m｢wds｣[39m: Unable to open browser. If you are running in a headless environment, please do not use the --open flag
+
+> parent@1.0.0 cypress-run /workspace/source
+> lerna run cypress-run --stream --scope @cloudbees/core-ui
+
+lerna notice cli v3.10.8
+lerna info versioning independent
+lerna info ci enabled
+lerna info filter [ '@cloudbees/core-ui' ]
+lerna info Executing command in 1 package: "yarn run cypress-run"
+@cloudbees/core-ui: $ cypress run
+@cloudbees/core-ui: It looks like this is your first time using Cypress: 3.2.0
+@cloudbees/core-ui: [?25l[15:06:31]  Verifying Cypress can run /builder/home/.cache/Cypress/3.2.0/Cypress [started]
+@cloudbees/core-ui: { parser: "babylon" } is deprecated; we now treat it as { parser: "babel" }.
+@cloudbees/core-ui: [15:06:34]  Verifying Cypress can run /builder/home/.cache/Cypress/3.2.0/Cypress [completed]
+@cloudbees/core-ui: [?25h
+@cloudbees/core-ui: Opening Cypress...
+@cloudbees/core-ui: [34mℹ[39m [90m｢wdm｣[39m: Hash: 22179826cd027c84f709
+@cloudbees/core-ui: Version: webpack 4.29.3
+@cloudbees/core-ui: Time: 15560ms
+@cloudbees/core-ui: Built at: 2019-05-15 15:06:38
+@cloudbees/core-ui:                          Asset       Size  Chunks             Chunk Names
+@cloudbees/core-ui:                    favicon.ico    7.7 KiB          [emitted]  
+@cloudbees/core-ui: index.22179826cd027c84f709.css    251 KiB   index  [emitted]  index
+@cloudbees/core-ui:  index.22179826cd027c84f709.js   9.67 MiB   index  [emitted]  index
+@cloudbees/core-ui:                     index.html  933 bytes          [emitted]  
+@cloudbees/core-ui: Entrypoint index = index.22179826cd027c84f709.js index.22179826cd027c84f709.css
+@cloudbees/core-ui: [0] multi (webpack)-dev-server/client?http://localhost:9000 (webpack)/hot/dev-server.js ./src/index.tsx 52 bytes {index} [built]
+@cloudbees/core-ui: [../../node_modules/loglevel/lib/loglevel.js] /workspace/source/node_modules/loglevel/lib/loglevel.js 7.68 KiB {index} [built]
+@cloudbees/core-ui: [../../node_modules/react-dom/index.js] /workspace/source/node_modules/react-dom/index.js 1.33 KiB {index} [built]
+@cloudbees/core-ui: [../../node_modules/react/index.js] /workspace/source/node_modules/react/index.js 190 bytes {index} [built]
+@cloudbees/core-ui: [../../node_modules/strip-ansi/index.js] /workspace/source/node_modules/strip-ansi/index.js 161 bytes {index} [built]
+@cloudbees/core-ui: [../../node_modules/url/url.js] /workspace/source/node_modules/url/url.js 22.8 KiB {index} [built]
+@cloudbees/core-ui: [../../node_modules/webpack-dev-server/client/index.js?http://localhost:9000] (webpack)-dev-server/client?http://localhost:9000 7.78 KiB {index} [built]
+@cloudbees/core-ui: [../../node_modules/webpack-dev-server/client/overlay.js] (webpack)-dev-server/client/overlay.js 3.58 KiB {index} [built]
+@cloudbees/core-ui: [../../node_modules/webpack-dev-server/client/socket.js] (webpack)-dev-server/client/socket.js 1.05 KiB {index} [built]
+@cloudbees/core-ui: [../../node_modules/webpack/hot sync ^\.\/log$] (webpack)/hot sync nonrecursive ^\.\/log$ 170 bytes {index} [built]
+@cloudbees/core-ui: [../../node_modules/webpack/hot/dev-server.js] (webpack)/hot/dev-server.js 1.61 KiB {index} [built]
+@cloudbees/core-ui: [../../node_modules/webpack/hot/emitter.js] (webpack)/hot/emitter.js 75 bytes {index} [built]
+@cloudbees/core-ui: [../../node_modules/webpack/hot/log-apply-result.js] (webpack)/hot/log-apply-result.js 1.27 KiB {index} [built]
+@cloudbees/core-ui: [../../node_modules/webpack/hot/log.js] (webpack)/hot/log.js 1.11 KiB {index} [built]
+@cloudbees/core-ui: [./src/index.tsx] 265 bytes {index} [built]
+@cloudbees/core-ui:     + 596 hidden modules
+@cloudbees/core-ui: Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!../../node_modules/@expantra/pipeline-widget-proto/styles/css/main.css:
+@cloudbees/core-ui:     Entrypoint undefined = extract-text-webpack-plugin-output-filename
+@cloudbees/core-ui:     [../../node_modules/css-loader/index.js?!../../node_modules/sass-loader/lib/loader.js!../../node_modules/@expantra/pipeline-widget-proto/styles/css/main.css] /workspace/source/node_modules/css-loader??ref--5-2!/workspace/source/node_modules/sass-loader/lib/loader.js!/workspace/source/node_modules/@expantra/pipeline-widget-proto/styles/css/main.css 3.53 KiB {0} [built]
+@cloudbees/core-ui:     [../../node_modules/css-loader/lib/css-base.js] /workspace/source/node_modules/css-loader/lib/css-base.js 2.21 KiB {0} [built]
+@cloudbees/core-ui: Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!../../node_modules/react-virtualized/styles.css:
+@cloudbees/core-ui:     Entrypoint undefined = extract-text-webpack-plugin-output-filename
+@cloudbees/core-ui:     [../../node_modules/css-loader/index.js?!../../node_modules/sass-loader/lib/loader.js!../../node_modules/react-virtualized/styles.css] /workspace/source/node_modules/css-loader??ref--5-2!/workspace/source/node_modules/sass-loader/lib/loader.js!/workspace/source/node_modules/react-virtualized/styles.css 1.87 KiB {0} [built]
+@cloudbees/core-ui:     [../../node_modules/css-loader/lib/css-base.js] /workspace/source/node_modules/css-loader/lib/css-base.js 2.21 KiB {0} [built]
+@cloudbees/core-ui: Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!../core-shipyard/src/styles/shipyard.scss:
+@cloudbees/core-ui:     Entrypoint undefined = extract-text-webpack-plugin-output-filename
+@cloudbees/core-ui:     [../../node_modules/css-loader/index.js?!../../node_modules/sass-loader/lib/loader.js!../core-shipyard/src/styles/shipyard.scss] /workspace/source/node_modules/css-loader??ref--5-2!/workspace/source/node_modules/sass-loader/lib/loader.js!../core-shipyard/src/styles/shipyard.scss 258 KiB {0} [built]
+@cloudbees/core-ui:     [../../node_modules/css-loader/lib/css-base.js] /workspace/source/node_modules/css-loader/lib/css-base.js 2.21 KiB {0} [built]
+@cloudbees/core-ui: Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!src/components/layout/LayoutNavigation.module.scss:
+@cloudbees/core-ui:     Entrypoint undefined = extract-text-webpack-plugin-output-filename
+@cloudbees/core-ui:     [../../node_modules/css-loader/index.js?!../../node_modules/sass-loader/lib/loader.js!./src/components/layout/LayoutNavigation.module.scss] /workspace/source/node_modules/css-loader??ref--5-2!/workspace/source/node_modules/sass-loader/lib/loader.js!./src/components/layout/LayoutNavigation.module.scss 2.18 KiB {0} [built]
+@cloudbees/core-ui:     [../../node_modules/css-loader/lib/css-base.js] /workspace/source/node_modules/css-loader/lib/css-base.js 2.21 KiB {0} [built]
+@cloudbees/core-ui: Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!src/components/layout/LayoutPage.scss:
+@cloudbees/core-ui:     Entrypoint undefined = extract-text-webpack-plugin-output-filename
+@cloudbees/core-ui:     [../../node_modules/css-loader/index.js?!../../node_modules/sass-loader/lib/loader.js!./src/components/layout/LayoutPage.scss] /workspace/source/node_modules/css-loader??ref--5-2!/workspace/source/node_modules/sass-loader/lib/loader.js!./src/components/layout/LayoutPage.scss 313 bytes {0} [built]
+@cloudbees/core-ui:     [../../node_modules/css-loader/lib/css-base.js] /workspace/source/node_modules/css-loader/lib/css-base.js 2.21 KiB {0} [built]
+@cloudbees/core-ui: Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!src/components/layout/heading/Heading.scss:
+@cloudbees/core-ui:     Entrypoint undefined = extract-text-webpack-plugin-output-filename
+@cloudbees/core-ui:     [../../node_modules/css-loader/index.js?!../../node_modules/sass-loader/lib/loader.js!./src/components/layout/heading/Heading.scss] /workspace/source/node_modules/css-loader??ref--5-2!/workspace/source/node_modules/sass-loader/lib/loader.js!./src/components/layout/heading/Heading.scss 377 bytes {0} [built]
+@cloudbees/core-ui:     [../../node_modules/css-loader/lib/css-base.js] /workspace/source/node_modules/css-loader/lib/css-base.js 2.21 KiB {0} [built]
+@cloudbees/core-ui: Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!src/components/project/ProjectList.scss:
+@cloudbees/core-ui:     Entrypoint undefined = extract-text-webpack-plugin-output-filename
+@cloudbees/core-ui:     [../../node_modules/css-loader/index.js?!../../node_modules/sass-loader/lib/loader.js!./src/components/project/ProjectList.scss] /workspace/source/node_modules/css-loader??ref--5-2!/workspace/source/node_modules/sass-loader/lib/loader.js!./src/components/project/ProjectList.scss 749 bytes {0} [built]
+@cloudbees/core-ui:     [../../node_modules/css-loader/lib/css-base.js] /workspace/source/node_modules/css-loader/lib/css-base.js 2.21 KiB {0} [built]
+@cloudbees/core-ui: Child extract-text-webpack-plugin ../../node_modules/extract-text-webpack-plugin/dist ../../node_modules/css-loader/index.js??ref--5-2!../../node_modules/sass-loader/lib/loader.js!src/index.css:
+@cloudbees/core-ui:     Entrypoint undefined = extract-text-webpack-plugin-output-filename
+@cloudbees/core-ui:     [../../node_modules/css-loader/index.js?!../../node_modules/sass-loader/lib/loader.js!./src/index.css] /workspace/source/node_modules/css-loader??ref--5-2!/workspace/source/node_modules/sass-loader/lib/loader.js!./src/index.css 220 bytes {0} [built]
+@cloudbees/core-ui:     [../../node_modules/css-loader/lib/css-base.js] /workspace/source/node_modules/css-loader/lib/css-base.js 2.21 KiB {0} [built]
+@cloudbees/core-ui: Child html-webpack-plugin for "index.html":
+@cloudbees/core-ui:      1 asset
+@cloudbees/core-ui:     Entrypoint undefined = index.html
+@cloudbees/core-ui:     [../../node_modules/html-webpack-plugin/lib/loader.js!./src/index.html] /workspace/source/node_modules/html-webpack-plugin/lib/loader.js!./src/index.html 1.12 KiB {0} [built]
+@cloudbees/core-ui:     [../../node_modules/lodash/lodash.js] /workspace/source/node_modules/lodash/lodash.js 527 KiB {0} [built]
+@cloudbees/core-ui:     [../../node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {0} [built]
+@cloudbees/core-ui:     [../../node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 497 bytes {0} [built]
+@cloudbees/core-ui: [34mℹ[39m [90m｢wdm｣[39m: Compiled successfully.
+@cloudbees/core-ui: ================================================================================
+@cloudbees/core-ui:   (Run Starting)
+@cloudbees/core-ui:   ┌────────────────────────────────────────────────────────────────────────────┐
+@cloudbees/core-ui:   │ Cypress:  3.2.0                                                            │
+@cloudbees/core-ui:   │ Browser:  Electron 59 (headless)                                           │
+@cloudbees/core-ui:   │ Specs:    1 found (projects/ProjectList.spec.ts)                           │
+@cloudbees/core-ui:   └────────────────────────────────────────────────────────────────────────────┘
+@cloudbees/core-ui: ────────────────────────────────────────────────────────────────────────────────
+@cloudbees/core-ui:                                                                                 
+@cloudbees/core-ui:   Running: projects/ProjectList.spec.ts...                             (1 of 1) 
+@cloudbees/core-ui:   Project List
+@cloudbees/core-ui:     with no projects in the list
+@cloudbees/core-ui:       ✓ displays the page with no projects correctly (2363ms)
+@cloudbees/core-ui:     with 1 project
+@cloudbees/core-ui:       ✓ contains 1 project (1050ms)
+@cloudbees/core-ui:       ✓ displays the details of the project (341ms)
+@cloudbees/core-ui:     with 4 projects
+@cloudbees/core-ui:       ✓ contains 4 projects (341ms)
+@cloudbees/core-ui:       ✓ can search one project by name (846ms)
+@cloudbees/core-ui:       ✓ can search one project by org (875ms)
+@cloudbees/core-ui:     with 1 project running
+@cloudbees/core-ui:       ✓ contains the running status icon (336ms)
+@cloudbees/core-ui:   7 passing (8s)
+@cloudbees/core-ui:   (Results)
+@cloudbees/core-ui:   ┌────────────────────────────────────────────┐
+@cloudbees/core-ui:   │ Tests:        7                            │
+@cloudbees/core-ui:   │ Passing:      7                            │
+@cloudbees/core-ui:   │ Failing:      0                            │
+@cloudbees/core-ui:   │ Pending:      0                            │
+@cloudbees/core-ui:   │ Skipped:      0                            │
+@cloudbees/core-ui:   │ Screenshots:  0                            │
+@cloudbees/core-ui:   │ Video:        false                        │
+@cloudbees/core-ui:   │ Duration:     8 seconds                    │
+@cloudbees/core-ui:   │ Spec Ran:     projects/ProjectList.spec.ts │
+@cloudbees/core-ui:   └────────────────────────────────────────────┘
+@cloudbees/core-ui: ================================================================================
+@cloudbees/core-ui:   (Run Finished)
+@cloudbees/core-ui:       Spec                                    Tests  Pass…  Fail…  Pend…  Skip… 
+@cloudbees/core-ui:   ┌────────────────────────────────────────────────────────────────────────────┐
+@cloudbees/core-ui:   │ ✔ projects/ProjectList.spec.ts    00:08      7      7      -      -      - │
+@cloudbees/core-ui:   └────────────────────────────────────────────────────────────────────────────┘
+@cloudbees/core-ui:     All specs passed!                 00:08      7      7      -      -      -  
+@cloudbees/core-ui: [?25h
+lerna success run Ran npm script 'cypress-run' in 1 package in 33.9s:
+lerna success - @cloudbees/core-ui
+Done in 46.15s.
+Step: build-step-build-docker-image:
+
+[36mINFO[0m[0000] Downloading base image nginx:1.14.2          
+ERROR: logging before flag.Parse: E0515 15:07:04.637633      12 metadata.go:142] while reading 'google-dockercfg' metadata: http status code: 404 while fetching url http://metadata.google.internal./computeMetadata/v1/instance/attributes/google-dockercfg
+ERROR: logging before flag.Parse: E0515 15:07:04.641042      12 metadata.go:159] while reading 'google-dockercfg-url' metadata: http status code: 404 while fetching url http://metadata.google.internal./computeMetadata/v1/instance/attributes/google-dockercfg-url
+[36mINFO[0m[0001] Error while retrieving image from cache: getting file info: stat /workspace/sha256:706446e9c6667c0880d5da3f39c09a6c7d2114f5a5d6b74a2fafd24ae30d2078: no such file or directory 
+[36mINFO[0m[0001] Downloading base image nginx:1.14.2          
+[36mINFO[0m[0002] Using files from context: [/workspace/source/build] 
+[36mINFO[0m[0002] Using files from context: [/workspace/source/nginx.conf] 
+[36mINFO[0m[0002] Using files from context: [/workspace/source/set_proxy_pass.sh] 
+[36mINFO[0m[0002] Skipping unpacking as no commands require it. 
+[36mINFO[0m[0002] Taking snapshot of full filesystem...        
+[36mINFO[0m[0003] Using files from context: [/workspace/source/build] 
+[36mINFO[0m[0003] COPY ./build /usr/share/nginx/html           
+[36mINFO[0m[0003] Taking snapshot of files...                  
+[36mINFO[0m[0003] Using files from context: [/workspace/source/nginx.conf] 
+[36mINFO[0m[0003] COPY nginx.conf /etc/nginx/nginx-template.conf 
+[36mINFO[0m[0003] Taking snapshot of files...                  
+[36mINFO[0m[0003] Using files from context: [/workspace/source/set_proxy_pass.sh] 
+[36mINFO[0m[0003] COPY set_proxy_pass.sh /                     
+[36mINFO[0m[0003] Taking snapshot of files...                  
+[36mINFO[0m[0003] ENTRYPOINT ["/set_proxy_pass.sh"]            
+[36mINFO[0m[0003] No files changed in this command, skipping snapshotting. 
+2019/05/15 15:07:08 existing blob: sha256:27833a3ba0a545deda33bb01eaf95a14d05d43bf30bce9267d92d17f069fe897
+2019/05/15 15:07:08 existing blob: sha256:8ca774778e858d3f97d9ec1bec1de879ac5e10096856dc22ed325a3ad944f78a
+2019/05/15 15:07:08 existing blob: sha256:0f23e58bd0b7c74311703e20c21c690a6847e62240ed456f8821f4c067d3659b
+2019/05/15 15:07:11 pushed blob: sha256:dd5849ec4c5fc445927cb5d8eece44d545a3388bfb6b7a17d7ac1cce6c69776a
+2019/05/15 15:07:12 pushed blob: sha256:967511fdebb433b4398997a8848c383a9dc1d7c748b58025cad708a4d462f3bf
+2019/05/15 15:07:12 pushed blob: sha256:52954541b7731fc9c752b20138d1928741a07f7fa44af765d567eeea5270281e
+2019/05/15 15:07:12 pushed blob: sha256:4ffad9033381b6dc82e065712d76e50e4f7d81303a029b37288243d734b2b049
+2019/05/15 15:07:14 gcr.io/jenkinsxio/**ui-frontend:0.0.0-SNAPSHOT-PR-743-12: digest: sha256:6abb32871eb5598eac8beea0f5ebfee0f8e5424305fd985bf6b206ce250e3207 size: 1238
+Step: build-step-preview:
+
+helm init --client-only
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+Happy Helming!
+helm repo add chartmuseum http://chartmuseum.jenkins-x.io
+"chartmuseum" has been added to your repositories
+sed -i -e "s/version:.*/version: 0.0.0-SNAPSHOT-PR-743-12/" Chart.yaml
+sed -i -e "s/version:.*/version: 0.0.0-SNAPSHOT-PR-743-12/" ../*/Chart.yaml
+sed -i -e "s/tag: .*/tag: 0.0.0-SNAPSHOT-PR-743-12/" values.yaml
+sed -i -e "s/previewname: .*/previewname: **-cloudbees-**ui-frontend-pr-743/" values.yaml
+sed -i -e "s/fabric8\.io\/exposeUrl: .*/fabric8\.io\/exposeUrl: https:\/\/**-cloudbees-**ui-frontend-pr-743.infra.jrawlings.co.uk/" values.yaml
+echo "  version: 0.0.0-SNAPSHOT-PR-743-12" >> requirements.yaml
+helm dependency build
+Hang tight while we grab the latest from your chart repositories...
+...Unable to get an update from the "local" chart repository (http://127.0.0.1:8879/charts):
+	Get http://127.0.0.1:8879/charts/index.yaml: dial tcp 127.0.0.1:8879: connect: connection refused
+...Successfully got an update from the "chartmuseum" chart repository
+...Successfully got an update from the "stable" chart repository
+Update Complete. ⎈Happy Helming!⎈
+Saving 1 charts
+Deleting outdated charts
+helm lint
+==> Linting .
+Lint OK
+
+1 chart(s) linted, no failures
+Creating a preview
+Commit author email is empty for: 54d9459ca40381df171c28cdf793937ceb1aa3bb
+Looking for commits in: /workspace/source/
+Commit author email is empty for: 7df71015c0f7df898a58c270992a9ce9befe12a4
+Looking for commits in: /workspace/source/
+Commit author email is empty for: 0cc58686425a01df1558c1098c64dee625c0bd47
+Looking for commits in: /workspace/source/
+Commit author email is empty for: ea006a6cdd517fc12ce0509d2832c23c9d986290
+Looking for commits in: /workspace/source/
+Commit author email is empty for: fb1ec184aa602e2933ca54142e08528262b4e422
+Looking for commits in: /workspace/source/
+Commit author email is empty for: 9850ea1954dce18331938edc05c9518baaa6dd23
+Looking for commits in: /workspace/source/
+Commit author email is empty for: c0cf24415b153c80e1f02f0d4379a2ee463acbde
+Looking for commits in: /workspace/source/
+Commit author email is empty for: bb7944b6d451380ef597728c5aa2a24ccd4c0ab3
+Looking for commits in: /workspace/source/
+PullRequest author email is empty
+Found commit author match for: romainverduci with email address: rverduci@cloudbees.com
+CreateOrUpdateUser: romainverduci <rverduci@cloudbees.com>
+Existing user found: rverduci@cloudbees.com
+expose:
+  config:
+    domain: infra.jrawlings.co.uk
+    exposer: Ingress
+    http: "true"
+  Annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-delete-policy: hook-succeeded
+preview:
+  image:
+    repository: gcr.io/jenkinsxio/**ui-frontend
+    tag: 0.0.0-SNAPSHOT-PR-743-12
+Applying generated chart . YAML via kubectl in dir: /tmp/helm-template-workdir-247826681/preview/output
+deployment.extensions/preview-**ui configured
+clusterrolebinding.rbac.authorization.k8s.io/preview-**ui configured
+service/preview-**ui configured
+serviceaccount/**ui configured
+sso.jenkins.io/sso-preview-**ui configured
+ingress.extensions/**ui configured
+sso.jenkins.io/sso-preview-**ui configured
+secret/tls-infra-jrawlings-co-uk configured
+Removing Kubernetes resources from older releases using selector: jenkins.io/chart-release=preview,jenkins.io/version!=0.0.0-SNAPSHOT-PR-743-12
+Updating PipelineActivities cloudbees-**ui-frontend-pr-743-12 which has status Running
+Preview application is now available at: https://**-cloudbees-**ui-frontend-pr-743.infra.jrawlings.co.uk
+
+Step: build-step-check-charts:
+
+"chartmuseum" has been added to your repositories
+rm -rf charts
+rm -rf **ui*.tgz
+rm -rf requirements.lock
+sed -i -e "s/version:.*/version: 0.0.0-SNAPSHOT-PR-743-12/" Chart.yaml
+sed -i -e "s/tag: 0.0.0/tag: 0.0.0-SNAPSHOT-PR-743-12/" values.yaml
+** step helm build
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+Read credentials for http://jenkins-x-chartmuseum:8080 from vault helm/repos
+Successfully added Helm repository jenkins-x-chartmuseum.
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: alias1 https://chartmuseum.**.charts-****.cloudbees.com
+Read credentials for https://chartmuseum.**.charts-****.cloudbees.com from vault helm/repos
+Successfully added Helm repository alias1.
+helm lint
+==> Linting .
+Lint OK
+
+1 chart(s) linted, no failures
+helm template .
+---
+# Source: **ui/charts/**ui-cleanup/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: **ui-cleanup
+    chart: "**ui-cleanup-2.3.56"
+    release: "release-name"
+    heritage: "Tiller"
+  name: **ui-cleanup
+---
+# Source: **ui/charts/user-controller/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: user-controller
+  labels:
+    app: user-controller
+    release: release-name
+    heritage: Tiller
+
+---
+# Source: **ui/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: **ui
+    chart: "**ui-0.0.0-SNAPSHOT-PR-743-12"
+    release: "release-name"
+    heritage: "Tiller"
+  name: **ui
+---
+# Source: **ui/templates/rolebinding.yaml
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: release-name-**ui
+  labels:
+    app: **ui
+    chart: **ui-0.0.0-SNAPSHOT-PR-743-12
+    release: release-name
+    heritage: Tiller
+subjects:
+- kind: ServiceAccount
+  name: **ui
+  namespace: **
+roleRef:
+  kind: ClusterRole
+  apiGroup: rbac.authorization.k8s.io
+  name: cluster-*****
+
+---
+# Source: **ui/charts/**ui-cleanup/templates/role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: **ui-cleanup
+rules:
+- apiGroups:
+  - extensions
+  resources:
+  - ingresses
+  verbs:
+  - get
+  - list
+  - watch
+  - patch
+  - create
+  - update
+  - delete
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  - services
+  verbs:
+  - get
+  - list
+  - watch
+  - patch
+  - update
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+  - watch
+  - patch
+  - update
+
+---
+# Source: **ui/charts/user-controller/templates/role.yaml
+# Grant the user controller permission to:
+#  - create ServiceAccounts
+#  - list/watch/patch users
+# ...in the ***** namespace.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: user-controller
+  namespace: **
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - serviceaccounts
+  verbs:
+  - create
+- apiGroups:
+  - jenkins.io
+  resources:
+    - users
+  verbs:
+    - list
+    - watch
+    - patch
+
+---
+# Source: **ui/charts/**ui-cleanup/templates/rolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: **ui-cleanup
+  namespace: **
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: **ui-cleanup
+subjects:
+- kind: ServiceAccount
+  name: **ui-cleanup
+  namespace: **
+---
+# Source: **ui/charts/user-controller/templates/rolebinding.yaml
+# RoleBinding for the role-user permissions.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: user-controller
+  namespace: **
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: user-controller
+subjects:
+- kind: ServiceAccount
+  name: user-controller
+
+---
+# Source: **ui/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-**ui
+  labels:
+    app: **ui
+    chart: **ui-0.0.0-SNAPSHOT-PR-743-12
+    release: release-name
+    heritage: Tiller
+  annotations:
+    fabric8.io/expose: "true"
+    
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: **ui-frontend
+  selector:
+    app: **ui
+    release: release-name
+
+---
+# Source: **ui/charts/user-controller/templates/deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: user-controller
+  labels:
+    chart: "user-controller-0.0.12"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: user-controller
+    spec:
+      containers:
+      - name: user-controller
+        image: "docker.io/jenkinsxio/user-controller:0.0.12"
+        imagePullPolicy: Always
+        args:
+        resources:
+            limits:
+              cpu: 100m
+              memory: 256Mi
+            requests:
+              cpu: 80m
+              memory: 128Mi
+            
+      terminationGracePeriodSeconds: 10
+      serviceAccountName: user-controller
+
+
+---
+# Source: **ui/templates/deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: release-name-**ui
+  labels:
+    app: **ui
+    chart: **ui-0.0.0-SNAPSHOT-PR-743-12
+    release: release-name
+    heritage: Tiller
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 35%
+  template:
+    metadata:
+      labels:
+        app: **ui
+        release: release-name
+    spec:
+      containers:
+        - name: **ui-frontend
+          env:
+          - name: API_PORT
+            value: "8080"
+          image: "gcr.io/jenkinsxio/**ui-frontend:0.0.0-SNAPSHOT-PR-743-12"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 60
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 60
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            
+        - name: **ui-backend
+          image: "gcr.io/jenkinsxio/**ui-backend:0.0.247"
+          imagePullPolicy: IfNotPresent
+          env:
+          - name: XDG_CONFIG_HOME
+            value: /home
+          - name: DISABLE_SSO
+            value: "true"
+          - name: JX_LOG_FORMAT
+            value: json
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /_health
+              port: 8080
+            periodSeconds: 60
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /_health
+              port: 8080
+            periodSeconds: 60
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            
+      serviceAccountName: **ui
+
+---
+# Source: **ui/charts/**ui-cleanup/templates/job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: **ui-cleanup
+  labels:
+    heritage: "Tiller"
+    release: "release-name"
+    chart: "**ui-cleanup-2.3.56"
+    component: "release-name-**ui-cleanup"
+  name: **ui-cleanup
+  annotations:
+    helm.sh/hook: pre-delete
+    helm.sh/hook-delete-policy: hook-succeeded
+    
+spec:
+  # backoffLimit: 5
+  template:
+    metadata:
+      name: "release-name"
+      labels:
+        heritage: "Tiller"
+        release: "release-name"
+        chart: "**ui-cleanup-2.3.56"
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        image: "jenkinsxio/exposecontroller:2.3.56"
+        name: **ui-cleanup
+        command: ["/exposecontroller"]
+        args:
+        - "--cleanup"
+        - "--filter"
+        - "**ui-**ui"
+      serviceAccountName: **ui-cleanup
+      restartPolicy: Never
+---
+# Source: **ui/charts/user-controller/templates/release.yaml
+apiVersion: jenkins.io/v1
+kind: Release
+metadata:
+  creationTimestamp: "2019-04-03T12:27:37Z"
+  deletionTimestamp: null
+  name: 'user-controller-0.0.12'
+spec:
+  commits:
+  - author:
+      accountReference:
+      - id: markawm
+        provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - id: UCKGL1HDF
+        provider: slack.apps.cloudbees.com/userid
+      email: mwynnmackenzie@cloudbees.com
+      login: cgg0mjg0njk5mbigz2l0ahvi
+      name: Mark Wynn-Mackenzie
+      serviceAccount: cgg0mjg0njk5mbigz2l0ahvi
+    branch: master
+    committer:
+      accountReference:
+      - id: markawm
+        provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - id: UCKGL1HDF
+        provider: slack.apps.cloudbees.com/userid
+      email: mwynnmackenzie@cloudbees.com
+      login: cgg0mjg0njk5mbigz2l0ahvi
+      name: Mark Wynn-Mackenzie
+      serviceAccount: cgg0mjg0njk5mbigz2l0ahvi
+    issueIds:
+    - "20"
+    message: |
+      bug: use install namespace for service accounts.
+    sha: f1ae3eea3f2435cd5746cf01c478a61e4baeb1a5
+  gitCloneUrl: https://github.com/cloudbees/core-controllers.git
+  gitHttpUrl: https://github.com/cloudbees/core-controllers
+  gitOwner: cloudbees
+  gitRepository: core-controllers
+  name: 'user-controller'
+  pullRequests:
+  - assignees:
+    - accountReference:
+      - id: markawm
+        provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - id: UCKGL1HDF
+        provider: slack.apps.cloudbees.com/userid
+      email: mwynnmackenzie@cloudbees.com
+      login: cgg0mjg0njk5mbigz2l0ahvi
+      name: Mark Wynn-Mackenzie
+      serviceAccount: cgg0mjg0njk5mbigz2l0ahvi
+    body: "[PLAT-828](https://cloudbees.atlassian.net/browse/PLAT-828).\r\n\r\n<!--
+      Description of the issue/feature and how the change fixes it. -->\r\n\r\n\r\n###
+      Description\r\nExpose the option to grant new users a default role.  Useful
+      when all users should have a generic amount of access (such as that granted
+      by the `viewer` role)\r\n\r\n# Submitter checklist\r\n- [x] I have read and
+      understood the [Rules of Engagement](https://cloudbees.atlassian.net/wiki/spaces/PLAT/pages/803275040/Rules+of+Engagement)\r\n-
+      [x] Change is code complete and matches issue description.\r\n- [x] Commit messages
+      are self contained and descriptive.\r\n- [x] Testing notes provided and reviewed
+      in the JIRA and any manual/developer testing has been performed.\r\n- [x] Code
+      conforms to the go coding conventions.\r\n\r\n\r\n@cloudbees/team-core-platform\r\n"
+    closedBy:
+      accountReference:
+      - id: jtnord
+        provider: jenkins.io/git-github-userid
+      - id: UBYK94WRX
+        provider: slack.apps.cloudbees.com/userid
+      email: jnord@cloudbees.com
+      login: jtnord
+      name: James Nord
+    creationTimestamp: "2019-03-26T11:40:23Z"
+    id: "20"
+    labels:
+    - color: ededed
+      name: https://api.github.com/repos/cloudbees/core-controllers/labels/approved
+      url: approved
+    - color: ededed
+      name: https://api.github.com/repos/cloudbees/core-controllers/labels/lgtm
+      url: lgtm
+    - color: ededed
+      name: https://api.github.com/repos/cloudbees/core-controllers/labels/size/XS
+      url: size/XS
+    state: closed
+    title: '[PLAT-828] add a flag to the chart to expose the default user role'
+    url: https://github.com/cloudbees/core-controllers/pull/20
+    user:
+      accountReference:
+      - id: jtnord
+        provider: jenkins.io/git-github-userid
+      - id: UBYK94WRX
+        provider: slack.apps.cloudbees.com/userid
+      email: jnord@cloudbees.com
+      login: jtnord
+      name: James Nord
+  releaseNotesURL: https://github.com/cloudbees/core-controllers/releases/tag/v0.0.12
+  version: v0.0.12
+status: {}
+
+---
+# Source: **ui/charts/**ui-cleanup/templates/configmap.yaml
+
+---
+# Source: **ui/templates/role.yaml
+
+
+---
+# Source: **ui/templates/sso.yaml
+
+
+rm -rf requirements.lock
+rm -rf charts
+rm -rf **-app-ui*.tgz
+sed -i -e "s/version:.*/version: 0.0.0-SNAPSHOT-PR-743-12/" Chart.yaml
+echo "  version: 0.0.0-SNAPSHOT-PR-743-12" >> requirements.yaml
+** step helm build
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+helm lint
+==> Linting .
+Lint OK
+
+1 chart(s) linted, no failures
+helm template .
+---
+# Source: **-app-ui/charts/ui/charts/**ui-cleanup/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: **ui-cleanup
+    chart: "**ui-cleanup-2.3.56"
+    release: "release-name"
+    heritage: "Tiller"
+  name: **ui-cleanup
+---
+# Source: **-app-ui/charts/ui/charts/user-controller/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: user-controller
+  labels:
+    app: user-controller
+    release: release-name
+    heritage: Tiller
+
+---
+# Source: **-app-ui/charts/ui/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: ui
+    chart: "ui-0.0.0-SNAPSHOT-PR-743-12"
+    release: "release-name"
+    heritage: "Tiller"
+  name: ui
+---
+# Source: **-app-ui/charts/ui/templates/rolebinding.yaml
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: release-name-ui
+  labels:
+    app: ui
+    chart: ui-0.0.0-SNAPSHOT-PR-743-12
+    release: release-name
+    heritage: Tiller
+subjects:
+- kind: ServiceAccount
+  name: ui
+  namespace: **
+roleRef:
+  kind: ClusterRole
+  apiGroup: rbac.authorization.k8s.io
+  name: cluster-*****
+
+---
+# Source: **-app-ui/charts/ui/charts/**ui-cleanup/templates/role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: **ui-cleanup
+rules:
+- apiGroups:
+  - extensions
+  resources:
+  - ingresses
+  verbs:
+  - get
+  - list
+  - watch
+  - patch
+  - create
+  - update
+  - delete
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  - services
+  verbs:
+  - get
+  - list
+  - watch
+  - patch
+  - update
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+  - watch
+  - patch
+  - update
+
+---
+# Source: **-app-ui/charts/ui/charts/user-controller/templates/role.yaml
+# Grant the user controller permission to:
+#  - create ServiceAccounts
+#  - list/watch/patch users
+# ...in the ***** namespace.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: user-controller
+  namespace: **
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - serviceaccounts
+  verbs:
+  - create
+- apiGroups:
+  - jenkins.io
+  resources:
+    - users
+  verbs:
+    - list
+    - watch
+    - patch
+
+---
+# Source: **-app-ui/charts/ui/charts/**ui-cleanup/templates/rolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: **ui-cleanup
+  namespace: **
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: **ui-cleanup
+subjects:
+- kind: ServiceAccount
+  name: **ui-cleanup
+  namespace: **
+---
+# Source: **-app-ui/charts/ui/charts/user-controller/templates/rolebinding.yaml
+# RoleBinding for the role-user permissions.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: user-controller
+  namespace: **
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: user-controller
+subjects:
+- kind: ServiceAccount
+  name: user-controller
+
+---
+# Source: **-app-ui/charts/ui/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-ui
+  labels:
+    app: ui
+    chart: ui-0.0.0-SNAPSHOT-PR-743-12
+    release: release-name
+    heritage: Tiller
+  annotations:
+    fabric8.io/expose: "true"
+    
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: **ui-frontend
+  selector:
+    app: ui
+    release: release-name
+
+---
+# Source: **-app-ui/charts/ui/charts/user-controller/templates/deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: user-controller
+  labels:
+    chart: "user-controller-0.0.12"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: user-controller
+    spec:
+      containers:
+      - name: user-controller
+        image: "docker.io/jenkinsxio/user-controller:0.0.12"
+        imagePullPolicy: Always
+        args:
+        resources:
+            limits:
+              cpu: 100m
+              memory: 256Mi
+            requests:
+              cpu: 80m
+              memory: 128Mi
+            
+      terminationGracePeriodSeconds: 10
+      serviceAccountName: user-controller
+
+
+---
+# Source: **-app-ui/charts/ui/templates/deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: release-name-ui
+  labels:
+    app: ui
+    chart: ui-0.0.0-SNAPSHOT-PR-743-12
+    release: release-name
+    heritage: Tiller
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 35%
+  template:
+    metadata:
+      labels:
+        app: ui
+        release: release-name
+    spec:
+      containers:
+        - name: ui-frontend
+          env:
+          - name: API_PORT
+            value: "8080"
+          image: "gcr.io/jenkinsxio/**ui-frontend:0.0.0-SNAPSHOT-PR-743-12"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 60
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 60
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            
+        - name: ui-backend
+          image: "gcr.io/jenkinsxio/**ui-backend:0.0.247"
+          imagePullPolicy: IfNotPresent
+          env:
+          - name: XDG_CONFIG_HOME
+            value: /home
+          - name: JX_LOG_FORMAT
+            value: json
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /_health
+              port: 8080
+            periodSeconds: 60
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /_health
+              port: 8080
+            periodSeconds: 60
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            
+      serviceAccountName: ui
+
+---
+# Source: **-app-ui/charts/ui/charts/**ui-cleanup/templates/job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: **ui-cleanup
+  labels:
+    heritage: "Tiller"
+    release: "release-name"
+    chart: "**ui-cleanup-2.3.56"
+    component: "release-name-**ui-cleanup"
+  name: **ui-cleanup
+  annotations:
+    helm.sh/hook: pre-delete
+    helm.sh/hook-delete-policy: hook-succeeded
+    
+spec:
+  # backoffLimit: 5
+  template:
+    metadata:
+      name: "release-name"
+      labels:
+        heritage: "Tiller"
+        release: "release-name"
+        chart: "**ui-cleanup-2.3.56"
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        image: "jenkinsxio/exposecontroller:2.3.56"
+        name: **ui-cleanup
+        command: ["/exposecontroller"]
+        args:
+        - "--cleanup"
+        - "--filter"
+        - "**ui-**ui"
+      serviceAccountName: **ui-cleanup
+      restartPolicy: Never
+---
+# Source: **-app-ui/charts/ui/templates/sso.yaml
+
+apiVersion: "jenkins.io/v1"
+kind: "SSO"
+metadata:
+  name: sso-release-name-ui
+  namespace: **
+spec:
+  oidcIssuerUrl: 
+  upstreamService: release-name-ui
+  forwardToken: true
+  domain: 
+  certIssuerName: letsencrypt-prod
+  cookieSpec:
+    name: sso-**ui
+    expire: "168h"
+    refresh: "60m"
+    secure: true
+    httpOnly: true
+  proxyImage: "quay.io/pusher/oauth2_proxy"
+  proxyImageTag: "v3.2.0"
+  proxyResources:
+    limits:
+      cpu: 100m
+      memory: 256Mi
+    requests:
+      cpu: 80m
+      memory: 128Mi
+
+---
+# Source: **-app-ui/templates/app.yaml
+apiVersion: jenkins.io/v1
+kind: App
+metadata:
+  name: release-name-**-app-ui
+  labels:
+    chart: "**-app-ui-0.0.0-SNAPSHOT-PR-743-12"
+spec:
+  schemaPreprocessor:
+    name: schemaPreprocessor
+    image: "gcr.io/jenkinsxio/builder-go:0.1.435"
+    command:
+      - "/bin/sh"
+    env:
+      - name: DOMAIN
+        valueFrom:
+          configMapKeyRef:
+            name: ingress-config
+            key: domain
+    args:
+      - "-c"
+      - "/usr/bin/** step values schema template --set domain=`echo $DOMAIN`"
+
+---
+# Source: **-app-ui/charts/ui/charts/user-controller/templates/release.yaml
+apiVersion: jenkins.io/v1
+kind: Release
+metadata:
+  creationTimestamp: "2019-04-03T12:27:37Z"
+  deletionTimestamp: null
+  name: 'user-controller-0.0.12'
+spec:
+  commits:
+  - author:
+      accountReference:
+      - id: markawm
+        provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - id: UCKGL1HDF
+        provider: slack.apps.cloudbees.com/userid
+      email: mwynnmackenzie@cloudbees.com
+      login: cgg0mjg0njk5mbigz2l0ahvi
+      name: Mark Wynn-Mackenzie
+      serviceAccount: cgg0mjg0njk5mbigz2l0ahvi
+    branch: master
+    committer:
+      accountReference:
+      - id: markawm
+        provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - id: UCKGL1HDF
+        provider: slack.apps.cloudbees.com/userid
+      email: mwynnmackenzie@cloudbees.com
+      login: cgg0mjg0njk5mbigz2l0ahvi
+      name: Mark Wynn-Mackenzie
+      serviceAccount: cgg0mjg0njk5mbigz2l0ahvi
+    issueIds:
+    - "20"
+    message: |
+      bug: use install namespace for service accounts.
+    sha: f1ae3eea3f2435cd5746cf01c478a61e4baeb1a5
+  gitCloneUrl: https://github.com/cloudbees/core-controllers.git
+  gitHttpUrl: https://github.com/cloudbees/core-controllers
+  gitOwner: cloudbees
+  gitRepository: core-controllers
+  name: 'user-controller'
+  pullRequests:
+  - assignees:
+    - accountReference:
+      - id: markawm
+        provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - provider: jenkins.io/git-github-userid
+      - id: UCKGL1HDF
+        provider: slack.apps.cloudbees.com/userid
+      email: mwynnmackenzie@cloudbees.com
+      login: cgg0mjg0njk5mbigz2l0ahvi
+      name: Mark Wynn-Mackenzie
+      serviceAccount: cgg0mjg0njk5mbigz2l0ahvi
+    body: "[PLAT-828](https://cloudbees.atlassian.net/browse/PLAT-828).\r\n\r\n<!--
+      Description of the issue/feature and how the change fixes it. -->\r\n\r\n\r\n###
+      Description\r\nExpose the option to grant new users a default role.  Useful
+      when all users should have a generic amount of access (such as that granted
+      by the `viewer` role)\r\n\r\n# Submitter checklist\r\n- [x] I have read and
+      understood the [Rules of Engagement](https://cloudbees.atlassian.net/wiki/spaces/PLAT/pages/803275040/Rules+of+Engagement)\r\n-
+      [x] Change is code complete and matches issue description.\r\n- [x] Commit messages
+      are self contained and descriptive.\r\n- [x] Testing notes provided and reviewed
+      in the JIRA and any manual/developer testing has been performed.\r\n- [x] Code
+      conforms to the go coding conventions.\r\n\r\n\r\n@cloudbees/team-core-platform\r\n"
+    closedBy:
+      accountReference:
+      - id: jtnord
+        provider: jenkins.io/git-github-userid
+      - id: UBYK94WRX
+        provider: slack.apps.cloudbees.com/userid
+      email: jnord@cloudbees.com
+      login: jtnord
+      name: James Nord
+    creationTimestamp: "2019-03-26T11:40:23Z"
+    id: "20"
+    labels:
+    - color: ededed
+      name: https://api.github.com/repos/cloudbees/core-controllers/labels/approved
+      url: approved
+    - color: ededed
+      name: https://api.github.com/repos/cloudbees/core-controllers/labels/lgtm
+      url: lgtm
+    - color: ededed
+      name: https://api.github.com/repos/cloudbees/core-controllers/labels/size/XS
+      url: size/XS
+    state: closed
+    title: '[PLAT-828] add a flag to the chart to expose the default user role'
+    url: https://github.com/cloudbees/core-controllers/pull/20
+    user:
+      accountReference:
+      - id: jtnord
+        provider: jenkins.io/git-github-userid
+      - id: UBYK94WRX
+        provider: slack.apps.cloudbees.com/userid
+      email: jnord@cloudbees.com
+      login: jtnord
+      name: James Nord
+  releaseNotesURL: https://github.com/cloudbees/core-controllers/releases/tag/v0.0.12
+  version: v0.0.12
+status: {}
+
+---
+# Source: **-app-ui/charts/ui/charts/**ui-cleanup/templates/configmap.yaml
+
+---
+# Source: **-app-ui/charts/ui/templates/role.yaml
+
+
