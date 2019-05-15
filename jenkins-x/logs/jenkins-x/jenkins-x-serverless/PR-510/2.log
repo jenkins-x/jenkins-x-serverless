@@ -1,17 +1,9 @@
 Step: build-step-git-source-jenkins-x-jenkins-x-serverless-l7c7z:
 
-{"level":"warn","ts":1557927856.755578,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
-{"level":"info","ts":1557927858.245687,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/jenkins-x/jenkins-x-serverless @ fb879f3b1120d29f132ff98fc40d35066936a2c9 in path /workspace/source"}
+Unable to retrieve container logs for docker://986ce2f14728472fd3e6c81943fe714e8e7e0ef0f6457f4d21c208c3ded99720
 Step: build-step-git-merge:
 
-Warning failed to load version: failed to parse version -dev+9e73adc0b: No Major.Minor.Patch elements found
-time="2019-05-15T13:45:32Z" level=info msg="got "
-Using SHAs from PULL_REFS=master:f140961ea6573011e489b4229644f1f72b044f48,510:fb879f3b1120d29f132ff98fc40d35066936a2c9
-ran git fetch --unshallow origin fb879f3b1120d29f132ff98fc40d35066936a2c9: f140961ea6573011e489b4229644f1f72b044f48: in 
-ran git checkout master in 
-ran git reset --hard f140961ea6573011e489b4229644f1f72b044f48 in 
-ran clean --force -d . in 
-ran git merge fb879f3b1120d29f132ff98fc40d35066936a2c9 in 
+Unable to retrieve container logs for docker://ba54c6cc4ab5575a715bdd20fecba63c08050a7e3bb9487b687482347f03d407
 Step: build-step-get-secret:
 
 /builder/home/kaniko-secret.json
