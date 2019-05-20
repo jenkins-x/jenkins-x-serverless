@@ -1,4 +1,4 @@
-FROM jenkinsxio/jenkins-filerunner:0.1.47
+FROM jenkinsxio/jenkins-filerunner:0.1.49
 
 RUN \
   echo "deb http://packages.erlang-solutions.com/debian stretch contrib" >> /etc/apt/sources.list
