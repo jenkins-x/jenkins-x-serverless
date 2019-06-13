@@ -13,6 +13,6 @@ ENV CWP_VERSION 1.5
 RUN curl -o /opt/cwp/custom-war-packager.jar -Lf http://repo.jenkins-ci.org/releases/io/jenkins/tools/custom-war-packager/custom-war-packager-cli/$CWP_VERSION/custom-war-packager-cli-$CWP_VERSION-jar-with-dependencies.jar
 
 # jx
-ENV JX_VERSION 2.0.276
+ENV JX_VERSION 2.0.278
 RUN curl -Lf https://github.com/jenkins-x/jx/releases/download/v${JX_VERSION}/jx-linux-amd64.tar.gz | tar xzv && \
   mv jx /usr/bin/
