@@ -48,6 +48,6 @@ RUN yes | sdkmanager \
 #	&& gradle --version
 
 # jx
-ENV JX_VERSION 2.0.321
+ENV JX_VERSION 2.0.323
 RUN curl -Lf https://github.com/jenkins-x/jx/releases/download/v${JX_VERSION}/jx-linux-amd64.tar.gz | tar xzv && \
   mv jx /usr/bin/
