@@ -9,6 +9,6 @@ ENV M2 $M2_HOME/bin
 ENV PATH $M2:$PATH
 
 # jx
-ENV JX_VERSION 2.0.328
+ENV JX_VERSION 2.0.329
 RUN curl -Lf https://github.com/jenkins-x/jx/releases/download/v${JX_VERSION}/jx-linux-amd64.tar.gz | tar xzv && \
   mv jx /usr/bin/
