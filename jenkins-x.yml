@@ -184,7 +184,7 @@ pipelineConfig:
           # Create the release notes
           - name: changelog
             image: gcr.io/jenkinsxio/jenkins-go:${inputs.params.version}
-            command: ./changelog.sh
+            command: ./jx/scripts/changelog.sh
 
     pullRequest:
       pipeline:
