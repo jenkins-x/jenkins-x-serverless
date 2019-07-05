@@ -181,6 +181,10 @@ pipelineConfig:
           - image: jenkinsxio/builder-base:0.1.274
             name: trigger-updatebot
             command: ./jx/scripts/updatebot.sh
+          # Create the release notes
+          - name: changelog
+            image: gcr.io/jenkinsxio/jenkins-go:${inputs.params.version}
+            command: ./changelog.sh
 
     pullRequest:
       pipeline:
@@ -370,3 +374,4 @@ pipelineConfig:
           - image: jenkinsxio/builder-base:0.1.273
             name: test-images
             command: ./jx/scripts/test.sh
+            
