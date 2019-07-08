@@ -183,7 +183,7 @@ pipelineConfig:
             command: ./jx/scripts/updatebot.sh
           # Create the release notes
           - name: changelog
-            image: gcr.io/jenkinsxio/jenkins-go:${inputs.params.version}
+            image: gcr.io/jenkinsxio/builder-go:0.1.550
             command: ./jx/scripts/changelog.sh
 
     pullRequest:
