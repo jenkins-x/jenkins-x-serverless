@@ -1,5 +1,0 @@
-github:
-  organisations:
-  - name: jenkins-x-charts
-    includes:
-    - jx-build-templates
