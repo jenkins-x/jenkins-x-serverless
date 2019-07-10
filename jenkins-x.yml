@@ -177,14 +177,14 @@ pipelineConfig:
               - --cache-repo=gcr.io/jenkinsxio/cache
               - --cache=true
               - --cache-dir=/workspace
-
-          - image: gcr.io/jenkinsxio/builder-go:0.1.558
-            name: trigger-updatebot
-            command: ./jx/scripts/updatebot.sh
           # Create the release notes
           - name: changelog
             image: gcr.io/jenkinsxio/builder-go:0.1.558
             command: ./jx/scripts/changelog.sh
+          # Do updatebot after release notes so we can use the release notes in the PRs
+          - image: gcr.io/jenkinsxio/builder-go:0.1.558
+            name: trigger-updatebot
+            command: ./jx/scripts/updatebot.sh
 
     pullRequest:
       pipeline:
