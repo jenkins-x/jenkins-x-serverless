@@ -178,7 +178,7 @@ pipelineConfig:
               - --cache=true
               - --cache-dir=/workspace
 
-          - image: jenkinsxio/builder-base:0.1.274
+          - image: jx
             name: trigger-updatebot
             command: ./jx/scripts/updatebot.sh
           # Create the release notes
