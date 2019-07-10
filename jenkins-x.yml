@@ -179,7 +179,7 @@ pipelineConfig:
               - --cache-dir=/workspace
 
           - agent:
-              image: go
+              image: gcr.io/jenkinsxio/builder-go
             name: trigger-updatebot
             command: ./jx/scripts/updatebot.sh
           # Create the release notes
