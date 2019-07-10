@@ -178,13 +178,12 @@ pipelineConfig:
               - --cache=true
               - --cache-dir=/workspace
 
-          - agent:
-              image: gcr.io/jenkinsxio/builder-go
+          - image: gcr.io/jenkinsxio/builder-go:0.1.558
             name: trigger-updatebot
             command: ./jx/scripts/updatebot.sh
           # Create the release notes
           - name: changelog
-            image: gcr.io/jenkinsxio/builder-go:0.1.550
+            image: gcr.io/jenkinsxio/builder-go:0.1.558
             command: ./jx/scripts/changelog.sh
 
     pullRequest:
