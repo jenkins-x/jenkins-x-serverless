@@ -178,7 +178,8 @@ pipelineConfig:
               - --cache=true
               - --cache-dir=/workspace
 
-          - image: jx
+          - agent:
+              image: go
             name: trigger-updatebot
             command: ./jx/scripts/updatebot.sh
           # Create the release notes
